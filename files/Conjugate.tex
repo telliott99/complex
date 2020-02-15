@@ -9,12 +9,12 @@
 \usepackage{color}
 \usepackage{hyperref}
 
-\graphicspath{{/Users/telliott_admin/Tex/png/}}
+\graphicspath{{/Users/telliott/Github/figures/}}
 % \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
 
 \title{Complex conjugate}
 \date{}
-
+ 
 \begin{document}
 \maketitle
 \Large
@@ -25,12 +25,13 @@ The complex conjugate of $z$ (called $z*$ or $\bar{z}$) is given by:
 \[ z* = x - iy \]
 The real part of $z*$ is the same as the real part of $z$, while the imaginary part has the sign switched.
 
+\subsection*{length of $z$}
+
 The \emph{length} of $z$ squared is equal to $z$ multiplied by its complex conjugate
 \[ zz* = (x + iy) (x - iy) \]
 \[ =  x^2 - ixy + ixy -i^2y^2 \]
 \[ = x^2 + y^2 \]
 \[ = (r \cos \theta)^2 + (r \sin \theta)^2 \]
-\[ = r^2 \cos^2 \theta + r^2 \sin^2 \theta \]
 \[ = r^2   \]
 Again, $r$ is the length of the ray from the origin to $z$ as plotted in the complex plane.
 \[ r^2 = zz* \]
@@ -47,17 +48,45 @@ If we consider addition rather than multiplication of the complex conjugate we o
 while subtraction gives an entirely imaginary result:
 \[ z - z* = x + iy - x + iy = i2y \]
 
+\subsection*{conjugate of several values}
+
 Another result (that we state without proof) is that if we have an expression involving several complex numbers:
 \[ w = f(z_1, z_2 \dots) \]
 we can obtain the complex conjugate of the whole thing by substituting the complex conjugate of each component:
 \[ w* = f(z_1*, z_2* \dots) \]
-An example might be
-\[ z*z* = (x - iy)(x - iy) \]
-\[ = x^2 - y^2 - i2xy \]
-\[ = (zz)* \]
-since
-\[ zz = (x + iy)(x + iy) \]
-\[ = x^2 - y^2 + i2xy \]
-which has just flipped the sign on the imaginary part from the previous result, forming its complex conjugate.
 
-\end{document} 
+As an example, let us compute the powers of $z$ and $z*$ using the binomial theorem:
+\[ z = x + iy \]
+\[ z^2 = x^2 +  2x(iy) + (iy)^2 \]
+\[ z^3 = x^3 + 3x^2(iy) + 3x(iy)^2 + (iy)^3 \]
+\[ z^4 = x^4 + 4x^3(iy) + 6x^2(iy)^2 + 4x(iy)^3 + (iy)^4 \]
+
+and the conjugate:
+\[ z* = x + (-iy) \]
+\[ (z*)^2 = x^2 +  2x(-iy) + (-iy)^2 \]
+\[ (z*)^3 = x^3 + 3x^2(-iy) + 3x(-iy)^2 + (-iy)^3 \]
+\[ (z*)^4 = x^4 + 4x^3(-iy) + 6x^2(-iy)^2 + 4x(-iy)^3 + (-iy)^4 \]
+
+It makes things simpler if we leave the minus signs and the powers of $i$ for the moment.
+
+Now, any even power of $i$ is wholly real.  So all we really need to do to form the conjugate is to switch the sign of the odd powers.  Since they're odd powers, it makes no difference if we do this inside the parentheses or in front of each term.
+
+So then,
+\[ (z^2)* = x^2 - 2x(iy) + (iy)^2 \]
+\[ = x^2 + 2x(-iy) + (iy)^2 \]
+\[ = (z*)^2 \]
+
+Furthermore, we can slip an extra minus sign inside any even power without changing the value:
+
+\[ (z^3)* = x^3 - 3x^2(iy) + 3x(iy)^2 - (iy)^3 \]
+\[ = x^3 + 3x^2(-iy) + 3x(iy)^2 + (-iy)^3 \]
+\[ = x^3 + 3x^2(-iy) + 3x(-iy)^2 + (-iy)^3 \]
+\[ = (z*)^3 \]
+
+\[ (z^4)* = x^4 - 4x^3(iy) + 6x^2(iy)^2 - 4x(iy)^3 + (iy)^4 \]
+\[ = x^4 - 4x^3(iy) + 6x^2(-iy)^2 - 4x(iy)^3 + (-iy)^4 \]
+\[ = (z*)^4 \]
+
+It is clear that this pattern will continue with higher powers.
+
+\end{document}

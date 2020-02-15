@@ -2,11 +2,10 @@ Introduction
 Preface
 Arithmetic
 Conjugate
-Cubics
 
-Differentiation and CRE
-Differentiate
-CRE
+Differentiation
+Difference quotient
+Proofs of CRE
 
 Functions
 Powers
@@ -15,9 +14,9 @@ Logarithm
 Roots
 Trig functions
 Polar CRE
-CRE Examples
+CRE examples
 
-Integrate
+Integration
 Integrate
 Integrate 2
 Cauchy 1
@@ -39,3 +38,6 @@ Real Integrals
 Mapping
 Conformal mapping
 End
+
+History
+Cubics

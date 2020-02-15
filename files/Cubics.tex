@@ -9,7 +9,7 @@
 \usepackage{color}
 \usepackage{hyperref}
 
-\graphicspath{{/Users/telliott_admin/Tex/png/}}
+\graphicspath{{/Users/telliott/Github/figures/}}
 % \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
 
 \title{History}
@@ -40,12 +40,14 @@ However, an isosceles right triangle has the smallest possible perimeter for a g
 The problem as posed has no solution.
 
 Proof:
+
 Let $k$ be a constant and $x$ and $k - x$ be the given sides.  The area is
 \[ A = \frac{1}{2} x (k - x) \]
 \[ = -\frac{1}{2} x^2 + \frac{k}{2} x \]
 The extreme point is
 \[ \frac{dA}{dx} = 0 = - x + \frac{k}{2} \]
 \[ x = \frac{k}{2} \]
+
 The second derivative is $-1 < 0$, which shows that this is a minimum.  We can also see the same thing from the negative cofactor of $x^2$ in the equation.
 \[ A = -\frac{1}{2} x^2 + \frac{k}{2} x \]
 
@@ -55,6 +57,7 @@ Doing the algebra of the original problem anyway, we solve two simultaneous equa
 Isolate and then remove the square root in the second one
 \[ a^2 + b^2 = (12 - a - b)^2 \]
 \[ = 12^2 - 12a - 12b - 12a + a^2 + ab - 12b + ab + b^2 \]
+
 Collect terms and cancel $a^2$ and $b^2$
 \[ 0 = 12^2 - 24a - 24b + 2ab \]
 \[ 0 = 72 - 12a - 12b + ab \]
@@ -68,9 +71,12 @@ To solve this, use the quadratic formula
 \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
 However, $b^2 = 43^2 = 1849$ is less than $4ac = 4 \cdot 6 \cdot 84 = 2016$.  We end up with
 \[ x = \frac{43 \pm \sqrt{-167}}{12} \]
+
 The classic answer at this point is just to say, these values do not exist.  The graph would be a parabola opening up ($a > 0$) whose vertex lies above the $x$-axis.
 
-If we suppose these two \emph{complex} roots do have meaning, notice that they are what are called complex conjugates:  $p + iq$ and $p - iq$.  If they are substituted into the factored form of the quadratic:
+But suppose these two \emph{complex} roots do have meaning.
+
+They are, of course, complex conjugates:  $p + iq$ and $p - iq$.  If they are substituted into the factored form of the quadratic:
 \[ y = \ [ \ x - (p + iq) \ ] \ [ \ x - (p - iq) \ ] \]
 \[ y = \ [ \ x - p - iq) \ ] \ [ \ x - p + iq) \ ] \]
 \[ = x^2 - px + iqx - px + p^2 - ipq - iqx + ipq + q^2 \] 
@@ -88,7 +94,9 @@ This value of $x$ makes the factored form equal to zero.  It is also the first t
 
 \subsection*{cubics}
 
-In general, people just ignored problems with negative square roots  --- sometimes explicitly ---  until Cardano came to cubic polynomials.  Briefly, he discovered that any cubic like
+In general, people just ignored problems with negative square roots  --- sometimes explicitly ---  until Cardano came to cubic polynomials.  
+
+Briefly, he discovered that any cubic like
 \[ x^3 + ax^2 + bx + c = 0 \]
 can be converted to a \emph{depressed} cubic of the form
 \[ x^3 + px + q = 0 \]
