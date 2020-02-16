@@ -3,18 +3,19 @@ Preface
 Arithmetic
 Conjugate
 
-Differentiation
+Cauchy Riemann
 Difference quotient
 Proofs of CRE
-
-Functions
 Powers
-Exponential
-Logarithm
-Roots
-Trig functions
 Polar CRE
 CRE examples
+Roots
+
+Transcendentals
+Sine and cosine
+More trigonometry
+Exponential
+Logarithm
 
 Integration
 Integrate

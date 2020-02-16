@@ -1,27 +1,23 @@
-\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
-\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
-\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
-%\geometry{landscape}                		% Activate for for rotated page geometry
-%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
-								% TeX will automatically convert eps --> pdf in pdflatex		
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{parskip}
 \usepackage{color}
 \usepackage{hyperref}
 
-\title{Inverse and integer powers}
-%\author{The Author}
-%\section{}
-%\subsection*{}
-\date{}							% Activate to display a given date or no date
-
 \graphicspath{{/Users/telliott/Github/figures/}}
-% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+\title{Powers}
+\date{}
+
 \begin{document}
 \maketitle
 \Large
+
 \subsection*{square}
 Consider 
 \[ f(z) = z^2 \]
@@ -46,9 +42,9 @@ This is the result we would expect to get by simply differentiating f(z) as if i
 \subsection*{cube}
 Let
 \[ f(z) = z^3 = (x + iy)^3 \]
-\[ = (x + iy)(x^2 - y^2 + i2xy) \]
-\[ = x^3 -xy^2 + i2x^2y + ix^2y -iy^3 - 2xy^2 \]
-\[ = x^3 - 3xy^2 + i(3x^2y - y^3) \]
+\[ = x^3 + 3x^2(iy) + 3x(iy)^2 + (iy)^3 \]
+\[ = x^3 - 3xy^2 + i \ [ \ 3x^2y - y^3 \ ] \]
+
 So
 \[ u(x,y) = x^3 - 3xy^2 \]
 \[ v(x,y) = 3x^2y - y^3 \]
@@ -56,9 +52,9 @@ and
 \[ u_x = 3x^2 - 3y^2 \]
 \[ v_x = 6xy \]
 That means
-\[ \frac{df}{dz} = u_x + i v_x \]
+\[ f'(z) = u_x + i v_x \]
 \[ = 3x^2 - 3y^2 + i 6xy \]
-\[ = 3 \ [ x^2 - y^2 + i2xy \ ] \]
+\[ = 3 \ [ x^2 + 2x(iy) + (iy)^2 \ ] \]
 \[ = 3z^2 \]
 
 We could continue and show that $z^n$ is analytic for any positive integer power of $n$.
@@ -82,44 +78,54 @@ There is no change in length for $r=1$.  But if say
 then the new point has $r = \frac{1}{\sqrt{2}}$ and it is located at
 \[ \frac{1}{z} = \frac{1}{\sqrt{2}} e^{-i \cdot \pi/4} = (\frac{1}{2},- \frac{1}{2}) = \frac{1}{2} - i \frac{1}{2}\]
 
-Differentiate
+\subsection*{differentiation}
+
+We wish to differentiate
 \[ f(z) = 1/z \]
 \[ = \frac{z*}{zz*} \]
 \[ = \frac{x}{x^2 + y^2} - i\frac{y}{x^2 + y^2} \]
-Now let's do the partial derivatives.  $u(x,y)$ has $x$ in both the numerator and the denominator.
+Let's do the partial derivatives.  $u(x,y)$ has $x$ in both the numerator and the denominator.
 
-Recall the quotient rule (reusing the symbols $g$ and $h$):
+Recall the quotient rule (using unfamiliar symbols $g$ and $h$):
 \[ (g/h)' = (g'h - gh')/h^2 \]
+which we check by differentiating $x/1$.
 
-So:
-\[ u_x = \frac{1}{(x^2 + y^2)^2} \ (x^2 + y^2 - 2x^2) \]
-\[ = \frac{y^2 - x^2}{(x^2 + y^2)^2} \]
-To do $v_y$ just switch $x$ and $y$ in the result, but remember to then multiply by the leading factor of $-1$:
+$\circ$ \ $u_x$
+
+\[ u(x,y) = \frac{x}{x^2 + y^2} \]
+\[ u_x = (x^2 + y^2 - x \cdot 2x) \cdot \frac{1}{(x^2 + y^2)^2} = \frac{y^2 - x^2}{(x^2 + y^2)^2} \]
+
+$\circ$ \ $v_y$
+
+\[ v(x,y) =  - \frac{y}{x^2 + y^2} \]
+
+To do $v_y$ just switch $x$ and $y$ in the result above, but remember to then multiply by the leading factor of $-1$:
 \[ v_y = (-1) \ \frac{x^2 - y^2}{(x^2 + y^2)^2} = \frac{y^2 - x^2}{(x^2 + y^2)^2} \]
 Thus $u_x = v_y$
 
-Now for the other ones we have that
-\[ u(x,y) = \frac{x}{x^2 + y^2} \]
-which only involves $y$ in the denominator so the derivative is just
-\[ u_y = x \ \frac{1}{(x^2 + y^2)^2} \ (-1) (2y) \]
-\[ = \frac{-2xy}{(x^2 + y^2)^2} \]
-For $v_x$ we have 
-\[ v(x,y) = \frac{-y}{x^2 + y^2} \]
-Again, we have $x$ only in the denominator so the derivative is
-\[ (-y) \ \frac{1}{(x^2 + y^2)^2} \ (-1) (2x) \]
-\[ = \frac{2xy}{(x^2 + y^2)^2} \]
-We see that $u_y = - v_x$.
+$\circ$ \ $u_y$
 
-So the CRE are satisfied (except at $z=0$) and the derivative is
+\[ u(x,y) =  x(x^2 + y^2)^{-1} \]
+\[ u_y = x(-1) \cdot 2y(x^2 + y^2)^{-2} = \frac{-2xy}{(x^2 + y^2)^2} \]
+
+$\circ$ \ $v_x$
+
+\[ v(x,y) =  - y (x^2 + y^2)^{-1} \]
+\[ v_x = - y(-1) \cdot 2x(x^2 + y^2)^{-2} = \frac{2xy}{(x^2 + y^2)^2} \]
+
+So we have that the CRE are satisfied (except at $z=0$) and the derivative is
 \[ \frac{df}{dz} = u_x + i v_x \]
 \[ =  \frac{y^2 - x^2}{(x^2 + y^2)^2} + i \frac{2xy}{(x^2 + y^2)^2} \]
 \[ = \frac{1}{(x^2 + y^2)^2} \ (y^2 - x^2 + i2xy) \]
+
 We expect that this should be (in disguise) $-1/z^2$.  Let's see:
 \[ \frac{1}{z} =  \frac{z*}{zz*} \]
 \[ \frac{1}{z^2} =  \frac{(z*)^2}{(zz*)^2} \]
+
 The denominator is certainly correct since
 \[ zz* = x^2 + y^2 \]
-What about
+What about the denominator?
+
 \[ (z*)^2 = (x - iy)(x - iy) = x^2 - y^2 - i2xy \]
 so
 \[ -(z*)^2 = (-1)(x - iy)(x - iy) = y^2 - x^2 + i2xy \]

@@ -31,5 +31,4 @@ urlcolor=red]{hyperref}
 \maketitle
 \tableofcontents
 
-\large
 %\normalsize

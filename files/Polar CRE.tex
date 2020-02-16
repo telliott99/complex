@@ -1,97 +1,72 @@
-\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
-\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
-\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
-%\geometry{landscape}                		% Activate for for rotated page geometry
-%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
-								% TeX will automatically convert eps --> pdf in pdflatex		
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{parskip}
 \usepackage{color}
 \usepackage{hyperref}
 
-\title{Polar Cauchy-Riemann equations}
-%\author{The Author}
-%\section{}
-%\subsection*{}
-\date{}							% Activate to display a given date or no date
-
 \graphicspath{{/Users/telliott/Github/figures/}}
-% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+\title{Polar CRE}
+\date{}
+
 \begin{document}
 \maketitle
 \Large
+
+In this chapter we will derive the CRE conditions for polar coordinates and show how to compute the derivative in the same system.  The take home lesson is that there is an extra factor for each:
+
+Recall that the CRE in Cartesian coordinates are:
+\[ u_x = v_y \]
+\[ v_x = -u_y \]
+It turns out that $r,\theta$ is similar except for a factor of $r$, which goes on the partial with respect to $r$
+\[ r u_r = v_{\theta} \]
+\[ r v_r = - u_{\theta} \]
+
+Also,
+\[ f'(z) = e^{-i \theta} \ (u_r + i v_r) \]
+
+We'll also see two derivations for each, a simple one and a more careful but also more complicated one. 
+
 A clever way to derive the CRE in polar coordinates is to take advantage of the result that we obtained in Cartesian coordinates.
 
 \subsection*{short and sweet}
-As we've demonstrated, the function
-\[ f(z) = z = x + iy \]
-is analytic, so it is differentiable.  If we write the same function in polar coordinates:
+
+The function $f(z) = z = x + iy$ is "analytic" and obeys the CRE.  
+
+Write the same function in polar coordinates:
 \[ z = re^{i \theta} \]
 and then separate it into a completely real part $u(r, \theta)$ and a completely imaginary part $v(r,\theta)$:
-\[ z = r \cos \theta + i r \sin \theta \]
-Observe that $u_r = \cos \theta$ and $v_{\theta} = r \cos \theta$ so we deduce that
-\[ r u_r = r \cos \theta = v_{\theta} \]
-Similarly, $v_r = \sin \theta$ and $u_{\theta} = - r \sin \theta$ so we deduce that
-\[ r v_r = r \sin \theta = - u_{\theta} \]
-There are the CRE in polar coordinates.  Carrying out the same analysis for \emph{any} analytic function would give the same result (with some other expression in the middle, of course).
+\[ z = r(\cos \theta + i \sin \theta) \]
+\[ = r \cos \theta + i r \sin \theta \]
+Observe that
+\[ u_r = \cos \theta \]
+\[ v_{\theta} = r \cos \theta \]
+so we deduce that
+\[ r u_r =  v_{\theta} \]
+
+Similarly
+\[ v_r = \sin \theta \]
+\[ u_{\theta} = - r \sin \theta \]
+so
+\[ -r v_r = u_{\theta} \]
+There are the CRE in polar coordinates.  Carrying out the same computation for \emph{any} analytic function would give the same result (with some other expression in the middle, of course).
 
 \[ r u_r = v_{\theta} \]
 \[ r v_r = - u_{\theta} \]
 
-Notice the similar format to the Cartesian version, with the addition of a factor of $r$.  Reminds me of the Jacobian from multi-variable calculus.
+Notice the similar format to the Cartesian version, with the addition of a factor of $r$.  
 
-\subsection*{by the chain rule}
+It reminds me of the Jacobian from multi-variable calculus.
 
-We know equations to go back and forth between $x,y$ and $r, \theta$ so it is not hard to imagine that we can always re-write $u$ and $v$ as
-\[ z = u \ [ \ x(r, \theta), y(r, \theta) \ ] + i v \ [ \ x(r,\theta),y(r, \theta) \ ] \]
-or more succinctly:
-\[ z = u(r, \theta) + i v(r, \theta) \]
-
-Now we ask about relations between the partial derivatives.
-
-Obviously, we want expressions involving $u_r$, $v_{\theta}$ etc.  Write:
-\[ \frac{\partial u}{\partial r} = \frac{\partial u}{\partial x} \frac{\partial x}{\partial r} + \frac{\partial u}{\partial y} \frac{\partial y}{\partial r} \]
-
-or using the convenient shorthand
-\[ u_r = u_x x_r + u_y y_r \]
-
-Now, we know
-\[ x = r \cos \theta \]
-\[ y = r \sin \theta \]
-and the derivatives are
-\[ x_r = \cos \theta \]
-\[ x_{\theta} = -r \sin \theta \]
-\[ y_r = \sin \theta \]
-\[ y_{\theta} = r \cos \theta \]
-
-Now write the four expansions (like the one given above) as:
-\[ u_r = u_x x_r + u_y y_r = u_x \cos \theta + u_y \sin \theta \]
-\[ v_r = v_x x_r + v_y y_r = v_x \cos \theta + v_y \sin \theta \]
-\[ u_{\theta} = u_x x_{\theta} + u_y y_{\theta} = u_x (-r \sin \theta) + u_y (r \cos \theta) \]
-\[ v_{\theta} = v_x x_{\theta} + v_y y_{\theta} = v_x (-r \sin \theta) + v_y (r \cos \theta) \]
-
-Our key insight is to substitute the relations given by the CRE in Cartesian coordinates ($u_x = v_y$, $u_y = - v_x$).  In the first above we get
-\[ u_r = u_x \cos \theta + u_y \sin \theta = v_y \cos \theta - v_x \sin \theta = \frac{1}{r} v_{\theta} \]
-(where the final step equating to $v_{\theta}/r$ uses the last equation).
-
-In the second
-\[ v_r = v_x \cos \theta + v_y \sin \theta = -u_y \cos \theta + u_x \sin \theta = - \frac{1}{r} u_{\theta} \]
-(and the last step uses the third equation).
-
-In other words:
-\[ r u_r = v_{\theta} \]
-\[ r v_r = - u_{\theta} \]
-which is what needed to prove.
-
-Like the original Cartesian version but with an extra factor of $r$.
-
-\section*{polar derivative} 
-This will also turn out to be very similar to the Cartesian version, with a twist, which is that we have an extra factor out front:
+\subsection*{polar derivative} 
+This will also turn out to be very similar to the Cartesian version, with an extra factor out front:
 \[ f'(z) = e^{-i \theta} \ [ \ u_r + i v_r \ ] \]
 
-\subsection*{short and sweet}
 Let's just assume that the derivative is equal to what we would expect, within some unknown factor of $k$:
 \[ z' = k(u_r + i v_r) \]
 and now we know that for this function the derivative is equal to $1$:
@@ -106,7 +81,57 @@ Clearly
 \[ e^{- i \theta} (\cos \theta + i \sin \theta) = 1 \]
 So $k = e^{- i \theta}$.
 
-\subsection*{more carefully}
+\subsection*{CRE derivation by the chain rule}
+
+We know equations to go back and forth between $x,y$ and $r, \theta$ so it is not hard to imagine that we can always re-write $u$ and $v$ as
+\[ z = u \ [ \ x(r, \theta), y(r, \theta) \ ] + i v \ [ \ x(r,\theta),y(r, \theta) \ ] \]
+or more succinctly:
+\[ z = u(r, \theta) + i v(r, \theta) \]
+
+Now we ask about relations between the partial derivatives.  Let us first make a table of them:
+\[ x = r \cos \theta \]
+\[ x_r = \cos \theta, \ \ \ \ \ \ x_{\theta} = -r \sin \theta \]
+\[ y = r \sin \theta \]
+\[ y_r = \sin \theta, \ \ \ \ \ \ y_{\theta} = r \cos \theta \]
+
+Clearly, we want expressions involving $u_r$, $v_{\theta}$ etc.  Write:
+\[ \frac{\partial u}{\partial r} = \frac{\partial u}{\partial x} \frac{\partial x}{\partial r} + \frac{\partial u}{\partial y} \frac{\partial y}{\partial r} \]
+
+or in a convenient shorthand
+\[ u_r = u_x x_r + u_y y_r = u_x \cos \theta + u_y \sin \theta \]
+The other three are
+\[ u_{\theta} = u_x x_{\theta} + u_y y_{\theta} = u_x (-r \sin \theta) + u_y (r \cos \theta)  \]
+\[ v_r = v_x x_r + v_y y_r = v_x (\cos \theta) + v_y (\sin \theta)  \]
+\[ v_{\theta} = v_x x_{\theta} + v_y y_{\theta} = v_x (-r \sin \theta) + v_y (r \cos \theta) \]
+
+Our key insight is to use the relations given by the CRE in Cartesian coordinates
+\[ u_x = v_y \]
+\[ u_y = -v_x \]
+
+Thus, starting with the first expression for partial derivatives above
+\[ u_r = u_x \cos \theta + u_y \sin \theta \]
+
+Use the CRE in $x,y$ to substitute in terms of $v$:
+\[ u_r = v_y \cos \theta + (-v_x) \sin \theta \]
+we can see that this is different from the fourth expression above
+\[ v_{\theta} = v_x (-r \sin \theta) + v_y (r \cos \theta) \]
+only by a factor of $r$:
+\[ r u_r = v_{\theta} \]
+
+which is what needed to prove.
+
+The other one is:
+\[ u_{\theta} = u_x (-r \sin \theta) + u_y (r \cos \theta)  \]
+\[ = v_y (-r \sin \theta) - v_x (r \cos \theta)  \]
+compare with
+\[ v_r =  v_x (\cos \theta) + v_y (\sin \theta)  \]
+
+We need a factor of $-r$:
+\[ u_{\theta} = -r v_r \]
+
+Like the original Cartesian version but with an extra factor of $r$ on the partials with respect to $r$.
+
+\section*{polar derivative, more carefully}
 
 To get the derivative, start with the version that we know for $x,y$ coordinates:
 \[ f'(z) = u_x + i v_x \]
@@ -181,9 +206,9 @@ So
 \[ u_r = -\frac{1}{r^2} \cos \theta \]
 \[ v_r = \frac{1}{r^2} \sin \theta \]
 \[ f'(z) = e^{-i \theta}  (u_r + i v_r) \]
-\[ \frac{1}{r^2} ( e^{-i \theta}) (- \cos \theta + i \sin \theta) \]
-\[ \frac{1}{r^2} ( e^{-i \theta}) (- \cos - \theta - i \sin - \theta) \]
-\[ \frac{1}{r^2} ( e^{-i \theta}) (-1) (e^{-i \theta}) \]
+\[ = \frac{1}{r^2} ( e^{-i \theta}) (- \cos \theta + i \sin \theta) \]
+\[ = \frac{1}{r^2} ( e^{-i \theta}) (- \cos - \theta - i \sin - \theta) \]
+\[ = \frac{1}{r^2} ( e^{-i \theta}) (-1) (e^{-i \theta}) \]
 \[ = -\frac{1}{r^2 e^{i 2\theta}} = -\frac{1}{z^2} \]
 
 \end{document}

@@ -1,0 +1,220 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Sine and cosine}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+\subsection*{cosine and sine}
+
+Start by recalling Euler's formula for \emph{real} x:
+\[ e^{ix} = \cos x + i \sin x \]
+Substitute $-x$ for $x$
+\[ e^{-ix} = \cos -x + i \sin -x \]
+\[ = \cos x - i \sin x \]
+
+Addition gives:
+\[ 2 \cos x = e^{ix} + e^{-ix} \]
+\[ \cos x = \frac{1}{2} \ (e^{ix} + e^{-ix}) \]
+
+Subtraction:
+\[ 2i \sin x = e^{ix} - e^{-ix} \]
+\[ \sin x = \frac{1}{2i} \ (e^{ix} - e^{-ix}) \]
+
+Our old friends:
+\[ \cosh x =  \frac{1}{2} \ (e^{x}+ e^{-x}) \]
+\[ \sinh x =  \frac{1}{2} \ (e^{x} - e^{-x}) \]
+
+\subsection*{complex versions}
+
+The complex counterparts of the real trigonometric functions can be explained by saying that Euler's formula is also good for a complex number $z$ (a math book would define them by their power series).  
+
+By the same algebra, this gives
+
+\[ \cos z = \frac{1}{2} \ (e^{iz} + e^{-iz}) \]
+\[ \sin z = \frac{1}{2i} \ (e^{iz} - e^{-iz}) \]
+
+Now we see that the complex sine and cosine have properties just like their real cousins.
+
+We will do the complex hyperbolic functions in the next chapter.
+
+\subsection*{period}
+
+The above definition of cosine is
+\[ \cos z = \frac{1}{2} \ (e^{iz} + e^{-iz}) \]
+then
+\[ cos (z + 2 \pi) = \frac{1}{2} \ (e^{iz} e^{i2 \pi} + e^{-iz} e^{-i 2\pi}) \]
+but
+\[ e^{i 2 \pi} = \cos 2 \pi + i \sin 2 \pi = 1 \]
+and the same for $e^{-i 2 \pi}$, so
+\[ \cos (z + 2\pi) = \cos z \]
+
+The \emph{period} of the complex cosine and sine is $2 \pi$, just as for the real function.
+
+\subsection*{derivatives}
+
+Take derivatives is straightforward:
+\[ \sin z = \frac{1}{2i} \ (e^{iz} - e^{-iz}) \]
+\[ \frac{d}{dz} \ \sin z = i \cdot \frac{1}{2i} \ (e^{iz} + e^{-iz}) = \cos z \]
+
+Similarly
+\[ \cos z = \frac{1}{2} \ (e^{iz} + e^{-iz} ) \]
+\[ \frac{d}{dz} \ \cos z = \frac{i}{2} \ ( e^{iz} - e^{-iz} ) \]
+\[ =- \frac{1}{2i} \ ( e^{iz} - e^{-iz} ) = -\sin z \]
+
+Also
+\[ \sin -z = \frac{1}{2i} \ (e^{-iz} - e^{iz}) = - \sin z \]
+\[ \cos -z = \frac{1}{2} \ (e^{-iz} + e^{iz} ) = \cos z \]
+
+\subsection*{separating real and imaginary parts of trig functions}
+
+Since
+\[ \cos z =  \frac{1}{2} \ (e^{iz} + e^{-iz}) \]
+if we let $z = iy$ then
+\[ \cos iy =  \frac{1}{2} \ (e^{i^2y} + e^{-i^2y}) \]
+\[ =  \frac{1}{2} \ (e^{-y} + e^{y}) = \cosh y \]
+
+Similarly
+\[ \sin iy =   \frac{1}{2i} \ (e^{i^2y} - e^{-i^2y}) \]
+\[ =   \frac{1}{2i} \ (e^{-y} - e^{y}) \]
+\[ = - \frac{1}{2i} \ (e^y - e^{-y}) \]
+\[ = - \frac{1}{i} \sinh y  = i \sinh y \]
+
+Hence 
+\[ \cos iy = \cosh y \]
+\[ \sin iy =  i \sinh y \]
+
+So now if we let $z = x + iy$ and use the standard addition formula
+\[ \cos z = \cos (x + iy) \]
+
+gives
+\[ \cos z = \cos x \cos iy - \sin x \sin iy \]
+
+Since $\cos iy = \cosh y$ and $\sin iy = i \sinh y$:
+\[ = \cos x \cosh y - i \sin x \sinh y \]
+
+and what's nice about this is that we have the real and imaginary parts of the complex cosine easily visible.  
+
+Similarly
+\[ \sin z = \sin(x + iy) \]
+\[ \sin z = \sin x \cos iy + \cos x \sin iy \]
+\[ = \sin x \cosh y + i \cos x \sinh y \]
+
+These are very similar to the sum of angles results for real numbers.  It's just that $z = x + iy$ means the $y$ gets the hyperbolic functions and $\sinh$ has a leading factor of $i$.
+
+\subsection*{using the exponential to get cos $z$ and sin $z$}
+
+We can obtain the same results by working through the formulas using the complex exponential.  
+
+Work backward from the answer:
+
+\[ \cos x \cosh y = \frac{(e^{ix} + e^{-ix})(e^{y} + e^{-y})}{4} \] 
+\[ =  \frac{e^{ix}e^{y} + e^{ix}e^{-y} + e^{-ix}e^{y} + e^{-ix}e^{-y}}{4} \]
+
+and then also
+\[ i \sin x \sinh y =   \frac{(e^{ix} - e^{-ix})(e^{y} - e^{-y})}{4} \] 
+\[ =  \frac{(e^{ix}e^{y} - e^{ix}e^{-y} - e^{-ix}e^{y} + e^{-ix}e^{-y})}{4} \]
+
+\emph{Subtraction} gives cancelations:
+\[ =  \frac{e^{ix}e^{-y} + e^{-ix}e^{y}}{2} \]
+
+And now there's a trick.  The exponents of the first product in the numerator add to give
+\[ ix - y = i(x + iy) = iz \]
+the second is
+\[ -ix + y = -(ix - y) = -iz \]
+
+So we have just
+\[ \frac{e^{i(x + iy)} + e^{-i(x+iy)}}{2} = \cos z \]
+
+The sine was
+\[ \sin z = \sin x \cosh y + i \cos x \sinh y \]
+
+Working with one term at a time, we have
+\[ \sin x \cosh y = \frac{(e^{ix} - e^{-ix})}{2i} \cdot \frac{(e^{y} + e^{-y})}{2} \] 
+\[ =  \frac{e^{ix}e^{y} + e^{ix}e^{-y} - e^{-ix}e^{y} - e^{-ix}e^{-y}}{4i} \]
+
+and
+\[  i \cos x \sinh y =  - \frac{\cos x \sinh y}{i} \]
+\[ =  - \frac{1}{i} \cdot \frac{(e^{ix} + e^{-ix})}{2} \cdot \frac{(e^{y} - e^{-y})}{2} \] 
+\[ =  - \frac{e^{ix}e^{y} - e^{ix}e^{-y} + e^{-ix}e^{y} - e^{-ix}e^{-y}}{4i} \]
+\[ =  \frac{-e^{ix}e^{y} + e^{ix}e^{-y} - e^{-ix}e^{y} + e^{-ix}e^{-y}}{4i} \]
+
+\emph{Addition} gives cancelations:
+\[ = \frac{e^{ix}e^{-y} - e^{-ix}e^{-y}}{2i} \]
+
+Recall from above that $ix - y = iz$ and $ix + y = -iz$ so
+\[ = \frac{e^{iz} - e^{-iz}}{2i} \]
+\[ = \sin z \]
+
+\subsection*{zeroes}
+
+\begin{center} \includegraphics [scale=0.35] {sinhcosh.png} \end{center}
+$\cosh$ is never zero, while only $\sinh 0 = 0$.
+
+So if we look again at 
+\[ \sin z = \sin x \cosh y + i \cos x \sinh y \]
+and ask, where is this function equal to zero?  
+
+Both parts must vanish.  Since $\cosh$ is never zero, $\sin x$ must be zero.  This happens for $x = 2k \pi$.  
+
+The cosine of this $x$ is equal to $1$, that means $\sinh y$ must be $0$ which only happens for $y = 0$.
+
+So the zeroes of the complex sine function are at $z = 2k \pi + 0i$.
+
+Alternatively, go back to the original definition:
+\[ \sin z = \frac{1}{2i} (e^{iz} - e^{-iz}) \]
+which vanishes only for 
+\[ e^{iz} = e^{-iz} = \frac{1}{e^{iz}} \]
+\[ e^{2iz} = \ [ \ e^{iz} \ ]^2 \ = 1 \]
+\[ e^{iz} = \pm 1 \]
+\[ e^{i(x + iy)} = \pm 1 \]
+\[ e^{-y}e^{ix} = \pm 1 \]
+\[ e^{-y} (\cos x + i \sin x) = \pm 1 \]
+The imaginary part must be zero, so $x = 2k \pi$.
+
+The other part must be equal to $\pm 1$, so $y = 0$ and $\cos 2k \pi = 1$, which works.
+
+For the cosine
+\[ \cos z = \frac{1}{2} (e^{iz} + e^{-iz}) \]
+This is equal to zero when
+\[ e^{iz} = - e^{-iz} = -\frac{1}{e^{iz}} \]
+\[ e^{2iz} = -1 \]
+\[ e^{i(x + iy)} = \pm i \]
+\[ e^{-y} (\cos x + i \sin x) = \pm i \]
+In this case we need $\cos x = 0$ and then $y=0$ and $\sin x = 1$ will work.  $x = (2k + 1)\pi / 2$.
+
+Recall that
+\[ \cos z = \cos x \cosh y - i \sin x \sinh y \]
+Since $\cosh$ is never zero, $\cos x$ must be zero.  Then either $\sin x = 0$ or $\sinh y = 0$.  Only the latter works for the non-imaginary part, so we have that $y = 0$.
+
+\subsection*{summary}
+
+The definition:
+\[ \cos z = \frac{1}{2} \ (e^{iz} + e^{-iz}) \]
+\[ \sin z = \frac{1}{2i} \ (e^{iz} - e^{-iz}) \]
+
+\[ \cosh x =  \frac{1}{2} \ (e^{x}+ e^{-x}) \]
+\[ \sinh x =  \frac{1}{2} \ (e^{x} - e^{-x}) \]
+
+A pair of identities
+\[ \cos iy = \cosh y \]
+\[ \sin iy =  i \sinh y \]
+
+By the sum of angles formula, or by manipulating the exponential
+\[ \cos z = \cos x \cosh y - i \sin x \sinh y \]
+\[ \sin z = \sin x \cosh y + i \cos x \sinh y \]
+
+\end{document}

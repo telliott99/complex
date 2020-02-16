@@ -1,0 +1,110 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Trig 2}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+\subsection*{analyticity}
+We proved before that the complex exponential obeys the CRE, which means that it is analytic.  There is a theorem that says that if we add two analytic functions together, the result is also analytic.  Hence, the trigonometric functions are analytic.
+
+But, just to check this result, let's write them out in terms of $u$ and $v$ and see whether the partial derivatives follow the CRE conditions:
+
+\[ \sin z = \sin x \cosh y + i \cos x \sinh y \]
+Taking the derivatives:
+\[ u(x,y) =  \sin x \cosh y \]
+\[ u_x = \cos x \cosh y \]
+\[ u_y = \sin x \sinh y \]
+and
+\[ v(x,y) = \cos x \sinh y \]
+\[ v_x = - \sin x \sinh y \]
+\[ v_y = \cos x \cosh y \]
+So we see that indeed
+\[ u_x = v_y \]
+\[ u_y = -v_x \]
+
+The CRE are satisfied and therefore, the complex sine is analytic.
+
+Similarly we have that 
+\[ \cos z = \cos (x + iy) \]
+\[ = \cos x \cos iy - \sin x \sin iy \]
+\[ = \cos x \cosh y - i \sin x \sinh y \]
+So
+\[ u(x,y) =  \cos x \cosh y \]
+\[ u_x = - \sin x \cosh y \]
+\[ u_y = \cos x \sinh y \]
+and
+\[ v(x,y) = -\sin x \sinh y \]
+\[ v_x = -\cos x \sinh y \]
+\[ v_y = -\sin x \cosh y \]
+So we see that
+\[ u_x = v_y \]
+\[ u_y = v_x \]
+Thus the complex cosine is also analytic.
+
+We can also prove that:
+
+\[ \sin^2 z + \cos^2 z = 1 \]
+The easy way is
+\[ \cos^2 z + \sin^2 z = \ [ \frac{e^{iz} + e^{-iz}}{2} \ ]^2 +  [ \frac{e^{iz} - e^{-iz}}{2i} \ ]^2 \ ] \]
+\[= \frac{e^{2iz} + 2 + e^{-2iz} - e^{2iz} + 2 - e^{-2iz} }{4} \]
+\[ = 1 \]
+
+\subsection*{series}
+On the other hand, Shankar defines the trig functions and the exponential using series in the same way as the real versions:
+
+\[ \sin z = z - \frac{z^3}{3!} + \frac{z^5}{5!} - \frac{z^7}{7!} \dots = \sum_0^{\infty} (-1)^n \frac{z^{2n+1}}{(2n +1)!} \]
+\[ \cos z = 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - \frac{z^6}{6!} \dots = \sum_0^{\infty} (-1)^n \frac{z^{2n}}{(2n)!} \]
+
+\[ \sinh z = \sum_0^{\infty} \frac{z^{2n+1}}{(2n +1)!} \]
+\[ \cosh z = \sum_0^{\infty} \frac{z^{2n}}{(2n)!} \]
+and showing that they converge for any $z$.
+
+\subsection*{complex hyperbolics}
+
+The definition is analogous to the real case:
+\[ \cos z = \frac{1}{2} \ [ \ e^{z} + e^{-z} \ ]  \]
+\[ = \frac{1}{2} \ [ \ e^{i(x+iy)} + e^{-i(x + iy)} \ ]  \]
+\[ = \frac{1}{2} \ [ \ e^{ix - y} + e^{-ix + y} \ ]  \]
+
+Double the top and the bottom
+\[ = \frac{e^{ix - y} + e^{-ix + y} + e^{ix - y} + e^{-ix + y}}{4}  \]
+
+The pattern in the exponents is 
+\[ +- \ \ -+ \ \ +- \ \ -+ \]
+
+We reach a new pattern by first switching the order to 
+\[ -+ \ \ +- \ \ -+ \ \ +- \]
+\[ = \frac{e^{-ix + y} + e^{ix - y} + e^{-ix + y}  + e^{ix - y}}{4} \]
+
+then add and subtract terms with $++$ and $--$, like this:
+\[ = \frac{e^{ix + y} + e^{-ix + y} + e^{ix - y} + e^{-ix - y}}{4} - \frac{e^{ix + y} - e^{-ix + y}  - e^{ix - y} + e^{-ix - y}}{4}  \]
+
+Now we realize that we can factor the first term as:
+\[ = \frac{(e^y + e^{-y})}{2} \ \frac{(e^{ix} + e^{-ix})}{2}  \]
+\[ = \cosh y \cos x \]
+
+The second term is:
+\[ = - \frac{(e^y - e^{-y})}{2} \ \frac{(e^{ix} - e^{-ix})}{2}  \]
+\[ = -i \frac{(e^y - e^{-y})}{2} \ \frac{(e^{ix} - e^{-ix})}{2i}  \]
+\[ = -i \sinh y \sin x \]
+
+Putting it all together:
+\[ \cos z = \cos x \cosh y - i \sin x \sinh y \]
+
+That required a lot of bookkeeping, and now we have to go back and repeat it all for the sine.  And this is basically a repeat of the derivation in the last chapter.  It's just nice to see the factoring trick.
+
+\end{document}
