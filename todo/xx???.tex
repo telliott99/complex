@@ -1,0 +1,55 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Laurent series}
+\date{}
+
+\begin{document}
+\maketitle
+\Large 
+
+\subsection*{example}
+\url{https://math.berkeley.edu/~nikhil/courses/121a/laurent.pdf}
+
+Here is another example where we know the Laurent series:
+\[ f(z) = z e^{1/z} \]
+Use the known series expansion for the exponential to write:
+\[ = z \ [ \ 1 + (1/z) + \frac{(1/z)^2}{2!} + \dots \ ] \]
+\[ = z + 1 + \frac{(1/z)}{2!} + \dots \ ] \]
+
+So the integral around 
+\[ \oint f(z) \ dz = \oint \frac{(1/z)}{2!} \]
+Our formulas are:
+\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
+\[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
+
+so the residue is
+\[ b_1 = \lim_{z \rightarrow 0} (z) \ \frac{(1/z)}{2!} = \frac{1}{2} \]
+and
+\[ \oint f(z) \ dz = 2 \pi i \ \frac{1}{2} = \pi i \]
+
+We don't need to actually know the Laurent series, only that it exists.  The form is
+\[ f(z) = \sum_{n=0}^{\infty} a_n(z-z_0)^n + \frac{b_1}{z-z_0} + \dots + \frac{b_m}{(z-z_0)^m} \]
+
+Now there are three steps.  Multiply by $(z - z_0)^m$
+\[ (z - z_0)^m f(z) = \sum_{n=0}^{\infty} a_n(z-z_0)^{n+m} + b_1 (z-z_0)^{m-1} + \dots + b_m \]
+
+Second, lose the $b_2, \dots b_m$ terms by differentiating $m-1$ times.  (Note the exponents for terms beyond $b_1$ are \emph{smaller}, so they disappear...
+\[ \frac{d^{m-1}}{dz^{m-1}} (z-z_0)^m f(z) = \sum_{n=0}^{\infty} a_n\frac{d^{m-1}}{dz^{m-1}}  (z-z_0)^{n+m} + (m-1)! \ b_1 \]
+
+Kill off all the $a_n$ terms by taking the limit $z \rightarrow z_0$
+\[ \lim_{z \rightarrow z_0}  \frac{d^{m-1}}{dz^{m-1}} (z-z_0)^m f(z) = (m-1)! \ b_1 \]
+\[ b_1 = \frac{1}{(m-1)!} \ \lim_{z \rightarrow z_0}  \frac{d^{m-1}}{dz^{m-1}} (z-z_0)^m f(z) \]
+
+
+\end{document}

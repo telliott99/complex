@@ -1,0 +1,146 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Laurent series}
+\date{}
+
+\begin{document} 
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+Any function that is analytic inside a disk has a power series (a Taylor series) convergent inside that disk.
+
+But what about a punctured disk?
+\[ 0 < |z-z_0| < R \]
+ or a donut 
+\[ 0 < r < |z-z_0| < R \]
+The applicable series is then a Laurent series.
+
+The HELM guys say: 
+\begin{quote}One of the shortcomings of Taylor series is that the circle of convergence is often only a part of the region in which $f(z)$ is analytic.\end{quote}
+
+\url{https://learn.lboro.ac.uk/archive/olmp/olmp_resources/pages/workbooks_1_50_jan2008/Workbook26/26_6_snglrts_n_resdus.pdf}
+
+An example is
+\[ f(z) = \frac{1}{1 - z} \]
+This function is analytic everywhere except at the singularity $z = 1$.  The Taylor series expanded around $z = 0$ is
+\[ 1 + z + z^2 + z^3 + \dots \]
+which converges to $f(z)$ only inside $|z|=1$.
+
+\begin{quote}The radius of convergence for a series centered on $z = z_0$ is the distance between $z_0$ and the nearest singularity.\end{quote}
+
+Boas:
+
+Let $C1$ and $C2$ be two circles with center at $z_0$.  Let $f(z)$ be analytic in the region between the circles.  Then $f(z)$ can be expanded in a Laurent series:
+\[ f(z) = a_0 + a_1 (z - z_0) + a_2 (z - z_0)^2 + \dots + \]
+\[ \ \ \ \ \ + \frac{b_1}{z - z_0} + \frac{b_2}{(z - z_0)^2} + \dots \]
+
+The Taylor part of the series (called the analytic part) usually converges everywhere inside a disk of radius $R$, while the $b$ part, the principal part, usually converges everywhere outside a disk of radius $r$, so the combined series is convergent in the annulus, the area between $r$ and $R$.
+
+Note:  if there are several isolated singularities , then there are several annular rings, each with a different Laurent series.
+
+\subsection*{Laurent's Theorem}
+If $f(z)$ is analytic through a closed annulus $D$ centered at $z = z_0$, then at any point $z$ inside $D$ we can write:
+\[ f(z) = a_0 + a_1(z-z_0) + a_2(z-z_0)^2 + \dots \]
+\[ \hspace{27mm} + \ b_1(z-z_0)^{-1} + b_2(z-z_0)^{-2} + \dots \]
+
+where the coefficients are given by
+\[ a_n = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z - z_0)^{n+1}} \ dz \]
+\[ b_n = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z - z_0)^{1-n}} \ dz \]
+(no, they don't match the powers of $(z - z_0)$).
+
+Any polynomial of $z$ is analytic, and quotients of analytic functions are also analytic.  
+
+The end result will be that the integral $\int f(z) \ dz$ may be obtained by integrating the right-hand side, where all the terms except one will have an integral equal to zero.
+
+Out of this entire series given above, only one term matters:
+\[ b_1(z-z_0)^{-1}  \]
+
+This is a consequence of Cauchy's Integral theorem.
+
+\subsection*{derivation of Laurent series}
+We follow
+
+\url{https://www.youtube.com/watch?v=2GC26rJB2L0&list=PLvcbYUQ5t0UFmFXOLwC9BdZ5qghykd4gR&index=22&t=0s}
+
+Fix some particular $z$ in the annulus $0 < r < |z-z_0| < R$.
+
+Choose $r_1$ and $R_1$ just inside (or outside, respectively) the boundaries of the donut:
+\[ 0 < r < r_1 < |z-z_0| < R_1 < R \]
+
+Let $\gamma_1$ go along (let $w$ take on the values) $|w - z_0| = R_1$ counter-clockwise, with the interior on the left, and let $\gamma_2$ go along $|w - z_0| = r_1$, in the opposite direction to $\gamma_1$.  
+
+Set up a keyhole contour.  Then $f$ is analytic in the domain which the line integral encloses, which is required to use Cauchy's formula:
+\[ f(z) = \frac{1}{2 \pi i} \int_{\gamma_1} \frac{f(w)}{w-z} \ dw + \frac{1}{2 \pi i} \int_{\gamma_2} \frac{f(w)}{w-z} \ dw \]
+
+The path that links the two circles cancels because we traverse it in opposite directions.
+
+Now rewrite 
+\[ \frac{1}{w - z} = \frac{1}{(w - z_0) - (z - z_0)} \]
+\[ = \frac{1}{w - z_0} \ [ \ \frac{1}{1 - (z-z_0)/(w-z_0)} \ ] \]
+This is a geometric series with initial term
+\[ \frac{1}{w - z_0} \]
+
+divided by (or multipied by the inverse of) one minus the common ratio
+\[ \frac{z-z_0}{w - z_0} \]
+Since 
+\[ | \frac{z - z_0}{w - z_0} | < 1 \]
+For the big circle $\gamma_1$ we have that this ratio is less than $1$ ($w$ runs along $R$), so the series converges absolutely.
+
+The corresponding series is
+\[ \sum_{k=0}^{\infty} \ \frac{(z - z_0)^k}{(w - z_0)^{k+1}} \]
+
+For the small circle, $\gamma_2$:
+the ratio $1/w-z$ is equal to
+\[ -\frac{1}{z - z_0} \ [ \ \frac{1}{1 - (w-z_0)/(z-z_0)} \ ] \]
+
+For the small circle $\gamma_2$ the flipped ratio is less than $1$ since $w$ runs along $r$, so again the series converges absolutely.  
+
+The series is
+\[ - \sum_0^{\infty} \ \frac{(w - z_0)^j}{(z - z_0)^{j+1}} \]
+
+Rewriting 
+\[ f(z) = \frac{1}{2 \pi i} \int_{\gamma_1} f(w) \ \sum_{k=0}^{\infty} \frac{(z - z_0)^k}{(w - z_0)^{k+1}} \ dw \]
+\[ -  \frac{1}{2 \pi i} \int_{\gamma_2} f(w) \ \sum_{j=0}^{\infty} \frac{(w - z_0)^j}{(z - z_0)^{j+1}} \ dw \]
+The sums can come out from under the integral so
+\[ f(z) = \sum_{k=0}^{\infty} (z - z_0)^k \frac{1}{2 \pi i} \int_{\gamma_1} \frac{f(w)}{(w - z_0)^{k+1}} \ dw \]
+\[ + \sum_{j=0}^{\infty} z - z_0)^{-j-1} (- \frac{1}{2 \pi i}) \int_{\gamma_2} f(w) \ (w - z_0)^{j}  \ dw \]
+
+We can clean up the indices for $f_2$.  Instead of running from $j = 0 \rightarrow \infty$ with power $ - j -1$, let it be $k = - \infty \rightarrow -1$ with power $k$.
+
+We now have $f_1(z) + f_2(z)$.  Now we can write the coefficients for both in the same way:
+\[ a_k = \frac{1}{2 \pi i} \ \int_{\gamma} \frac{f(w)}{(w - z_0)^{k+1}} \ dw \]
+and
+\[ f_1(z) = \sum_0^{\infty} a_k(z-z_0)^k \]
+$f_1$ is convergent when $|z-z_0| < R$.
+
+\[ f_2(z) = \sum_{-\infty}^{-1} a_k(z-z_0)^k \]
+$f_2$ is convergent when $|z-z_0| > r$.
+
+A Laurent series is the combination.
+\[ \sum_{-\infty}^{\infty1} a_k(z-z_0)^k \]
+
+It is convergent when both criteria are met.
+
+The principal part of the Laurent series consists of the terms with negative exponents.  We can also write that part as
+\[ \sum_{n=1}^{\infty} a_{-n} (z - z_0)^{-n} \]
+
+Although it seems like we've made things \emph{really} complicated, we haven't really, because when such a series is integrated, the only non-zero term is the $k = -1$ term.
+
+Let's sidestep the problem of determining the coefficients using the formulas given above.
+
+Instead, just say that we seek a series expansion using negative powers of $z$, and hope to find that it will be valid in the region $|z| > 1$.
+
+\end{document}

@@ -1,0 +1,104 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+\title{Cauchy's formula}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+If we can write an integral in this form:
+\[ \oint_{C} \frac{f(z)}{z-z_0} \ dz \]
+
+where $f(z)$ is analytic and defined everywhere in the domain we care about, with this composite function of course not defined at $z = z_0$, we can show that the value of the integral is 
+\[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i \ f(z_0) \]
+This is called the Cauchy Integral formula.
+
+\subsection*{setup}
+Suppose $f(z)$ is analytic and defined everywhere within some region \emph{except} at a singularity, $z_0$.  For example, suppose we have
+\[ \frac{f(z)}{z-z_0} \]
+
+We integrate this function around a special closed path in the region of analyticity:
+\[ \oint \frac{f(z)}{z-z_0} \ dz \]
+
+\begin{center} \includegraphics [scale=0.5] {keyhole.png} \end{center}
+
+It's not labeled (I didn't draw the figure) but the singularity $z_0$ is at the center of the two concentric circles.  The "keyhole" excludes $z_0$ so $f$ is analytic everywhere in the region enclosed by the path.
+
+Cauchy's integral theorem tells us that the total integral is zero.
+
+The straight line segments are identical but traversed in opposite directions, so the net contribution from them is zero.
+
+Therefore, we have that the integral around the outer ring counter-clockwise + the integral around the inner ring clockwise add up to zero.
+
+But reversing the direction of integration on the inner ring (so both paths go in the counter-clockwise direction) changes the sign of the value, hence we have that
+
+\[ \oint_{C \ \text{outer}} \frac{f(z)}{z-z_0} \ dz - \oint_{C \ \text{inner}} \frac{f(z)}{z-z_0} \ dz = 0 \]
+and
+\[ \oint_{C \ \text{outer}} \frac{f(z)}{z-z_0} \ dz = \oint_{C \ \text{inner}} \frac{f(z)}{z-z_0} \ dz \]
+
+We haven't said anything about the radius of these rings.  
+
+What that means is that the value of the integral around a ring enclosing a singularity is not zero, but its value is independent of the radius.
+
+\subsection*{derivation}
+
+We can parametrize this path by realizing that each point on one of these curves is given by
+\[ z = z_0 + r e^{i\theta}, \ \ \ 0 \le \theta \le 2 \pi \]
+\[ z - z_0 = r e^{i\theta} \]
+This is a circle with the center displaced to $z_0$.
+
+Since $z_0$ is a constant
+\[ dz = i r e^{i \theta} d \theta \]
+
+so, substituting for $r e^{i\theta}$ above we obtain
+\[ dz = i(z - z_0) \ d \theta \]
+and
+\[ \oint \frac{f(z)}{z - z_0} \ dz = \oint f(z) \ i \ d \theta \]
+\[ = i \int_0^{2\pi}  f(z) \ d \theta \]
+
+This holds for every circular path enclosing $z_0$.  We may choose $r$ as small as we like, and so we choose it very small ($r \rightarrow 0$) so
+\[ f(z) \rightarrow f(z_0) = \text{constant} \]
+
+and in that limit, since it's constant we can bring it out from under the integral sign!
+\[ i \int_0^{2\pi}  f(z) \ d \theta \]
+\[ = i f(z_0) \int_0^{2\pi} d \theta = 2 \pi i \ f(z_0) \]
+
+An alternative (equivalent) approach is to say that for a small enough circle
+\[ \int \frac{f(z)}{z - z_0} \ dz \]
+
+the value of $f(z)$ approaches $f(z_0)$, a constant so this becomes
+\[ = f(z_0) \int \frac{1}{z - z_0} \ dz \]
+We know that integral, it is $2 \pi i$.
+
+Summarizing:
+\[ \oint \frac{f(z)}{z - z_0} \ dz = 2 \pi i \ f(z_0) \]
+What this means is that we can evaluate the integral in question by simply plugging in the value of the function at $z_0$ and multiplying that by $2 \pi i$.
+
+\subsection*{average}
+Since
+\[ f(z_0) = \frac{1}{2 \pi i} \oint \frac{f(z)}{z - z_0} \ dz \]
+
+and $z$ can be parametrized as $z - z_0 = re^{i \theta}$ so that $dz = i r e^{i \theta} \ d \theta$:
+
+\[ f(z_0) = \frac{1}{2 \pi i} \oint \frac{f(z_0 + re^{i \theta})}{re^{i \theta} } \ i r e^{i \theta} \ d \theta \]
+\[ = \frac{1}{2 \pi} \oint f(z_0 + re^{i \theta}) \ d \theta \]
+\[ = \frac{1}{2 \pi} \oint f(z) \ d \theta \]
+
+\emph{The value of an analytic function at the center of a circle equals the average (arithmetic mean) of the values on the circumference.}
+
+\end{document}

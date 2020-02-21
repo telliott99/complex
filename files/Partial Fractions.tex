@@ -11,14 +11,16 @@
 
 \graphicspath{{/Users/telliott/Github/figures/}}
 
-\title{Introduction}
+\title{Partial fractions}
 \date{}
 
 \begin{document}
 \maketitle
 \Large
 
-In the previous section, we derived Cauchy 2
+%[my-super-duper-separator]
+
+In the previous section, we derived Cauchy's formula:
 \[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i f(z_0) \]
 One example is
 \[ \oint_C \frac{1}{z-z_0} \ dz = 2 \pi i \]
@@ -39,11 +41,13 @@ There are a couple of different ways to handle this.  One is to use partial frac
 So the integral is a sum of two integrals:
 \[ I = \frac{1}{2i} \ [ \oint \frac{1}{z - i}  \ dz -  \oint \frac{1}{z + i} \ dz \ ] \] 
 
-Suppose the curve is the unit circle centered at $i$, designated as $C[i,1]$.  Obviously, this curve contains the singularity $z = i$.  The curve goes through the origin, so it does not extend as far as $z = -i$.
+Suppose the curve is the unit circle centered at $i$, designated as $C[i,1]$.  
+
+Obviously, this curve contains the singularity $z = i$.  The curve goes through the origin, so it does not extend as far as $z = -i$.
 
 Therefore, the second integral is zero (no singularity) and the first is
 \[ \frac{1}{2i} \ [ \ \oint \frac{1}{z - i}  \ dz \ ] \ = \frac{1}{2i} \ [ \  2 \pi i \ ] \]
-by Cauchy 2.  Thus the value is just $I = \pi$
+by Cauchy's formula because $f(z_0)$ is $1$.  Thus the value is just $I = \pi$
 
 According to Beck, as an alternative, rewrite the function as
 \[ \frac{1}{(z + i) (z-i)} = \frac{(1/z+i)}{z-i} \]
@@ -51,20 +55,26 @@ Thus
 \[ \int \frac{1}{z^2 + 1} \ dz = \int \frac{(1/z+i)}{z-i} \ dz \]
 We have essentially the same thing.  The function is
 \[ \frac{1}{z+i} \]
+
 and when evaluated at $i$, with result $1/2i$, we obtain
 \[ \oint  \frac{f(z)}{z-z_0} \ dz = 2 \pi i \ f(z_0) \]
 \[ = 2 \pi i \ \frac{1}{2i} = \pi \]
+
+Above we have a constant of $1/2i$ which can either be factored out of the integral, or be part of $f(z_0)$.  Either way, it's the same result.
 
 \subsection*{partial fractions}
 We can also do the curve containing both singularities by using the formal apparatus of partial fractions.  Write
 \[ \frac{1}{z^2 + 1} = \frac{1}{(z+i)(z-i)} \]
 \[ = \frac{A}{z+i} + \frac{B}{z-i} \]
+
 We need to determine $A$ and $B$.  When we multiply to put everything over the common denominator ($z^2 + 1)$ then for the numerators we will have:
 \[ A(z-i) + B(z+i) = 1 \]
-All the powers of $z$ must match across the equal sign.  So this gives
-\[ -Ai + Bi = 1 \]
+All the powers of $z$ must match across the equal sign.  Since there is no power of $z$ on the right-hand side,  this gives
 \[ Az + Bz = 0 \]
-From the second we get that $A = -B$.  And so from the first
+and
+\[ -Ai + Bi = 1 \]
+
+From the first we get that $A = -B$.  And so from the second
 \[ -Ai - Ai = -2Ai = 1 \]
 \[ A = -\frac{1}{2i} \]
 Hence the integrand is
@@ -73,31 +83,45 @@ Hence the integrand is
 which matches what we had above:
 \[ = \frac{1}{2i} \ [ \ \frac{1}{z - i} - \frac{1}{z+i} \ ] \]
 
-For the curve including $z = i$ but not $z = -i$ we have that the left-hand integral is 0 by Cauchy's Theorem, and for the right hand side the function is
+For the curve including $z = i$ but not $z = -i$ we have that the right-hand integral is 0 by Cauchy's Theorem, and for the left hand side the function is
 \[ f(z = z_0) = \frac{1}{2i} \]
 So the value of the integral is
 \[ 2 \pi i f(z_0) = 2 \pi i \ \frac{1}{2i} = \pi \]
-as before.  The other pole we would have
+as before.  
+
+The other pole would have
 \[ f(z = z_0) = -\frac{1}{2i} \]
-and the result would be $- \pi$.  A curve enclosing both poles would have integral equal to zero.
+and the result would be $- \pi$.  
+
+A curve enclosing both poles would have for the value of the integral the sum of the two, which is equal to zero.
 
 \subsection*{example}
 Consider
 \[ \int_{\gamma} \frac{z^2}{4-z^2} \ dz \]
-where $\gamma = | z + 1 | = 2$.
-So the denominator of the function is
+where $\gamma$ is $ | z + 1 | = 2$.
+
+Recall that the definition of a circle around $z_0$ is $| z - z_0 | = r$, where $r$ is the radius of the circle.  Thus the circle is centered at $z_0 = -1$, which can be checked by looking for values on the real number line that satisfy the equality (yielding $-3$ and $1$).
+
+The denominator of the function can be factored
 \[ \frac{1}{4-z^2} = \frac{1}{(2+z)(2-z)} \]
-It has zeroes as $z = \pm \ 2$.  Only the point $z = 2$ is inside our contour.  So if we split this by partial fractions
+
+It has zeroes at $z = \pm \ 2$.  Only the point $z = -2$ is inside our contour.
+
+So if we split this by partial fractions
 \[  \frac{1}{(2+z)(2-z)} = \frac{1}{4} \ [ \ \frac{1}{2+z} + \frac{1}{2-z} \ ] \]
-so we can rewrite the integral as
+
+we can rewrite the integral as
 \[ I = \int_{\gamma} \frac{z^2}{4} \ [ \ \frac{1}{2+z} + \frac{1}{2-z} \ ] \ dz \]
 
-By Cauchy's Theorem, the first term is zero.  The second one is:
-\[ I = \int_{\gamma} \frac{z^2}{4} \ ( \frac{1}{2-z} ) \ dz \]
+By Cauchy's Theorem, the second term is zero (no singularity).
+
+The first one is:
+\[ I = \int_{\gamma} \frac{z^2}{4} \ ( \frac{1}{2+z} ) \ dz \]
 and the value of $I$ is
 \[ I = 2 \pi i f(z_0) \]
+
 where 
-\[ f(z_0) = \frac{z^2}{4}  \ \bigg |_{z_0 = 2} = 1 \]
+\[ f(z_0) = \frac{z^2}{4}  \ \bigg |_{z_0 = -2} = 1 \]
 so the integral is just $2 \pi i$.
 
 \subsection*{one from wikipedia}
@@ -114,7 +138,7 @@ We plug into the quadratic solution:
 \[ \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} =  \frac{-2 \pm \sqrt{4 - 4 \cdot 2}}{2} \]
 \[ = -1 \pm \  \frac{\sqrt{-4}}{2} \]
 \[ = -1 \pm i \]
-The zeroes of the denominator are
+The zeroes of the denominator are $z$ equal to 
 \[ - 1 + i \ , \ \ \ - 1 - i \]
 From this we construct the two factors as
 \[ z - (- 1 + i) = z + 1 - i \]
@@ -160,7 +184,7 @@ We evaluate $2 \pi i f(z_0)$ for each
 The first term gives
 \[ f(z_0) = \frac{(-1 + i)^2}{2i} =  \frac{1 - 1 - 2i}{2i} = -1 \]
 The second term gives 
-\[ \frac{(-1 -i)^2}{2i} = \frac{-1 - 1 + 2i}{2i} = 1 \]
+\[ \frac{(-1 -i)^2}{2i} = \frac{1 + 2i - 1}{2i} = 1 \]
 But...  this is not quite right.  Go back and see that the second term in the integral has a minus sign.  Hence the result at this step is $-1$ for both.
 
 Each of these needs to be multiplied by $2 \pi i$ and then summed.

@@ -1,0 +1,151 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+\title{Cauchy corollary}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+In this section we follow Beck, so I've used their notation.  In particular, $w$ is a fixed point inside the region.
+
+The Cauchy Integral formula is:
+\[ f(w) = \frac{1}{2 \pi i} \int_C \frac{f(z)}{(z - w)} \ dz \]
+
+If $f$ is differentiable for all points in some open disk centered at $w$ then $f$ is holomorphic at $w$.  For a holomorphic function $f$, a specific extension of the Cauchy formula is
+
+\[ f'(w) = \frac{1}{2 \pi i} \int_C \frac{f(z)}{(z - w)^2} \ dz \]
+
+This can be obtained by differentiating the original formula under the integral sign on the right-hand side. 
+
+\subsection*{derivative rule}
+
+We show here that
+\[ f'(a) = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
+and there are more formulas for higher derivatives.
+Therefore
+\[ 2 \pi i \ f'(a) =  \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
+
+Again, the Cauchy formula is:
+\[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i f(z_0) \]
+rewrite with $a$ for $z_0$
+\[ \oint_C \frac{f(z)}{z-a} \ dz = 2 \pi i f(a) \]
+
+We take the partial with respect to $a$ of both sides:
+\[ \frac{\partial}{\partial a} ( \frac{f(z)}{z-a} ) = \frac{f(z)}{(z-a)^2} \]
+so
+\[ \oint_C \frac{f(z)}{(z-a)^2} \ dz = 2 \pi i f'(a) \]
+Thus
+\[ f'(a) = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
+More generally
+\[ f^n(a) = \frac{n!}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^{n+1}} \ dz \]
+So
+\[ \frac{2 \pi i}{n!} f^n(a) = \oint_C \frac{f(z)}{(z-a)^{n+1}} \ dz \]
+
+\subsection*{more carefully} 
+
+A more formal proof is the following (from Beck).
+
+\[ f'(w) = \frac{f(w + \Delta w) - f(w)}{\Delta w} \]
+so
+\[ = \frac{1}{\Delta w} \ [ \ \frac{1}{2 \pi i} \ \int_{\gamma} \frac{f(z)}{z - (w + \Delta w)} \ dz - \frac{1}{2 \pi i} \int_{\gamma} \frac{f(z)}{(z - w)} \ dz \ ] \]
+\[ =  \frac{1}{2 \pi i} \ \int_{\gamma} \frac{f(z)}{(z - w - \Delta w)(z-w)} \ dz  \]
+
+In putting the two fractions over a common denominator we get a factor of $\Delta w$ on top which cancels the other one.
+
+It is now possible to show that the value of this integral approaches what we seek as $\Delta w \rightarrow 0$.  We will show that the difference of integrals goes to zero as $\Delta w \rightarrow 0$.
+
+That difference is
+\[ = \frac{1}{2 \pi i} \int_{\gamma} (\frac{f(z)}{(z - w - \Delta w)(z - w)} - \frac{f(z)}{(z - w)^2} \ dz \]
+\[ = \frac{\Delta w}{2 \pi i} \int_\gamma \frac{f(z)}{(z - w - \Delta w)(z - w)^2} \ dz \]
+
+We need to show that the integrand is bounded as $\Delta w \rightarrow 0$.  Then the $\Delta w$ on top will make the whole thing go to zero.
+
+Let $M$ be the maximum value of the function over the curve.  They write:
+\[ M := \text{max}_{z \in \gamma} |f(z)| \]
+
+Choose $\delta > 0$ such that 
+\[ |z - w| \ge \delta \]
+for all $z$ on $\gamma$.  Then the reverse triangle equality says that
+\[ |(z - w - \Delta w)(z - w)^2 | \ge ( |z - w| - |\Delta w|)|z - w|^2 \]
+\[ \ge (\delta - |\Delta w|) \delta^2 \]
+so
+\[ \frac{f(z)}{|(z - w - \Delta w)(z - w)^2} | \le \frac{|f(z)|}{( |z - w| - |\Delta w|)|z - w|^2} \]
+\[ \le \frac{M}{(\delta - |\Delta w|) \delta^2 } \]
+which certainly stays bounded as $\Delta w \rightarrow 0$.
+
+This proves the Cauchy Integral formula for $f'$.
+
+$\square$
+
+The formula for $f''$ is
+\[ f''(w) = \frac{1}{\pi i} \int_C \frac{f(z)}{(z - w)^3} \ dz \]
+Notice the extra factor of $2$
+
+The general rule is:
+\[ f^n(z) = \frac{n!}{2 \pi i} \int_C \frac{f(w)}{(w - z)^{n+1}} \ dw \]
+which can be proved by induction.
+
+We will also see that any analytic function can be shown to have a power series expansion in a region where it is analytic.  So then it's pretty obvious that it is differentiable there.  And infinitely so.
+
+Power series is at once a huge complication and yet the source of the most important results in complex function theory.  There is just no avoiding them.
+
+\subsection*{example}
+
+\[ \int \frac{1}{z^2(z-1)}  \ dz \]
+If the region includes both of the singularities $z = 0$ and $z = 1$ we can split that path into two parts as shown in the figure:
+\begin{center} \includegraphics [scale=0.5] {Beck_5_1.png} \end{center}
+
+Rewrite the integral as
+\[ \int \frac{1/(z-1)}{z^2} \ dz + \int \frac{1/z^2}{z - 1} \ dz \]
+
+For the first path $\gamma_1$, only the first term is non-zero, by the corollary
+\[ 2 \pi i f'(w) =  \int_{\gamma_1} \frac{f(z)}{(z - w)^2} \ dz \]
+$w = 0$ and the integral is:
+\[ = 2 \pi i \ [ \ \frac{d}{dz} \ \frac{1}{z -1} \bigg |_{z=0} = 2 \pi i \ [ \  - \frac{1}{(-1)^2} = -2 \pi i \ ] \]
+
+For the second path we use
+\[ 2 \pi i f(w) =  \int_{\gamma_2} \frac{f(z)}{z - w} \ dz \]
+with $w = 1$ so
+\[ = 2 \pi i \ [ \  \frac{1}{z^2} \bigg |_1 \ ] = 2 \pi i \]
+The total is zero.
+
+\subsection*{partial fractions}
+The previous problem can also be done by partial fractions.  We have
+\[ \frac{1}{z^2(z - 1)} \]
+\[ = \frac{A}{z^2} + \frac{B}{z(z-1)} + \frac{C}{z - 1} \]
+so
+\[ A(z-1) + Bz + Cz^2 = 1 \]
+\[ C = 0 \]
+\[ Az + Bz = 0, \ \ \ \ A = -B \]
+\[ A = -1 \]
+and then
+\[ -\frac{1}{z^2} + \frac{1}{z(z - 1)} \]
+which checks.
+
+We're not done, but what's left is easy, it is just
+\[ \frac{1}{z(z - 1)} = -\frac{1}{z} + \frac{1}{z - 1} \]
+so ultimately:
+\[ f(z) = -\frac{1}{z^2} -\frac{1}{z} + \frac{1}{z - 1} \]
+
+The path includes both $z = 0$ and $z = 1$.
+
+The first integral is zero.  The second one is $-2\pi i$ and for the third, just substitute $w = z - 1$, with $dw = dz$.  The integral is $2 \pi i$ and the total is just zero.
+
+
+
+\end{document}

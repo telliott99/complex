@@ -1,0 +1,102 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+\title{Cauchy's Integral Theorem}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+Cauchy's theorem says that the integral of an analytic function over a closed path is equal to zero:
+\[ \oint_C f(z) \ dz = 0 \]
+There is an important restriction:  the enclosed region must not contain a singularity.
+
+This will turn out to be a consequence of Green's Theorem, which you may remember from multivariable calculus.  
+
+Let
+\[ z = x + i y \]
+\[ dz = dx + i dy \]
+\[ z = f(x,y) = u(x,y) + iv(x,y) \]
+
+Our integral is
+\[ =  \oint u \ dx - v \ dy + i v \ dx + i u \ dy \]
+
+\subsection*{proof of Cauchy's theorem}
+Back in vector calculus we proved Green's theorem, which says that for two real functions of $x$ and $y$:  $M(x,y)$ and $N(x,y)$:
+\[ \oint_C M dx + N dy = \iint_R (N_x - M_y) \ dx \ dy \]
+
+Back then, $M$ and $N$ were components of a vector field $\mathbf{F}$ and we wrote the shorthand for curl:
+\[ = \iint_R \nabla \times \mathbf{F} \ dA\]
+
+but the important thing is that the theorem applies to real-valued functions of two real variables $f: \mathbb{R}^2 \rightarrow \mathbb{R}^1$, and so it applies to functions like $u(x,y)$ and $v(x,y)$.
+
+Consider the real part of the integral above:
+\[ I_{Re} = \oint u \ dx - v \ dy \]
+
+Let $M = u$ and let $N = - v$ (notice the minus sign!).  Then
+\[ I_{re} = \oint M \ dx + N \ dy \]
+
+This is equal to a double integral containing:
+\[ N_x - M_y \]
+
+We have that $N = -v$ so $N_x = - v_x$.  And this is equal to $u_y$ by the CRE.
+
+But $M = u$ so $M_y = u_y$. The two terms in the subtraction are equal so the result is zero.  Hence, this integral is zero.
+
+For the imaginary part 
+\[ I_{Im} = i \oint v \ dx + u \ dy \]
+
+Let $N = u$ and let $M = v$ (no minus sign!).  Then
+\[ I_{re} = \oint M \ dx + N \ dy \]
+
+This is equal to a double integral containing:
+\[ N_x - M_y \]
+
+But $N_x = u_x$ and $M_y = v_y$ and these terms are equal by the CRE.  Therefore this expression is zero.
+
+So the integral for the imaginary part is also zero, and thus the whole thing is zero as well:
+\[ \oint u \ dx - v \ dy + i \ [ \  v \ dx + u \ dy \ ] \ = 0 \]
+
+Remember how important it was (for Green's theorem) that the function being integrated be defined everywhere in the region.  Well, it's true here as well.
+
+\[ \oint_C \frac{1}{z} \ dz \stackrel{?}{=} , \ \ \ \ \ \ \ne 0 \]
+
+We've already seen by direct calculation that this integral is \emph{not} zero when the curve $C$ includes the origin, although it zero otherwise.
+
+To repeat the demonstration for the former case we use the unit circle centered at the origin.  Write
+\[ z = r e^{i\theta} \]
+\[  \frac{dz}{d\theta} = r i e^{i\theta} = iz \]
+Hence
+\[ \oint_C \frac{1}{z} \ dz = \oint_C \frac{1}{z} \ iz \ d \theta \]
+\[ = i   \oint_C  d \theta = 2 \pi i \]
+
+\subsection*{Path independence}
+The theorem that says the integral of an analytic function over a closed path (over a region without a singularity), is equal to zero.
+\[ \oint_C f(z) \ dz = 0 \]
+
+This result means, in turn, that the integral of an analytic function between two points $z_1$ and $z_2$ is independent of the path taken.  Call the two paths $C1$ and $C2$.  
+
+Form the closed path by going from $z_1$ to $z_2$ over $C1$ and then return to $z_1$ by going backward over $C2$.  The total integral is equal to zero by Cauchy's Theorem.
+\[ \int_{C1} f(z) \ dz + \int_{-C2} f(z) \ dz = 0 \]
+But the integral over the path $C_2$ in the forward direction is just minus the integral over the reverse path $-C2$.
+\[ \int_{-C2} f(z) \ dz = - \int_{C2} f(z) \ dz \]
+Thus
+\[ \int_{C1} f(z) \ dz - \int_{C2} f(z) \ dz = 0 \]
+and
+\[ \int_{C1} f(z) \ dz = \int_{C2} f(z) \ dz \]
+
+\end{document}

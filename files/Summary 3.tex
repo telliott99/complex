@@ -1,0 +1,39 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Summary of residues}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+Cauchy's residue formula was
+\[ \oint \frac{f(z)}{z - z_0} \ dz = 2 \pi i \cdot f(z_0) \]
+
+Two corollaries:
+\[ \oint \frac{f(z)}{(z - w)^2} \ dz = 2 \pi i \cdot f'(z_0) \]
+
+generally
+\[ \oint \frac{f(z)}{(z - z_0)^{n+1}} \ dz = \frac{1}{n!} \ 2 \pi i \cdot f^{n}(z_0) \]
+
+The residue of $f(z)$ at a singularity $z_0$ is the coefficient of the $(z - z_0)^{-1}$ term in the Laurent series for $f(z)$, if we can write it.
+
+It is also given by
+\[ R = \lim_{z \rightarrow z_0} (z - z_0) \cdot f(z_0) \]
+\[ = \frac{1}{2 \pi i} \oint f(z) \ dz \]
+
+
+\end{document}

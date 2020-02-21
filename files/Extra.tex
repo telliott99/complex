@@ -1,0 +1,65 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Extra}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+In what follows $z = re^{is}$ or $z = x + iy$, as convenient.
+
+We also use $w = \rho e^{it}$ or $w = u + iv$.
+
+Properties of the conjugate:
+P1
+\[ (z + w)^* = x - iy + u - iv = z^* + w^* \]
+P2
+\[ (zw^*)^* = (re^{is}  \rho e^{-it})^* = (r \rho e^{i(s - t)})^* = r \rho e^{i(t - s)} = z^*w \]
+P3
+\[ z + z* = x + iy + x - iy = 2x = 2 Re \ z \]
+P4
+\[ |z| = |z^*| \]
+Length of a product:
+\[ |z| |w| = |re^{is}| \  |\rho e^{-it}| = r \ \rho= |zw| \]
+
+\subsection*{Triangle Inequality}
+
+\[ |z + w|^2 = (z + w)(z + w)^* \]\
+$z + w$ is a complex number.  The square of the length of a complex number is equal to the number multiplied by its modulus.
+\[ = (z + w)(z^* + w^*) \]
+P1 above.
+\[ = zz^* + zw^* + z^*w + ww^* \]
+Distributivity of multiplication.
+\[ = zz^* + zw^* + (zw^*)^* + ww^* \]
+P2 above.
+\[ = |z|^2 + 2 Re (zw*) + |w|^2 \]
+From the definition of the conjugate and P3.
+
+Now we transition to the inequality
+\[ \le |z|^2 + 2 |zw^*| + |w|^2 \]
+since the real part of a complex number is less than or equal to its length (only equal if it is purely real).
+\[ = |z|^2 + 2 |z| |w^*| + |w|^2 \]
+See the length of a product, above.
+\[ = |z|^2 + 2 |z| |w| + |w|^2 \]
+P4 above.
+\[ = (|z| + |w|)^2 \]
+from basic multiplication.
+
+The inequality follows from taking the square root of the first and last expressions:
+\[ |z + w| \le |z| + |w| \]
+
+\end{document}

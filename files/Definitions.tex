@@ -11,21 +11,72 @@
 
 \graphicspath{{/Users/telliott/Github/figures/}}
 
-\title{Introduction}
+\title{Distance}
 \date{}
 
 \begin{document}
 \maketitle
 \Large
 
-\subsection*{Neighborhood}
-A neighborhood or $\epsilon$ neighborhood of $z_0$ means simply all
+%[my-super-duper-separator]
+
+We will often want to write an expression for the distance between two points in the complex plane.  Suppose $z$ and $w$ are those two points, with $z = x + iy$ and $w = s + it$.
+
+Subtract:
+\[ z - w = (x - s) + i (y - t) \]
+
+If we take the modulus of this as
+\[ |z - w| = \sqrt{(x - s)^2 + (y - t)^2} \]
+
+This is the distance between $z$ and $w$ by the Pythagorean theorem.  It is the modulus of the complex number $z - w$.
+
+\subsection*{neighborhood}
+
+One very useful  concept is that of the neighborhood.  A neighborhood is an open disk of radius $r$ (or $\epsilon$) around a point $z_0$.  The points in the disk can be defined as 
 \[ z:  |z - z_0| < \epsilon \]
-\subsection*{Deleted neighborhood}
-A deleted neighborhood does not include the point $z_0$:
-\[ z:  0 < |z - z_0| < \epsilon \]
+all the points $z$ such that the distance between them is less than $r$.
+
+This is an open disk.  It does not include the points on the boundary, defined by $z:  |z - z_0| = \epsilon$.
+
+\subsection*{punctured disk}
+A punctured disk or deleted neighborhood is all the points in the neighborhood of $z_0$ except $z_0$ itself:
+\[ z:   0 < |z - z_0| < \epsilon \]
+
+Sometimes, the missing points are more than just one, but lie in a smaller disk around $z_0$.  The region is called an annulus:
+\[ z:   r < |z - z_0| < R \]
+
+\subsection*{boundaries}
+
+There is a funny kind of language used when talking about sets of points that are either inside, on the boundary of, or outside a set of points.  $w$ is an \emph{interior} point of $\mathbf{S}$ if $w \in \mathbf{S}$ and there exists a neighborhood of $w$ that includes no boundary points of $\mathbf{S}$.  (This can happen because there is no closest number to a number, whether real or rational).
+
+A boundary point is one for which each neighborhood contains points both $\in \mathbf{S}$ and not $\in \mathbf{S}$.
+
+An exterior point of a set is a point for which there exists a neighborhood with no points in $\mathbf{S}$.
+
+A set is open if it does not contain any of its boundary point, closed if it contains all of its boundary points.  The punctured disk is neither open nor closed.
+
+An open set is connected if each pair of points can be joined by a polygonal line.  An open set that is connected is called a \emph{domain}.  Any neighborhood is a domain.
+
+A set $\mathbf{S}$ is \emph{bounded} if every point of the set lies within a circle $|z| = R$.
+
+A point is an \emph{accumulation} point of $\mathbf{S}$ if each deleted neighborhood of the point contains at least one point of $\mathbf{S}$,  A closed set contains all of its accumulation points.  A set is closed if an only if it includes all of its accumulation points.  [more work needed]
+
+\subsection*{curves and paths}
+Typically we have paths (often designated $\gamma$) which are parametrized curves $\gamma(t)$ for $a \le t \le b$.  The curve generates points $x,y$ for each $t$.
+
+The value of an integral over a curve does not depend on the particular parametrization.
+
+The length of the path is just $\int_a^b |\gamma'(t) \ dt$.
+
+We often designate closed circular paths in the complex plane as $C[w,r]$ where  $r$ is the radius and $w$ is the center of the curve $z: |z - w| = r$.
 
 \subsection*{Limit}
+The distance also shows up in limits.  The limit
+\[ \lim_{z \rightarrow z_0} \ f(z) = L \]
+is defined by saying that given $\epsilon > 0$ and the statement $|f(z) - L < \epsilon|$, then one can find $\delta > 0$ such that $|z - z_0| < \delta$ implies that conclusion.
+
+We can also use the language of neighborhoods:  the limit exists if for any neighborhood defined for $f(x) - L$ in terms of $\epsilon$ we can guarantee that if $|z-z_0|$ is in the neighborhood defined by radius $\delta$, the conclusion is true.
+
 Let a function $f$ be defined at all points $z$ in some deleted neighborhood of $z_0$, then the statement
 \[ \lim_{z \rightarrow z_0} f(z) = w_0 \]
 means that the point $w = f(z)$ can be made arbitrarily close to $w_0$ if we choose the point $z$ close enough to $z_0$ (though distinct from it).
@@ -71,6 +122,7 @@ Holomorphic is used as a synonym for analytic.  A function $f$ is said to be mer
 An infinite sequence of complex numbers $z_1 \dots z_n$ has a limit $L$ if, for each positive number $\epsilon$, there exists a positive integer $n_0$ such that $|z_n - L| < \epsilon$ whenever $n>n_0$.
 
 \subsection*{Cauchy sequence}
+
 
 
 \end{document}

@@ -1,0 +1,102 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Summary of the derivative}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+We have expressions $f(z) = u(x,y) + i v(x,y)$  for all standard complex functions.
+
+Powers can be computed easily 
+\[ z = x + iy \]
+\[ (x + iy)^2 = x + 2x(iy) + (iy)^2 \]
+\[ (x + iy)^3 = x + 3x^2(iy) + 3x(iy)^2 + (iy)^3 \]
+\[ \dots \]
+
+We worked with the inverse function using the complex conjugate $z* = x - iy$ so
+\[ \frac{1}{z} = \frac{1}{z} \cdot \frac{z*}{z*} \]
+
+Exponential:
+\[ e^z = e^{x + iy} = e^x (\cos x + i \sin x) \]
+
+Sine and cosine:
+\[ \cos z = \frac{e^{iz} + e^{-iz}}{2} \]
+\[ = \cos x \cosh y - i \sin x \sinh y \]
+
+\[ \sin z = \frac{e^{iz} - e^{-iz}}{2i} \]
+\[ = \sin x \cosh y + i \cos x \sinh y \]
+
+Logarithm:
+\[ w = \log z = \ln r + i \theta \]
+
+\subsection*{derivatives}
+
+We showed that all of these functions are analytic, with $u_x = v_y$ and $u_y = - v_x$, so therefore, their derivatives can be computed as $f'(z) = u_x + i v_x$.
+
+When this is done, they turn out to be just what you'd want:
+
+\[ (z^n)' = n z^{n-1} \]
+\[ (e^z)' = e^z \]
+\[ (\sin z)' = \cos z \]
+\[ (\cos z)' = - \sin z \]
+\[ (\log z)' = \frac{1}{z} \]
+
+The only ones we haven't done are the roots.  
+
+We will not do a general proof, but let's go through the square root.  It will remind us of the special features of polar CRE and derivatives.
+
+\subsection*{square root}
+\[ f(z) = \sqrt{z} \]
+Use polar notation so $z = re^{i \theta}$ and then
+\[ f(z) = \sqrt{z} =  \sqrt{r} e^{i \theta/2} \]
+
+Using Euler:
+\[ = \sqrt{r}(\cos \theta/2 + i \sin \theta/2) \]
+\[ u = \sqrt{r} \cos \theta/2 \]
+\[ v = \sqrt{r} \sin \theta/2 \]
+
+The partials are:
+\[ u_r = \frac{1}{2 \sqrt{r}} \cos \theta/2 \]
+\[ u_{\theta} = \frac{\sqrt{r}}{2} (- \sin \theta/2) \]
+and
+\[ v_r = \frac{1}{2 \sqrt{r}} \sin \theta/2 \]
+\[ v_{\theta} = \frac{\sqrt{r}}{2} \cos \theta/2 \]
+
+At first we're worried ($u_r \ne v_{\theta}$), but then we recall the polar CRE have an extra factor of $r$:
+\[ r u_r = v_{\theta} \]
+\[ r v_r = - u_{\theta} \]
+
+So the CRE do obtain, and we can get the derivative.  
+
+Next, we recall the second unusual thing about the polar derivative:
+\[ f'(z) = e^{-i\theta} (u_r + i v_r) \]
+
+Leave aside the factor of $e^{-i\theta}$ out front and just combine:
+\[ u_r + i v_r = \frac{1}{2 \sqrt{r}} \cos \theta/2 + \frac{1}{2 \sqrt{r}} \sin \theta/2 \]
+\[ = \frac{1}{2 \sqrt{r}} \ (\cos \theta/2 + i \sin \theta/2) \]
+\[ = \frac{e^{i \theta/2}}{2 \sqrt{r}} \]
+
+which appears problematic, but the extra factor gives us just what we need
+\[ f'(z) = e^{-i\theta} \cdot \frac{1}{2 \sqrt{r}} \ e^{i \theta/2} \]
+\[ = \frac{1}{2 \sqrt{r}} \ e^{-i \theta/2} \]
+\[ = \frac{1}{2 \sqrt{r}} \cdot \frac{1}{e^{i \theta/2}} \]
+\[ = \frac{1}{2 \sqrt{z}} \]
+
+Just exactly analogous to the real function.
+
+\end{document}

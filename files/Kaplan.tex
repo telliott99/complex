@@ -11,18 +11,22 @@
 
 \graphicspath{{/Users/telliott/Github/figures/}}
 
-\title{Introduction}
+\title{Residue theory}
 \date{}
 
 \begin{document}
 \maketitle
 \Large
 
+%[my-super-duper-separator]
+
+We've seen a little bit about Laurent series, which can be written for $f(z)$ analytic in an annulus, in the form
+\[ f(z) = \sum_{n=0}^{\infty} a_n \cdot (z-z_0)^n + \sum_{n=1}^{\infty} b_{n} \cdot (z-z_0)^{1-n} \]
 
 Kaplan gives some rules for computing residues, which we explore in this chapter.
 
 \textbf{RULE I}  At a simple pole $z_0$ (that is, a pole of first order),
-\[ \text{Res } [f(z),z_0] = \lim_{z \rightarrow z_0} (z-z_0) f(z) \]
+\[ \text{Res } [f(z),z_0] = \lim_{z \rightarrow z_0} (z-z_0) f(z_0) \]
 
 \subsection*{example}
 The example is one we already worked.
@@ -32,37 +36,15 @@ The example is one we already worked.
 
 \subsection*{review}
 
-To summarize the key points about Cauchy 2 and residues, this is the theorem
+To summarize the key points about Cauchy's Integral formula and residues, this is the formula
 \[ \oint_C \frac{f(z)}{z - z_0} \ dz = 2 \pi i \ f(z_0) \]
+
 By definition the residue at a simple pole is defined to be
-\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
+\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z_0)  \]
+
 Just think of it as in the limit that $z \rightarrow z_0$, the denominator $z-z_0$ on the left is a constant, so we can multiply both sides by $z - z_0$ to obtain the result for the residue.
 \[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
 The value of the integral is $2 \pi i$ times the sum of all the residues enclosed by the path.
-
-\subsection*{derivative rule}
-
-We show here that
-\[ f'(a) = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
-and there are more formulas for higher derivatives.
-Therefore
-\[ 2 \pi i \ f'(a) =  \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
-
-Again, the Cauchy formula is:
-\[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i f(z_0) \]
-rewrite with $a$ for $z_0$
-\[ \oint_C \frac{f(z)}{z-a} \ dz = 2 \pi i f(a) \]
-
-We take the partial with respect to $a$ of both sides:
-\[ \frac{\partial}{\partial a} ( \frac{f(z)}{z-a} ) = \frac{f(z)}{(z-a)^2} \]
-so
-\[ \oint_C \frac{f(z)}{(z-a)^2} \ dz = 2 \pi i f'(a) \]
-Thus
-\[ f'(a) = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
-More generally
-\[ f^n(a) = \frac{n!}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^{n+1}} \ dz \]
-So
-\[ \frac{2 \pi i}{n!} f^n(a) = \oint_C \frac{f(z)}{(z-a)^{n+1}} \ dz \]
 
 \subsection*{example}
 \[ \oint_C \frac{e^z}{z^3 - z^2 - 5z - 3} = \oint_C \frac{e^z}{(z+1)^2 (z-3)} \]

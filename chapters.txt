@@ -2,6 +2,7 @@ Introduction
 Preface
 Arithmetic
 Conjugate
+Definitions
 
 Cauchy Riemann
 Difference quotient
@@ -16,29 +17,28 @@ Sine and cosine
 More trigonometry
 Exponential
 Logarithm
+Summary 1
 
 Integration
-Integrate
-Integrate 2
-Cauchy 1
-Cauchy 2
-Partial Fractions
+Integration
+Circular paths
+Cauchy theorem
+Cauchy formula
+Cauchy corollary
+Summary 2
+
+Series
+Taylor
+Laurent theory
+Laurent practice
 
 Residue Theory
-Residues
+Partial Fractions
+Poles and residues
 Kaplan
-quotients
-Definitions
+Summary 3
 
-Series
-Series
-Write series
-Trig Integrals
-Real Integrals
-
-Mapping
-Conformal mapping
-End
-
-History
+Addendum
+Extra
 Cubics
+References

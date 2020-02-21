@@ -18,25 +18,113 @@
 \maketitle
 \Large
 
-\subsection*{example}
-Suppose
-\[ f(z) = \frac{z}{(z-1)(z-3)} \]
-and say we need the series around $0 \le | z - 1 | \le 2$, a circle of radius $2$ around the point $z_0 = 1$.
+%[my-super-duper-separator]
 
-One way is to do the substitution $x = z - 1$, so $z = x + 1$ and we have
+\subsection*{geometric series}
+
+The initial examples are all based on the geometric series:
+\[ a + ar + ar^2 + ar^3 \dots \]
+The ratio test shows that this infinite series is convergent for $|r| < 1$.  In that case it has a sum and we can write:
+\[ S = a(1 + r + r^2 + r^3 \dots \]
+\[ \frac{S}{a} r - \frac{S}{a} = 1 \]
+\[ S = \frac{a}{1-r} \]
+So any time you see this form think geometric series.
+\[ \frac{1}{1 - r} \]
+Switch to $z$ as the variable:
+\[ \frac{1}{1 - z} \]
+
+There is a trick to getting a \emph{different} geometric series.  Just write
+\[ \frac{1}{1 - z} = (-\frac{1}{z}) \cdot \frac{1}{1 - 1/z} \]
+That's also a geometric series, but in $1/z$.  It converges when $|1/z| < 1$ which means $|z| > 1$!!  
+
+And it is equal to
+\[ (-\frac{1}{z}) \cdot (1 + \frac{1}{z} + \frac{1}{z^2} + \frac{1}{z^3} \dots \]
+\[ - \frac{1}{z} - \frac{1}{z^2} - \frac{1}{z^3} \dots \]
+
+Note that we can substitute $-w = z$ and get
+\[ \frac{1}{1+w} =  \frac{1}{w} \ [ \ 1 - \frac{1}{w} + \frac{1}{w^2} - \frac{1}{w^3} + \dots \ ] \]
+\[ \frac{1}{1+w} =  \frac{1}{w} - \frac{1}{w^2} + \frac{1}{w^3} + \dots \]
+
+go back to $z$ as the variable
+\[ \frac{1}{1+z} =  \frac{1}{z} - \frac{1}{z^2} + \frac{1}{z^3} - \frac{1}{z^4} + \dots \]
+Check by multiplying the right-hand side by $z$ and see all the cancellations after the first term.
+
+\subsection*{Boas example}
+\[ f(z) = \frac{12}{z(2 - z)(1 + z)} \]
+
+So this function has three isolated singularities (at $z = 0, 2, -1$). And expanded around $z_0 = 0$, there will be three regions in which we have \emph{different} series:  namely $0 < |z| < 1$, $1 < |z| < 2$ and $|z| > 2$.  There will be three series all together.
+
+Start by using partial fractions to obtain:
+\[ = \frac{4}{z} \cdot (\frac{1}{2 - z} + \frac{1}{1 + z}) \]
+
+Start with the inner punctured disk.  We want convergence for the region $|z| < 1$.  Since it's less than, we use standard geometric series.
+
+\[ \frac{1}{1 + z} = 1 - z + z^2 - z^3 \dots \]
+\[ \frac{1}{2 - z} = \frac{1}{2} \cdot \frac{1}{1 - z/2} = \frac{1}{2} \ [ \ 1 + \frac{z}{2} + \frac{z^2}{4} + \frac{z^3}{8} \dots \ ] \]
+Add them together 
+\[ = \frac{3}{2} - \frac{3z}{4} +  \frac{9z^2}{8} - \frac{15z^3}{16} \dots \]
+and multiply by $4/z$ to obtain:
+\[ = \frac{6}{z} - 3 + \frac{9z}{2} - \frac{15z^2}{4} \dots \]
+
+This is the Laurent series valid in the innermost region.
+
+For the outer region, manipulate each fraction:
+\[ \frac{1}{1 + z} = \frac{1}{z} \cdot \frac{1}{1 + 1/z} \]
+\[ \frac{1}{2 - z} = -\frac{1}{z} \cdot \frac{1}{1 - 2/z} \]
+We do this so that the geometric series will be convergent for $|z| > 2$ (the ratio is $2/z$ in the second one).
+
+Again, geometric series.  Write them separately:
+\[ \frac{1}{z} \ [ \ 1 - \frac{1}{z} + \frac{1}{z^2} - \frac{1}{z^3} + \frac{1}{z^4} + \dots \ ] \]
+\[ -\frac{1}{z} \ [ \ 1 + \frac{2}{z} + \frac{4}{z^2} + \frac{8}{z^3} + \frac{16}{z^4} \dots \ ] \]
+Move the minus sign inside:
+\[ \frac{1}{z} \ [ \ -1 - \frac{2}{z} - \frac{4}{z^2} - \frac{8}{z^3} - \frac{16}{z^4} \dots \ ] \]
+
+Add
+\[ \frac{1}{z} \ [  -\frac{3}{z} - \frac{3}{z^2} - \frac{9}{z^3} - \frac{15}{z^4} + \dots \]
+Recall the leading factor of $4/z$, and get another factor of $-3/z$ giving what it has in the book:
+\[ -\frac{12}{z^3} \ [ \ 1 + \frac{1}{z} + \frac{3}{z^2} + \frac{5}{z^3} + \dots \ ] \]
+
+The last part is the annulus in the middle.  For this we want convergence for $|z| > 1$ and for $|z| < 2$.  Hence we want 
+
+\[ \frac{1}{1 + z} = \frac{1}{z} \cdot \frac{1}{1 + 1/z} \]
+\[ = \frac{1}{z} \ [ \ 1  -\frac{1}{z} + \frac{1}{z^2} - \frac{1}{z^3} + \frac{1}{z^4} + \dots \ ] \]
+and 
+\[ \frac{1}{2 - z} = \frac{1}{2} \cdot \frac{1}{1 - z/2} = \frac{1}{2} \ [ \ 1 + \frac{z}{2} + \frac{z^2}{4} + \frac{z^3}{8} \dots \ ] \]
+I need a factor of $1/z$ on the latter (and move the factor of $2$ inside:
+\[ \frac{1}{z} \ [ \ \frac{z}{2} + \frac{z^2}{4} + \frac{z^3}{8} + \frac{z^4}{16} \dots \ ] \]
+
+We can add them and remember the leading factor of $4/z$ so it's
+\[ \frac{4}{z^2} \ [ \frac{z}{2} + \frac{z^2}{4} + \frac{z^3}{8} + \frac{z^4}{16} \dots + 1  -\frac{1}{z} + \frac{1}{z^2} - \frac{1}{z^3} + \frac{1}{z^4} + \dots \ ] \]
+
+I try to verify one power, pick $z^{-1}$  
+\[ \frac{6}{z} + \frac{2}{z} \]
+and that, unfortunately is not a match.  But I know we're close, and you can see the general idea.
+
+\subsection*{example}
+
+Consider:
+\[ f(z) = \frac{z}{(z-1)(z-3)} \]
+and say we need the series around $0 \le | z - 1 | \le 2$, also written as $C[1,2]$, a circle of radius $2$ around the point $z_0 = 1$.
+
+One way to do this is to make substitution $x = z - 1$, so $z = x + 1$ and we have
 \[  = \frac{x+1}{(x)(x-2)} \]
-and then our goal is to get something like $1/1-x$.  Factor out the $1/x$
+Factor out the $1/x$
 \[ = \frac{1}{x} \ ( \frac{x+1}{x-2} ) \]
-Get $x - 2$ on top
+(this is easy to restore at the end by multiplying by $1/x$).
+
+And then our goal is to get something like $1/1-r$.  
+
+That means we want $x - 2$ on top
 \[ = \frac{1}{x} \ ( \frac{x - 2 +  3}{x - 2} ) \]
 \[ = \frac{1}{x} \ ( 1 + \frac{ 3}{x-2} ) \]
 \[ = \frac{1}{x} \ ( 1 - \frac{ 3}{2-x} ) \]
 \[ = \frac{1}{x} \ ( 1 - \frac{ 3/2}{1 - x/2} ) \]
 \[ = \frac{1}{x} \ ( 1 - \frac{3}{2} \cdot \frac{1}{1 - x/2} ) \]
+
 and now the 
 \[ \frac{1}{1 - x/2} \]
-can be expanded because
-\[ \frac{1}{1 - y} = 1 + y + y^2 + y^3 \]
+can be expanded because that's a geometric series
+\[ \frac{1}{1 - r} = 1 + r + r^2 + r^3 + \dots \]
 so 
 \[ \frac{1}{1 - x/2} = 1 + \frac{x}{2} + (\frac{x}{2} )^2 + \dots \]
 which gives
@@ -44,12 +132,19 @@ which gives
 
 Now, multiplying through by $1/x$ gives
 \[ -\frac{1}{2x} + \dots \]
+and \emph{nothing else matters}.  Reverse the change of variable:
 \[ = -\frac{1}{2(z-1)} + \dots \]
+
 which we will integrate as
 \[ \oint \frac{-1/2}{z-1} \ dz \]
-\[ \text{Res }(1) = \lim_{z \rightarrow 1} (z-1) \ \frac{-1/2}{z-1} \]
-\[ = -\frac{1}{2} \]
-Multiply by $2 \pi i$ to obtain $I = \pi i$.
+ over $C[1,2]$.
+ 
+Recall the formula for residues:
+\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
+
+So
+\[ \text{Res }(1) = \lim_{z \rightarrow 1} (z-1) \ \frac{-1/2}{z-1} = -\frac{1}{2} \]
+Multiply by $2 \pi i$ to obtain $I = -\pi i$.
 
 As a check on this go back to 
 \[ f(z) = \frac{z}{(z-1)(z-3)} \]
@@ -58,11 +153,10 @@ As a check on this go back to
 \[ = -\frac{1}{2} \]
 
 \subsection*{example}
-These examples can get really complicated.  Here is one from
+These examples can get complicated.  Here is one from
 
 \url{http://zimmer.csufresno.edu/~doreendl/128.13f/handouts/Lseriesex.pdf}
 
-Consider the very simple example:
 \[ f(z) = \frac{1}{(z-2)(z-1)} \]
 
 This function has poles at $z = 1$ and $z = 2$.  If we are asked to write expansions around $z_0 = 0$, then we have three regions of interest and three different expansions.
@@ -82,6 +176,7 @@ For the other term
 \[ \frac{1}{z - 2} = - \frac{1}{2 - z} \]
 Our goal is to convert this into something like the geometric series.  Factor out the $2$ on the bottom like so
 \[ = - \frac{1}{2} \ [ \  \frac{1}{1 - z/2} \ ]  \]
+
 We can do a formal substitution or recognize that this is the geometric series 
 \[ = - \frac{1}{2} \ [ \   \sum_{n=0}^{\infty} (z/2)^n \ ]  \]
 We can rewrite this slightly by pulling out the factor of $2^n$ on the bottom and combining it with the factor of $2$ out front:
@@ -181,5 +276,43 @@ Now, if we were to integrate $f(z)$, we would have only one term that gives a no
 \[ - \frac{1}{2} (-1) \frac{1}{z-1} \]
 \[ \text{Res }(1) = \lim_{z \rightarrow 1} \frac{1}{2} = \frac{1}{2} \]
 Multiply by $2 \pi i$ to obtain $\pi i$.
+
+\subsection*{simpler view}
+
+On the other hand, I would just write the partial fraction:
+\[ \int \frac{1}{2} \ [ \ \frac{1}{z} - \frac{1}{z + 2} \ ] dz \]
+
+The curve $C[1,3]$ includes the singularity at $z = 0$, but $z = -2$ is on the boundary, not inside the region.  The curve $C[1,1]$ includes neither point.
+
+So for the second curve the integral is zero and for the first one only the $\int 1/z \ dz$ matters.  It's an old friend, with value $2 \pi i$, the value of the integral is thus $\pi i$.
+
+\subsection*{example}
+
+Here are two examples from Brown and Churchill.
+
+\[ \int \frac{1}{z(z-2)^4} \ dz \]
+with singularities at $z = 0$ and $z = 2$.
+
+Use the $1/z$ part to get a geometric series:
+\[ \frac{1}{z(z-2)^4} = \frac{1}{(z-2)^4} \cdot \frac{1}{(2 + z - 2)} \]
+\[ = \frac{1}{(z-2)^4} \cdot \frac{1}{2} \cdot \frac{1}{(1 - (-(z-2))/2 )} \]
+
+The third term gives the geometric series with common ratio $(z-2)/2$.  Those $z-2$ terms will cancel the leading factor.  The only term that matters is the cube, which gives:
+\[  \frac{1}{(z-2)} \cdot \frac{1}{2} \cdot \frac{1}{(-2)^3} \]
+
+We have that $b_1 = -1/16$ so $I = -\pi i/8$.
+
+The second one is:
+\[ \int e^{1/z^2} \ dz \]
+We use the standard series for $e^z$
+\[ e^z = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \dots \]
+substituting $1/z^2$
+\[ 1 + \frac{1}{z^2} + \frac{z^r}{2!} + \frac{z^6}{3!} + \dots \]
+
+Since there's no $z$ with a power $n=-1$, the value of the integral is just zero.
+
+
+
+
 
 \end{document}

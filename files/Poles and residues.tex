@@ -11,22 +11,97 @@
 
 \graphicspath{{/Users/telliott/Github/figures/}}
 
-\title{Introduction}
+\title{Poles and residues}
 \date{}
 
 \begin{document}
 \maketitle
 \Large
 
-Normally, books on complex analysis get into Laurent series and lots of theorems at this point.  However, I want to look ahead to Residue theory, which is really the reason for all the series stuff, then we'll spend some time with Taylor and Laurent.
+%[my-super-duper-separator]
 
-\subsection*{Residues}
-By definition the \emph{residue} at a simple pole $z_0$ is defined to be
+Boas \textbf{definitions}:
+
+Consider the Laurent series for $f(z)$ inside some $C$ centered on $z_0$.  Let $z_0$ be either a regular point or an isolated singular point and there are no other singular points inside $C$.  Then:
+
+$\circ$ \ If all the $b$ coefficients are zero, $f(z)$ is analytic at $z = z_0$ and we call $z_0$ a \emph{regular point}.
+
+$\circ$ \ If $b_n \ne 0$ but all the $b$'s after $b_n$ are zero, then $f(z)$ is said to have a \emph{pole of order n} at $z = z_0$.  If $n=1$ it is called a \emph{simple pole}.
+
+$\circ$ \ If there are an infinite number of $b$'s different from zero, then $f(z)$ has an \emph{essential singularity} at $z = z_0$.
+
+$\circ$ \ The coefficient $b_1$ of $1/(z - z_0)$ is called the \emph{residue} of $f(z)$ at $z = z_0$.
+
+\subsection*{example}
+
+\[ e^z = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \dots \]
+There are no $b$'s, $e^z$ is analytic, and the residue at $z = z_0$ is $0$.
+
+\[ \frac{e^z}{z^3} = \frac{1}{z^3} + \frac{1}{z^2} + \frac{1}{2!z} + \frac{1}{3!} \dots \]
+The pole is of order $3$, the residue at $z = z_0$ is $1/2!$.
+
+\[ e^{1/z} = 1 + \frac{1}{z} + \frac{1}{2!z^2} + \frac{1}{3!z^3} + \dots \]
+There is an essential singularity at $z = z_0$, and the residue at $z = z_0$ is $1$.
+
+\subsection*{The residue theorem}
+
+Let $z_0$ be an isolated singular point of $f(z)$, and expand the Laurent series about $z = z_0$ for $f$.  We want to find $\oint f(z) \ dz$.  By Cauchy's integral theorem, the integral of the analytical part of the Laurent series is zero (non-negative exponents for $z - z_0$).
+
+It is easy to show that the negative exponents of power $-2$ and higher also give rise to zero when integrated, because they retain some power of $e^{i \theta}$ which multiplies everything by zero for a closed path.
+
+The exception is the $(z-z_0)$ term, where stuff cancels:
+
+\[ \oint \frac{b_1}{z - z_0} \ dz = b_1 \int_0^{2 \pi} \frac{ri e^{i \theta}}{r e^{i \theta}} \ d \theta = 2 \pi i \ b_1 \]
+$b_1$ is called the residue of $f(z)$ at the singular point inside $C$.  If there is more than one isolated singularities, the value of the integral is $2 \pi i$ times the sum of the residues.
+
+The trick of course, is to know what $b_1$ is equal to.
+
+If we have the Laurent series, then $b_1$ is the coefficient of the $\frac{1}{z - z_0}$ term.
+
+\subsection*{example}
+
+\[ f(z) = \frac{e^z}{(z - 1)} \]
+\[ = \frac{e}{(z - 1)} \cdot e^{(z - 1)} = \frac{e}{(z - 1)} \ [ \ 1 + (z - 1) + \frac{(z-1)^2}{2!} + \dots \]
+\[ = e(\frac{1}{(z - 1)} + 1 + \frac{(z-1)}{2!} + \dots \]
+Then
+\[ \oint f(z) \ dz = 2 \pi i \cdot e \]
+The residue is the coefficient of $1/(z-1)$.
+
+\subsection*{simple pole}
+If $f(z)$ has a simple pole at $z = z_0$ we find the residue by a trick with Cauchy's integral formula:
+\[ \int \frac{f(z)}{z - z_0} \ dz = 2 \pi i \cdot f(z_0) \]
+
+in the limit that $z \rightarrow z_0$ it can come out from the integral sign:
+\[ \int f(z) \ dz = \lim_{z \rightarrow z_0} (z - z_0) \cdot 2 \pi i \cdot f(z_0) \]
+
+Stated in terms of the residue: 
+\[ R = \lim_{z \rightarrow z_0} (z - z_0) f(z_0) \]
+
+\subsection*{examples}
+\[ f(z) = \frac{z}{(2z + 1)(5 - z)} \]
+
+The poles are at $z_0 = -1/2$ and $z_0 = 5$.
+
+First multiply the function by $z - z_0$  That gives
+\[  R(-1/2) = \frac{z}{2 (5 - z)} \bigg |_{z = -1/2}  = \frac{-1/2}{2(11/2)} = -\frac{1}{22} \]
+
+And
+\[ R(5) = -\frac{z}{2z + 1} \bigg |_5 = - \frac{5}{11} \]
+
+For
+\[ f(z) = \frac{\cos z}{z} \]
+The pole is at $z_0 = 0$ so multiply by $z$:
+\[ R(0) = \cos z \bigg |_0 = 1 \]
+
+
+By definition the \emph{residue} at a simple singularity or pole $z_0$ is defined to be
 \[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
-We get there from 
+We can get there from Cauchy's integral formula:
 \[  \oint \frac{f(z)}{z - z_0} \ dz = 2 \pi i f(z_0) \]
+
 Just think of it as in the limit that $z \rightarrow z_0$, the denominator $z-z_0$ on the left of the first equation is a constant, so we can multiply both sides by $z - z_0$
 to obtain the result for the residue.
+
 \[ \oint f(z) \ dz = 2 \pi i \ \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
 using the definition
 \[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
@@ -35,6 +110,8 @@ we obtain
 If there is more than one such point
 \[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
 The value of the integral is $2 \pi i$ times the sum of all the residues enclosed by the path.
+
+There is no longer a factor of $1/z-z_0$ in the integral, just $f(z)$.
 
 \subsection*{residues}
 We repeat the problem from last time, using residues.  
@@ -45,10 +122,10 @@ Our formula is:
 and
 \[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
 
-Evaluate the first equation:
+Evaluate the formula.  Our path includes $i$ but not $-i$.
 \[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
 \[ = \lim_{z \rightarrow i} (z-i) \  \frac{1}{(z+i)(z-i)} \]
-\[ = \frac{1}{2i} \]
+\[ = \lim_{z \rightarrow i}  \  \frac{1}{z+i} = \frac{1}{2i} \]
 And by the second equation:
 \[ I = \pi \]
 as before.  Seems a bit easier!
@@ -123,5 +200,6 @@ The only non-zero integral term is
 and the residue there is
 \[ \lim_{z \rightarrow 0} \ (z - 0) (- \frac{1}{3!} \ \frac{1}{z}) \]
 \[ = - \frac{1}{3!} = - \frac{1}{6} \]
+
 
 \end{document}
