@@ -24,8 +24,9 @@
 If we can write an integral in this form:
 \[ \oint_{C} \frac{f(z)}{z-z_0} \ dz \]
 
-where $f(z)$ is analytic and defined everywhere in the domain we care about, with this composite function of course not defined at $z = z_0$, we can show that the value of the integral is 
+where $f(z)$ is analytic and defined everywhere in the domain we care about, with this composite function of course not defined at $z = z_0$, the value of the integral is 
 \[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i \ f(z_0) \]
+
 This is called the Cauchy Integral formula.
 
 \subsection*{setup}
@@ -51,14 +52,15 @@ But reversing the direction of integration on the inner ring (so both paths go i
 and
 \[ \oint_{C \ \text{outer}} \frac{f(z)}{z-z_0} \ dz = \oint_{C \ \text{inner}} \frac{f(z)}{z-z_0} \ dz \]
 
-We haven't said anything about the radius of these rings.  
+We haven't said anything so far about the radius of these rings.  
 
-What that means is that the value of the integral around a ring enclosing a singularity is not zero, but its value is independent of the radius.
+What that means is that the value of the integral around a ring enclosing a singularity is not zero, but its value is \emph{independent of the radius}.
 
 \subsection*{derivation}
 
-We can parametrize this path by realizing that each point on one of these curves is given by
-\[ z = z_0 + r e^{i\theta}, \ \ \ 0 \le \theta \le 2 \pi \]
+We can parametrize this path.  Each point on one of these curves is given by
+\[ z = z_0 + r e^{i\theta} \]
+with $0 \le \theta \le 2 \pi$ and then
 \[ z - z_0 = r e^{i\theta} \]
 This is a circle with the center displaced to $z_0$.
 
@@ -78,10 +80,10 @@ and in that limit, since it's constant we can bring it out from under the integr
 \[ i \int_0^{2\pi}  f(z) \ d \theta \]
 \[ = i f(z_0) \int_0^{2\pi} d \theta = 2 \pi i \ f(z_0) \]
 
-An alternative (equivalent) approach is to say that for a small enough circle
-\[ \int \frac{f(z)}{z - z_0} \ dz \]
+An alternative (really, equivalent) approach is to say that for a small enough circle
+\[ \oint \frac{f(z)}{z - z_0} \ dz \]
 
-the value of $f(z)$ approaches $f(z_0)$, a constant so this becomes
+the value of $f(z)$ approaches $f(z_0)$, a constant, so this becomes
 \[ = f(z_0) \int \frac{1}{z - z_0} \ dz \]
 We know that integral, it is $2 \pi i$.
 

@@ -23,19 +23,19 @@
 
 %[my-super-duper-separator]
 
-\subsection*{summary}
-\[ \int f(z) \ dz \]
-\[ = \int (u + iv)(dx + i dy) \]
+In this chapter, we begin working complex integrals.  One way to do them relies on the Cartesian definitions:
+\[ z = x + iy \]
+\[ dz = dx + i \ dy \]
+\[ f(x,y) = u(x,y) + i \ v(x,y) \]
+\[ w = f(z) = u(x,y) + i \ v(x,y) \]
+
+thus
+\[ \int f(z) \ dz = \int (u + iv)(dx + i dy) \]
 \[ = \int u \ dx - v \ dy + i \ [ \ u \ dy + v \ dx \ ] \]
-where $x$ and $y$ are \emph{related}, either as parametric equations in $t$ or $\theta$, or simply because $y = f(x)$.
+
+This looks like but really is not a double integral, because $x$ and $y$ are \emph{related}, either as parametric equations in $t$ or $\theta$, or simply because $y = f(x)$.
 
 \subsection*{Introduction}
-
-Complex functions are differentiated and integrated in a way that is similar to real functions, but with some differences.  We've already seen that the derivatives are like their real cousins, and the integrals will be too.
-
-However, there are some differences.  A main one is that the integrals are line integrals.  We will set up integrals which look like multi-variable integrals, but the two variables are connected because they lie on a path.  Because they are line integrals and most integrals will evaluate to something like $e^{it}$, going around on a circle in a closed path usually gives a value of zero.
-
-We often but not always restrict our attention to functions that are analytic, paying attention to points in the complex plane where they have poles (or singularities).  
 
 A complex function is a function that produces a complex number as the result. The most general case is that the input is a complex number as well.  
 
@@ -43,16 +43,15 @@ Se we could write:
 \[ w = f(z) \]
 where both $w$ and $z$ are complex numbers.
 
-The parts of $f$ that generate the real and imaginary parts of $w$ as separate functions of two \emph{real} variables $x$ and $y$:
-\[ w = f(z) = u(x,y) + iv(x,y) \]
+Complex functions are differentiated and integrated in a way that is similar to real functions, but with some differences.  We've already seen that the derivatives are like their real cousins, and the integrals will be too.
+
+A main difference is that the integrals are line integrals.  We will set up integrals which look like multi-variable integrals, but the two variables are connected because they lie on a path.  
+
+Because they are line integrals and most integrals will evaluate to something like $e^{it}$, going around on a circle in a closed path usually gives a value of zero.  The exceptions are functions that contain $z^*$ in some, that are non-analytic.
+
+However, we often but not always restrict our attention to functions that are analytic at most points, paying attention to points in the complex plane where they have poles (or singularities).  Since they are not defined at these points, they cannot be analytic there.
 
 \subsection*{getting started}
-The function is
-\[ w = f(z) = u(x,y) + iv(x,y) \]
-
-The input, the complex variable $z$ is
-\[ z = x + i y \]
-\[ dz = dx + i dy \]
 
 The key is to write the integral as
  \[ \int f(z) \ dz = \int (u + i v) (dx + i dy) \]
@@ -70,26 +69,23 @@ We can view $y$ as a function of $x$ or perhaps, we will be able to parametrize 
 
 \subsection*{example: $z$}
 
-Suppose our function is simply $z = x + iy$.  The integral is 
-\[ \int z \ dz = \int (x + iy) (dx + i dy) \]
+The function is simply $z = x + iy$.  The integral is 
 \[ = \int x \ dx - y \ dy + i x \ dy + i y \ dx \]
 
 Now we must get $y$ in terms of $x$ from the curve.  Suppose the curve goes from $(1,i)$ to $(3,i)$, then to $(3,3i)$ and finally back to where we started.  
 
 \begin{center} \includegraphics [scale=0.5] {complex_int_1.png} \end{center}
 
-We have three segments.  Along the first part, we are moving in the positive $x$ direction, with no change in $y$, $y = 1$, a constant, so $dy=0$, and the integral is (writing the non-zero parts only):
-\[ = \int x \ dx + i \cdot 1 \ dx \]
+We have three segments.  Along the first part, the path is in the positive $x$ direction, with no change in $y$, $y = 1$, a constant, so $dy=0$, and the integral is (writing the non-zero parts only):
+\[ I = \int x \ dx + i \cdot 1 \ dx \]
 \[ = \int_{x=1}^{x=3} \ x + i  \ dx \]
-\[ = \frac{x^2}{2} + ix \ \bigg |_1^3 \]
-\[ = 4 + 2i \]
+\[ = \frac{x^2}{2} + ix \ \bigg |_1^3 = 4 + 2i \]
 
 Along the second part, we are moving in the positive $y$ direction with $dx = 0$ and $x = 3$ so
 \[ = \int_{y=1}^{y=3} - y \ dy + 3 i \ dy \]
-\[ = -\frac{y^2}{2} + 3iy \ \bigg |_1^3 \]
-\[ = -4 + 6i \]
+\[ = -\frac{y^2}{2} + 3iy \ \bigg |_1^3 = -4 + 6i \]
 
-Along the third path, both $dx$ and $dy$ are non-zero, so we must actually do the parametrization.  The curve is $y=x$.  Hence $dy = dx$.
+Along the third path, both $dx$ and $dy$ are non-zero.  The parametrization is $y = f(x) = x$.  Hence $dy = dx$.
 \[ = \int x \ dx - x \ dx + i x \ dx + i x \ dx \]
 \[ = 2i \int x \ dx \]
 
@@ -107,7 +103,7 @@ So $u = (y-x)$ and $v = -3x^2$ and the integral is
 \[ = \int u \ dx - v \ dy + i \ [ \ u \ dy + v \ dx \ ] \]
 \[ \int (y - x) dx + 3x^2 dy + i \ [ \ (-3x^2) dx + (y-x) dy \ ]  \]
 
-We proceed from the origin to the point $z = 1 + i$ either directly ($C$) or by first going up vertically ($C1$) and then across ($C_2$).
+The path goes from the origin to the point $z = 1 + i$ either directly ($C$) or by first going up vertically ($C1$) and then across ($C_2$).
 
 For the vertical part ($C_1$) we have that $x = 0$ and $dx = 0$.
 \[ \int (y - x) dx + 3x^2 dy + i (-3x^2) dx + i (y-x) dy \]
@@ -117,7 +113,7 @@ It's important to recognize that although we are proceeding from the point $z=0$
 \[ I_1 = i\frac{y^2}{2} \ \bigg |_0^1 = \frac{i}{2} \]
 
 For the horizontal part ($C_2$) we have that $y=1$ and $dy = 0$ so
-\[ I = \int (y - x) dx + i (-3x^2) dx  \]
+\[ I_2 = \int (y - x) dx + i (-3x^2) dx  \]
 \[ = \int (1 - x) dx + i (-3x^2) dx \]
 
 $x$ goes from $0$ to $1$
@@ -126,7 +122,7 @@ $x$ goes from $0$ to $1$
 Therefore the total
 \[ I = \frac{i}{2} + \frac{1}{2} - i = \frac{1}{2} \ (1 - i) \]
 
-When going directly from the origin to $1 + i$ we relate $x$ to $y$ by the equation of the line $y=x$ so $dy = dx$ and
+When going directly from the origin to $1 + i$ we have $y = x$ so $dy = dx$ and
 \[ I = \int (y - x) dx + 3x^2 dy + i (-3x^2) dx + i (y-x) dy \]
 \[ = \int 3x^2 dx + i (-3x^2) dx  \]
 
@@ -145,7 +141,7 @@ Notice that
 \[ u_x = -1 \ne v_y = 0 \]
 This function is not analytic.
 
-\subsection*{example: $z$, revisited}
+\subsection*{example: $z$ revisited}
 Above we wrote:
 \[ \int z \ dz = \int x \ dx - y \ dy + i x \ dy + i y \ dx \]
 And then said:  now we must get $y$ in terms of $x$ from the curve.
@@ -159,17 +155,17 @@ It helps that we know the answer:
 \[ \frac{1}{2} z^2 = \frac{1}{2} (x^2 - y^2 + i 2xy) \]
 
 \[ \int x \ dx = \frac{x^2}{2} \]
-then
+So that's the first term.  then
 \[ \int f(x) \ f'(x) \ dx \]
-but this is
+but this is just
 \[ \frac{1}{2} \ [f(x)]^2 = \frac{1}{2} y^2 \]
 We're on to something!
 
 For the imaginary part:
 \[ \int x \  f'(x) \ dx + f(x) \ dx \]
-the integrand is the derivative
+Knowing the answer, we can see that the integrand is the derivative
 \[ \ [ \ x \ f(x) \ ]' \]
-by the product rule.  But that's just $xy$, so this is a match. 
+by the product rule.  But that's just $xy$, so this matches. 
 
 
 

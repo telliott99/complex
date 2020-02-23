@@ -22,18 +22,7 @@
 
 \subsection*{geometric series}
 
-The initial examples are all based on the geometric series:
-\[ a + ar + ar^2 + ar^3 \dots \]
-The ratio test shows that this infinite series is convergent for $|r| < 1$.  In that case it has a sum and we can write:
-\[ S = a(1 + r + r^2 + r^3 \dots \]
-\[ \frac{S}{a} r - \frac{S}{a} = 1 \]
-\[ S = \frac{a}{1-r} \]
-So any time you see this form think geometric series.
-\[ \frac{1}{1 - r} \]
-Switch to $z$ as the variable:
-\[ \frac{1}{1 - z} \]
-
-There is a trick to getting a \emph{different} geometric series.  Just write
+There is a trick to getting a \emph{different} geometric series than $\sum z^n$.  Just write
 \[ \frac{1}{1 - z} = (-\frac{1}{z}) \cdot \frac{1}{1 - 1/z} \]
 That's also a geometric series, but in $1/z$.  It converges when $|1/z| < 1$ which means $|z| > 1$!!  
 
@@ -41,7 +30,7 @@ And it is equal to
 \[ (-\frac{1}{z}) \cdot (1 + \frac{1}{z} + \frac{1}{z^2} + \frac{1}{z^3} \dots \]
 \[ - \frac{1}{z} - \frac{1}{z^2} - \frac{1}{z^3} \dots \]
 
-Note that we can substitute $-w = z$ and get
+Note that we can with positive $z$ by substituting $-w = z$ and get
 \[ \frac{1}{1+w} =  \frac{1}{w} \ [ \ 1 - \frac{1}{w} + \frac{1}{w^2} - \frac{1}{w^3} + \dots \ ] \]
 \[ \frac{1}{1+w} =  \frac{1}{w} - \frac{1}{w^2} + \frac{1}{w^3} + \dots \]
 
@@ -49,10 +38,14 @@ go back to $z$ as the variable
 \[ \frac{1}{1+z} =  \frac{1}{z} - \frac{1}{z^2} + \frac{1}{z^3} - \frac{1}{z^4} + \dots \]
 Check by multiplying the right-hand side by $z$ and see all the cancellations after the first term.
 
+We can also deal with 
+\[ \frac{1}{a - z} = \frac{1}{a} \cdot \frac{1}{1 - z/a} \]
+and then we have a series as $1/a \cdot \sum (z/a)^n$.
+
 \subsection*{Boas example}
 \[ f(z) = \frac{12}{z(2 - z)(1 + z)} \]
 
-So this function has three isolated singularities (at $z = 0, 2, -1$). And expanded around $z_0 = 0$, there will be three regions in which we have \emph{different} series:  namely $0 < |z| < 1$, $1 < |z| < 2$ and $|z| > 2$.  There will be three series all together.
+This function has three isolated singularities (at $z = 0, 2, -1$). And expanded around $z_0 = 0$, there will be three regions in which we have \emph{different} series:  namely $0 < |z| < 1$, $1 < |z| < 2$ and $|z| > 2$.  There will be three series all together.
 
 Start by using partial fractions to obtain:
 \[ = \frac{4}{z} \cdot (\frac{1}{2 - z} + \frac{1}{1 + z}) \]
@@ -104,9 +97,12 @@ and that, unfortunately is not a match.  But I know we're close, and you can see
 
 Consider:
 \[ f(z) = \frac{z}{(z-1)(z-3)} \]
-and say we need the series around $0 \le | z - 1 | \le 2$, also written as $C[1,2]$, a circle of radius $2$ around the point $z_0 = 1$.
 
-One way to do this is to make substitution $x = z - 1$, so $z = x + 1$ and we have
+Suppose we want the series around $0 \le | z - 1 | \le 2$, also written as $C[1,2]$, a circle of radius $2$ around the point $z_0 = 1$.
+
+(I like the notation $C[$origin, radius$]$ since there is no need to change the sign on the second term of $z - z_0$ to get $z_0$.)
+
+One way to do this is to make a substitution $x = z - 1$, so $z = x + 1$ and we have
 \[  = \frac{x+1}{(x)(x-2)} \]
 Factor out the $1/x$
 \[ = \frac{1}{x} \ ( \frac{x+1}{x-2} ) \]
@@ -123,8 +119,8 @@ That means we want $x - 2$ on top
 
 and now the 
 \[ \frac{1}{1 - x/2} \]
-can be expanded because that's a geometric series
-\[ \frac{1}{1 - r} = 1 + r + r^2 + r^3 + \dots \]
+can be expanded because that's a geometric series $\sum (x/2)^n$
+
 so 
 \[ \frac{1}{1 - x/2} = 1 + \frac{x}{2} + (\frac{x}{2} )^2 + \dots \]
 which gives
@@ -149,8 +145,8 @@ Multiply by $2 \pi i$ to obtain $I = -\pi i$.
 As a check on this go back to 
 \[ f(z) = \frac{z}{(z-1)(z-3)} \]
 \[ \text{Res }(1) = \lim_{z \rightarrow 1} (z-1) \ \frac{z}{(z-1)(z-3)} \]
-\[ =  \lim_{z \rightarrow 1} \ \frac{z}{z-3} \]
-\[ = -\frac{1}{2} \]
+\[ =  \lim_{z \rightarrow 1} \ \frac{z}{z-3}  = -\frac{1}{2} \]
+and we just bypassed the manipulation.
 
 \subsection*{example}
 These examples can get complicated.  Here is one from
@@ -168,18 +164,16 @@ Use partial fractions to write:
 \[ \frac{1}{(z-2)(z-1)} = \frac{1}{z-2} - \frac{1}{z-1} \]
 Considering the second term, we bring the minus sign inside
 \[ = \frac{1}{z-2} + \frac{1}{1-z} \]
-We have the classic
-\[ \frac{1}{1-z} = 1 + z + z^2 = \sum_{n=0}^{\infty} z^n \]
-which we know this is valid for $|z| < 1$, the region of interest.
-
-For the other term
+We have a geometric series for the second term, and for the other one
 \[ \frac{1}{z - 2} = - \frac{1}{2 - z} \]
+
 Our goal is to convert this into something like the geometric series.  Factor out the $2$ on the bottom like so
 \[ = - \frac{1}{2} \ [ \  \frac{1}{1 - z/2} \ ]  \]
 
 We can do a formal substitution or recognize that this is the geometric series 
 \[ = - \frac{1}{2} \ [ \   \sum_{n=0}^{\infty} (z/2)^n \ ]  \]
-We can rewrite this slightly by pulling out the factor of $2^n$ on the bottom and combining it with the factor of $2$ out front:
+
+We can rewrite this slightly by combining $2^n$ on the bottom with the $2$ out front:
 \[ = \sum_{n=0}^{\infty} \ [ \ \frac{-1}{2^{n+1}} \ ] \  z^n \  \]
 which converges for $0 < |z/2| < 1 \Rightarrow 0 < |z| < 2$.
 
@@ -274,6 +268,7 @@ I don't know if I could ever learn to do this well, but at least the explanation
 
 Now, if we were to integrate $f(z)$, we would have only one term that gives a non-zero result, namely the first term with $n=1$
 \[ - \frac{1}{2} (-1) \frac{1}{z-1} \]
+The residue is the cofactor of that term:
 \[ \text{Res }(1) = \lim_{z \rightarrow 1} \frac{1}{2} = \frac{1}{2} \]
 Multiply by $2 \pi i$ to obtain $\pi i$.
 
@@ -307,7 +302,7 @@ The second one is:
 We use the standard series for $e^z$
 \[ e^z = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \dots \]
 substituting $1/z^2$
-\[ 1 + \frac{1}{z^2} + \frac{z^r}{2!} + \frac{z^6}{3!} + \dots \]
+\[ 1 + \frac{1}{z^2} + \frac{1}{2! \ z^4} + \frac{1}{3! \ z^6} + \dots \]
 
 Since there's no $z$ with a power $n=-1$, the value of the integral is just zero.
 

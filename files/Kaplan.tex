@@ -20,54 +20,9 @@
 
 %[my-super-duper-separator]
 
-We've seen a little bit about Laurent series, which can be written for $f(z)$ analytic in an annulus, in the form
-\[ f(z) = \sum_{n=0}^{\infty} a_n \cdot (z-z_0)^n + \sum_{n=1}^{\infty} b_{n} \cdot (z-z_0)^{1-n} \]
+Here is Rule II from Kaplan.  Rule I is in the previous chapter.
 
-Kaplan gives some rules for computing residues, which we explore in this chapter.
-
-\textbf{RULE I}  At a simple pole $z_0$ (that is, a pole of first order),
-\[ \text{Res } [f(z),z_0] = \lim_{z \rightarrow z_0} (z-z_0) f(z_0) \]
-
-\subsection*{example}
-The example is one we already worked.
-\[ f(z) = \frac{1}{z^2 + 1} = \frac{1}{(z - i)(z + i)} \]
-\[ \text{Res } [f(z),z=i] = \lim_{z \rightarrow i} (z-i) \frac{1}{(z - i)(z + i)} \]
-\[ = \lim_{z \rightarrow i} \frac{1}{z + i} = \frac{1}{2i} \]
-
-\subsection*{review}
-
-To summarize the key points about Cauchy's Integral formula and residues, this is the formula
-\[ \oint_C \frac{f(z)}{z - z_0} \ dz = 2 \pi i \ f(z_0) \]
-
-By definition the residue at a simple pole is defined to be
-\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z_0)  \]
-
-Just think of it as in the limit that $z \rightarrow z_0$, the denominator $z-z_0$ on the left is a constant, so we can multiply both sides by $z - z_0$ to obtain the result for the residue.
-\[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
-The value of the integral is $2 \pi i$ times the sum of all the residues enclosed by the path.
-
-\subsection*{example}
-\[ \oint_C \frac{e^z}{z^3 - z^2 - 5z - 3} = \oint_C \frac{e^z}{(z+1)^2 (z-3)} \]
-
-Recall the general formula
-\[ f'(a) = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
-
-If the contour includes $z = -1$ but not $z = 3$ then
-\[ f(z) = \frac{e^z}{(z-3)} \]
-so
-\[ f'(z) = \frac{(z-4)e^z}{(z-3)^2} \]
-
-Hence
-\[ \oint_C \frac{e^z}{z^3 - z^2 - 5z - 3} \ dz = \oint_C \frac{e^z}{(z+1)^2 (z-3)} \]
-\[ = \oint_C \frac{f(z)}{(z+1)^2} \ dz \]
-for $f(z) = e^z/(z-3) $ and
-\[ = 2 \pi i f'(-1) = 2 \pi i \ \frac{-5}{e} \ \frac{1}{(-4)^2} \]
-\[ = \frac{-5 \pi i}{8 e}  \]
-
-\subsection*{Kaplan}
-Here is rule II from Kaplan.  Rule I is in the previous section.
-
-\textbf{RULE II}  At a pole of order $N$ ($N = 2, 3, \dots$),
+At a pole of order $N$ ($N = 2, 3, \dots$),
 \[ \text{Res } [f(z),z_0] = \lim_{z \rightarrow z_0} (z-z_0) \frac{g^{(N-1)}(z)}{(N-1)!} \]
 where 
 \[ g(z) = (z-z_0)^N f(z) \]

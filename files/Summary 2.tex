@@ -45,15 +45,16 @@ So, for example, the inverse function $1/z$ gives
 \[ \int \frac{1}{z} \ iz \ dt = i \int dt = 2 \pi i \]
 Around a closed path, the value of the integral is $2 \pi i$.  
 
-This occurs despite the fact that $1/z$ obeys the CRE and is analytic.  The problem is that it is undefined at the origin.
+This occurs despite the fact that $1/z$ obeys the CRE and is analytic.  The problem is that it is undefined at the origin and not analytic there.
 
 The factor of $2 \pi i$ will come up repeatedly from this point.
 
 Another way to explain this is to say 
-\[ \frac{1}{z} = \frac{z*}{zz*} \]
+\[ \frac{1}{z} = \frac{z^*}{zz^*} \]
+
 The denominator is $x^2 + y^2 = r^2$ which is constant for any circular path, so we have
-\[ \int \frac{1}{z} \ dz = k \int z* \ dz \]
-and $z*$ is definitely not analytic since $z* = x - iy$ and $u_x = 1 \ne v_y = -1$.
+\[ \int \frac{1}{z} \ dz = k \int z^* \ dz \]
+and $z*$ is definitely not analytic since $z^* = x - iy$ and $u_x = 1 \ne v_y = -1$.
 
 We also did some other examples, such as $1/z^2$.  On the unit circle
 \[ z = e^{it} \]
@@ -61,11 +62,12 @@ We also did some other examples, such as $1/z^2$.  On the unit circle
 so the integral is
 \[ \int \frac{1}{z^2} \ iz \ dt = \int \frac{1}{z} \ i \ dt \]
 \[ = i \int e^{-it} \ dt = i \ \frac{1}{-i} \ e^{-it} = - e^{-it} \]
+
 From Euler
 \[ e^{ix} = \cos x + i \sin x \]
 but evaluated around a closed path, this is zero because the sine and cosine have a period of $2 \pi$.
 
-\subsection*{Cauchy 1}
+\subsection*{Cauchy's integral theorem}
 
 Cauchy's first theorem says that:
 \[ \oint_C f(z) \ dz = 0 \] 
@@ -75,9 +77,9 @@ We proved this theorem, it follows very simply from Green's theorem.
 
 A corollary of this theorem is that the result of an integral between any two points over two different paths, is equal.
 
-\subsection*{Cauchy 2}
+\subsection*{Cauchy's integral formula}
 
-Cauchy's second theorem is where things start to get a bit more wild.  
+With these two results, complex analysis starts to get a bit wild.  
 
 If we can write an integral in this form:
 \[ \oint_{C} \frac{f(z)}{z-z_0} \ dz \]
@@ -100,7 +102,7 @@ The magic thing is that $f(z) \rightarrow f(z_0)$, but $f(z_0)$ is a \emph{const
 This integral is just $2\pi$, so the whole thing is $2 \pi i f(z_0)$ and we can write:
 \[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i \cdot f(z_0) \]
 
-This is Cauchy's second integral theorem.
+This is Cauchy's integral formula.
 
 A simple example is the inverse $1/z$, the numerator is $f(z) = 1$ and $z_0 = 0$ so the result is $2 \pi i$ times the value of the function $1$ at the origin, which is $2 \pi i$ and matches what we got by direct computation.
 
@@ -124,9 +126,8 @@ The existence of the derivative at $z_0$ implies that the function is continuous
 
 A function is \emph{analytic} at a point if it has a derivative at that point.
 
-Cauchy's theorem says that the integral around a closed path is zero for a function which is analytic everywhere in a domain, given some conditions.
+Cauchy's theorem says that the integral around a closed path is zero for a function which is analytic everywhere in a domain.
 
 If such a function is undefined at a limited number of points (e.g. because such values produce zero in the denominator), then those points are called poles or singularities and Cauchy's formula can be used to calculate the value of the integral (called a residue) from the value of the function at those points.
-
 
 \end{document}

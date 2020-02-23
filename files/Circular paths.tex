@@ -20,35 +20,52 @@
 
 %[my-super-duper-separator]
 
-If the contour (curve) of integration $C$ is parametrized in terms of $t$, then
-\[ \int_C f(z) \ dz = \int_a^b f[z(t)] \ z'(t) \ dt \]
+In general, for a parametrized curve, we have
+\[ \int f[z(t)] \ z'(t) \ dt \]
 
-A particularly important parametrization is for circular paths.  On such a path, $z$ takes on values with constant $r$ and the only change is in $\theta$.
+A particularly important parametrization for complex integrals is the circular path.  Such a path can be described as $C[$origin, radius$]$, as in $C[z_0,r]$, and another frequently used notation is $|z - z_0| = r$.
 
-Often we are interested in closed circular paths, where we go around the whole circle and end up where we started.
+Usually we are interested in closed circular paths, where $z$ goes around the whole circle and ends up at the start.  On such a path, $z$ takes on values with constant $r$ and the only change is in $t$ (or $\theta$).
 
-\subsection*{example:  $z$}
+We can describe  this as 
+\[ z = re^{it} \]
+with $t \in [0, 2 \pi]$.
 
-Suppose we have
-\[ z = re^{i \theta} \]
-\[ dz = r i e^{i \theta} d \theta \]
+\subsection*{dz}
+For this parametrization, we have that
+\[ dz = ir e^{it} \ dt = i z \ dt  \]
 
-so 
+\subsection*{function:  $1$}
+\[ \int_C \ dz = \int_C ir e^{it} \ dt = ir \ \frac{e^{it}}{i} = z \]
+
+\subsection*{function:  $z$}
+
 \[ \int z \ dz = \int re^{i \theta} \ r i e^{i \theta} d \theta \]
 \[ = r^2 i \int e^{i 2\theta}  \ d \theta \]
-\[ = r^2 i \ \frac{1}{2i} e^{i 2 \theta} = \frac{1}{2} \ r^2 e^{i 2 \theta} \]
-\[ = \frac{1}{2} \ z^2 \]
+\[ = r^2 i \ \frac{e^{i 2 \theta}}{2i} = \frac{1}{2} \ r^2 e^{i 2 \theta} = \frac{1}{2} \ z^2 \]
 
-For any closed path, the starting and ending $z$ are the same, so the value is zero.  Alternatively, the result can be written $\rho e^{i \phi}$, but that exponential is really two trig functions, that have a period of $2 \pi$ so evaluated over any closed path, the result is zero.
+For any closed path, the starting and ending $z$ are the same, so the value is zero.  
 
-For the unit circle, evaluated between $\theta = 0 \rightarrow \pi/2$ we get
+Alternatively, the result can be written $\rho e^{i \phi}$, but that exponential is really two trig functions since $e^{i \phi} = \cos \phi + i \sin \phi$, with a period of $2 \pi$.  Evaluated over any closed path, the result is zero.
+
+For the unit circle, evaluated for the part of the circle between $\theta = 0 \rightarrow \pi/2$ we get
 \[ \frac{1}{2} \ e^{i 2 \theta} \big |_0^{\pi/2} = \frac{1}{2} ( \ e^{i \pi} - 1) \]
-\[ = \frac{1}{2} (\cos \pi - i \sin \pi - 1) \]
+\[ = \frac{1}{2} (\cos \pi + i \sin \pi - 1) \]
 \[ = \frac{1}{2} (-1 - 1) = - 1 \]
+
+\subsection*{function:  $z^n$, $n \in \dots -3, -2, 1, 2, 3 \dots$}
+\[ \int z^n \ dz = \int r^n e^{int} \ r i e^{it} \ dt \]
+\[ = ir^{n+1} e^{i(n+1)t} \ dt \]
+\[ = ir^{n+1} \frac{e^{i(n+1)t}}{i(n+1)} \]
+\[ = \frac{1}{n + 1} \ z^{n+1} \]
+
+Whether we say that $z$ is the same at the beginning and the end, or that we have something like $e^{it}$ with a period of $2 \pi$, the result for a full circle will always be zero.
+
+However, the inverse is special.  Notice that it is not on the list of exponents.
 
 \subsection*{example:  $z$ in terms of $(x,y)$}
 
-Let's repeat the calculation for $\int z \ dz$ in terms of $u,v$ and $dx,dy$:
+Let's repeat the calculation for $\int z \ dz$ in terms of $u,v$ and $dx,dy$ but parametrized as $x = \cos t$ etc.:
 \[ \int u \ dx - v \ dy + i \ [ \ u \ dy + v \ dx \ ] \]
 Substitute from $u = x, v = y$:
 \[ \int x \ dx - y \ dy + i \ [ \ x \ dy + y \ dx \ ] \]
@@ -62,9 +79,9 @@ Consider a path around the unit circle.  Then
 substitute in the integral
 \[ \int \cos t (- \sin t \ dt) - \sin t \cos t \ dt + i \ [ \ \cos^2 t \ dt - \sin^2 t \ dt \ ] \]
 \[ -2 \int \sin t \cos t \ dt + i \int  \cos^2 t - \sin^2 t \ dt \]
-If this were not a unit circle, each term would have a factor of $r$, one for the $u,v$ part and one for the differential, so we would just have a leading factor of $r^2$.
+If this were not a unit circle, each term would have a factor of $r$, one for the $u,v$ part and one for the differential, so there would be a leading factor of $r^2$.
 
-The real part is $\int u \ du = u^2/2$ so
+Using $u$-substitution (and reusing the symbol $u$ for the familiar notation), the real part is $\int u \ du = u^2/2$ so
 \[ I_{re} = - \sin^2 t \]
 
 If you can't remember $\int \cos^2$ why don't we just guess:
@@ -78,44 +95,12 @@ Since the trig functions have a period of $2 \pi$, any path that is closed has t
 
 Otherwise, in say, the first quadrant where $t = 0 \rightarrow \pi/2$, at the upper bound we have $-1$ and at the lower bound we have $0$, so the value of the integral is $-1$, which matches what we got before.
 
-\subsection*{example:  $\int z^*$}
-
-Consider $f(z) = z*$.
-
-This function is of course \emph{not} analytic, because it involves $z*$ rather than $z$, and also because
-\[ z^* = x - iy \]
-so
-\[ u_x = 1 \ne v_y = - 1 \]
-The CRE do not hold.
-
-Suppose our curve is the circle of radius $r$ centered at the origin, and we proceed between the endpoints $z = -ri \rightarrow ri$ (from due south to east to due north).  On this half-circle 
-\[ z = re^{i \theta} \]
-we have then
-\[ dz = i \ re^{i \theta} \ d \theta \]
-In radial coordinates
-\[ z^* = re^{-i\theta} \]
-
-so then
-\[ \int {z^*} \ dz = \int r e^{-i\theta} r i e^{i \theta} \ d \theta \]
-\[ = r^2 i \int_{-\pi/2}^{\pi/2} d \theta = r^2 \pi i \]
-Alternatively,
-\[ zz^* = |z|^2 = r^2  \]
-\[ z^* = \frac{r^2}{z} \]
-\[ \int {z^*} \ dz = r^2 \int \frac{1}{z} \ dz \]
-Again
-\[ z = re^{i \theta} \]
-\[ dz = iz \ d \theta \]
-So the integral is just
-\[ = r^2 \int \frac{1}{z} \ iz \ d \theta   \]
-\[ = r^2 i \int d \theta = r^2 \pi i \]
-over the half-circle
-
 \subsection*{example:  $\int z^2$}
 Let $f(z) = z^2$.  
 
 For the path, take the unit circle over the first quadrant from $(1,0)$ to $(0,1)$.  This is only a part of a circle, so the integral will be non-zero. 
 
-There is are easy ways to do this, and there is a hard way.  
+There is an easy way to do this, and a hard way.  
 
 Let's start by re-checking that this function is analytic, and then do the hard way first.
 
@@ -172,7 +157,7 @@ and
 \[  I_4  = 2 \sin t - \frac{2}{3} \sin^3 t - \sin t \]
 The imaginary part is then
 \[ i \ [ \ -\frac{4}{3} \sin^3 t + \sin t \ ] \]
-There is some symmetry.
+There is symmetry.
 
 At the upper limit, the cosine is zero and the sine is $1$ so the imaginary part is only non-zero at the upper limit and we get just $-1/3 \ i$.  
 
@@ -184,15 +169,11 @@ One is to just treat $z$ as if it were a real variable
 \[ \int z^2 \ dz = \frac{1}{3} \ z^3 \ \bigg |_1^i = \frac{1}{3} (-i - 1) \]
 If we go all the way around the unit circle the integral is zero.
 
-\subsection*{update}
-
-Going back to the first example in the previous chapter we had
-\[ \int z \ dz = \frac{z^2}{2} \ \bigg |_{1 + i}^{3 + 3i} \]
-\[ = \frac{9 - 9 + 18i - \ [ \ 1 - 1 + 2i \ ] }{2} \]
-\[ = 8i \]
 
 \subsection*{example:  $1/z$}
 \[ \int_0^{2\pi} \frac{1}{z} \ dz \]
+
+Now we are getting to the core of this subject.  While many integrals over a closed path are zero, some are not.
 
 Examining the inverse function, you might want to first confirm that it is analytic by calculating the partial derivatives.  We did this already so I'll skip it.
 
@@ -203,22 +184,43 @@ If we are on the unit circle, then
 
 Pretty and pretty easy!
 
-The inverse is an example of a function that \emph{is} analytic, yet the integral around a closed curve that includes the origin is not equal to zero, it is instead equal to $2 \pi i$.  The reason is connected to the fact that the function is not defined at the $z=0$.
+The inverse is an example of a function that \emph{is} analytic, yet the integral around a closed curve that includes the origin is not equal to zero, it is instead equal to $2 \pi i$.  
 
-If we're centered on the origin but we don't have a unit circle, there will be an $R$ in both the numerator and the denominator, which cancel.
+If we're centered on the origin but we don't have a unit circle, there will be an $r$ in both the numerator and the denominator, which cancel.
 
 \emph{The result is thus independent of the radius of the circle.}
 
-Other powers:
+\subsection*{example:  $\int z^*$}
+Consider $f(z) = z^*$.
 
-In general
-\[ \oint_C \frac{dz}{(z - z_0)^n} = 
-\begin{cases}
-0, & n \ne 1 \\
-2 \pi i, & n = 1 
-\end {cases}
-\]
-We will see examples for $n \ne 1$ below.
+This function is of course \emph{not} analytic, because it involves $z^*$ rather than $z$, and also because
+\[ z^* = x - iy \]
+so
+\[ u_x = 1 \ne v_y = - 1 \]
+The CRE do not hold.
+
+Suppose our curve is the circle of radius $r$ centered at the origin, and we proceed between the endpoints $z = -ri \rightarrow ri$ (from due south to east to due north).  On this half-circle 
+\[ z = re^{i \theta} \]
+we have then
+\[ dz = i \ re^{i \theta} \ d \theta \]
+In radial coordinates
+\[ z^* = re^{-i\theta} \]
+
+so then
+\[ \int {z^*} \ dz = \int r e^{-i\theta} r i e^{i \theta} \ d \theta \]
+\[ = r^2 i \int_{-\pi/2}^{\pi/2} d \theta = r^2 \pi i \]
+Alternatively,
+\[ zz^* = |z|^2 = r^2  \]
+\[ z^* = \frac{r^2}{z} \]
+\[ \int {z^*} \ dz = r^2 \int \frac{1}{z} \ dz \]
+
+Again
+\[ z = re^{i \theta} \]
+\[ dz = iz \ d \theta \]
+So the integral is just
+\[ = r^2 \int \frac{1}{z} \ iz \ d \theta   \]
+\[ = r^2 i \int d \theta = r^2 \pi i \]
+over the half-circle
 
 \subsection*{inverse in terms of $x$ and $y$}
 
@@ -234,25 +236,26 @@ The integral is
 \[ = \int \frac{1}{x^2+y^2} \ [ \  x \ dx + y \ dy + i \ ( \ -y \ dx + x \ dy) \ ] \]
 
 Suppose we go on a circle of radius $R$ centered on the origin and parametrize in terms of $\theta$.  We obtain:
-\[ x = R \cos \theta \]
-\[ y = R \sin \theta \]
-\[ x^2 + y^2 = R^2 \]
+\[ x = r \cos \theta \]
+\[ y = r \sin \theta \]
+\[ x^2 + y^2 = r^2 \]
 and
-\[ dx = - R \sin \theta \ d \theta \]
-\[ dy = R \cos \theta \ d \theta \]
+\[ dx = - r \sin \theta \ d \theta \]
+\[ dy = r \cos \theta \ d \theta \]
 
 We have for the integral
-\[ \frac{1}{R^2} \int x \ dx + y \ dy + i \ [ \ -y \ dx + x \ dy \ ] \]
+\[ \frac{1}{r^2} \int x \ dx + y \ dy + i \ [ \ -y \ dx + x \ dy \ ] \]
 
-Each term $x$, $y$, $dx$ and $dy$ has a factor of $R$.  So factor that out and cancel what's in front.  Then substitute the trig functions:
-\[ \int \cos \theta \ (- \sin \theta \ d \theta) + \sin \theta \ (\cos \theta \ d \theta) + i \ [ \ - \sin \theta \ (- \sin \theta \ d \theta) + \cos \theta \ (\cos \theta \ d \theta)\ ] \]
+Each term $x$, $y$, $dx$ and $dy$ has a factor of $r$.  So factor that out and cancel what's in front.  Then substitute the trig functions:
+\[ \int \cos \theta \ (- \sin \theta \ d \theta) + \sin \theta \ (\cos \theta \ d \theta) + \]
+\[ i \ [ \ - \sin \theta \ (- \sin \theta \ d \theta) + \cos \theta \ (\cos \theta \ d \theta)\ ] \]
 
-The real part has a big cancelation:
+The real part has a big cancelation, leaving:
 \[ \int   i \ [ \ - \sin \theta \ (- \sin \theta \ d \theta) + \cos \theta \ (\cos \theta \ d \theta)\ ]\]
-and so does the imaginary part:
+and so does the imaginary part, so we have just
 \[ = \int i \ d \theta = 2 \pi i \]
 
-Note that if we integrate the same function around a unit square, we run into problems.  First let's  do $[0,0 \times 1,1]$.  We have
+If we integrate the same function around a unit square, we run into problems.  First let's  do $[0,0 \times 1,1]$.  We have
 \[ \int u \ dx - \int v \ dy + i \ [ \ \int v \ dx + \int u \ dy \ ]  \]
 Along $C1$, $y = 0$ and $dy = 0$ so:
 \[ \int \frac{x}{x^2 + y^2} \ dx + i \ [ \ \int \frac{-y}{x^2 + y^2} \ dx \]
@@ -269,30 +272,6 @@ To evaluate this, recall that $z = e^{i\theta}$ recognize that at $z = -i$, $\th
 
 If we're on the unit circle, then we need not worry about the real part of Log $z = \ln r + i \theta$, since $\ln 1$ is equal to zero.  Also, if we're centered on the origin, then $r$ is a constant and we get the same number at both bounds, so the difference is zero even if the path is not a full circle.
 
-\subsection*{powers}
-We can extend this to 
-\[ \int \frac{1}{z^2} \ dz \]
-As before
-\[ dz = i z \ d \theta \]
-so this is
-\[ \int \frac{1}{z^2} \ i z \ d \theta = i \int \frac{1}{z} \ d \theta \]
-
-On the unit circle
-\[ z = e^{i\theta} \]
-The integral is
-\[  i \int_0^{2 \pi} e^{-i\theta} \ d \theta \]
-Now from Euler
-\[ e^{i \theta} = \cos \theta + i \sin \theta \]
-For any closed path, the difference between the bounds is $2\pi$ which is also the period of these functions, so the difference is always zero.
-
-In fact, for any negative integer power of $z$
-\[ \int z^{-n} \ dz \]
-
-around the unit circle $z=e^{i\theta}$ we have
-\[ i \int e^{-i(n-1)\theta} \ d \theta \]
-\[ = -\frac{1}{n-1} \ e^{-i(n-1)\theta} \ \bigg |_0^{2 \pi}  \]
-It doesn't matter what $n-1$ is, the value of the integral is just zero.
-
 \subsection*{example: square root}
 Consider
 \[ \int \sqrt{z} \ dz \]
@@ -300,13 +279,13 @@ along the half-circle of radius $3$ starting from the point $z = R$ on the $x$-a
 We can do this integral even if the "branch" of the square root function that we're using is only defined for $\theta > 0$.  
 
 We have that 
-\[ z = Re^{i\theta}, \ \ \ \theta = 0 \rightarrow \pi \]
+\[ z = re^{i\theta}, \ \ \ \theta = 0 \rightarrow \pi \]
 \[ dz = iz \ d \theta \]
-\[ = iRe^{i\theta} \ d \theta \]
+\[ = ire^{i\theta} \ d \theta \]
 
-\[ \sqrt{z} = \sqrt{R} e^{i\theta/2} \]
+\[ \sqrt{z} = \sqrt{r} e^{i\theta/2} \]
 so
-\[ I = \int_0^{\pi} iR \sqrt{R} e^{i3\theta/2} \ d \theta \]
+\[ I = \int_0^{\pi} ir \sqrt{r} e^{i3\theta/2} \ d \theta \]
 
 We need
 \[ \int e^{i3\theta/2} \ d \theta = \frac{2}{3i} e^{i3\theta/2} \ \bigg |_0^{\pi} \]
@@ -315,17 +294,17 @@ easiest to write it out as
 \[ = 0 + i(-1) - 1 - 0 = -(1+i) \]
 
 Going back to pick up all the factors we left behind:
-\[ I = -iR \sqrt{R} \ \frac{2}{3i} \ (1+i) = -R \sqrt{R} \ \frac{2}{3} \ (1+i) \]
-In the problem, $R$ was actually specified as $3$, leading to the cancellation:
+\[ I = -ir \sqrt{r} \ \frac{2}{3i} \ (1+i) = -r \sqrt{r} \ \frac{2}{3} \ (1+i) \]
+In the problem, $r$ was actually specified as $3$, leading to the cancellation:
 \[ I = - 2 \sqrt{3} \ (1+i) \]
 
 We can also do this problem by antiderivatives:
-\[ \int_R^{-R} \sqrt{z} \ dz = \frac{2}{3} \ z^{3/2} \ \bigg |_R^{-R}  \]
-\[ = \frac{2}{3} ( R^{3/2} e^{i3\pi/2} - R^{3/2} e^0) \]
-\[ = \frac{2}{3} R^{3/2} ( e^{i3\pi/2} - 1) \]
+\[ \int_r^{-r} \sqrt{z} \ dz = \frac{2}{3} \ z^{3/2} \ \bigg |_r^{-r}  \]
+\[ = \frac{2}{3} ( r^{3/2} e^{i3\pi/2} - r^{3/2} e^0) \]
+\[ = \frac{2}{3} r^{3/2} ( e^{i3\pi/2} - 1) \]
 and, as we showed above:
 \[ e^{i3\pi/2} = -i \]
-If $R=3$ we get the same answer as before.
+If $r=3$ we get the same answer as before.
 
 \subsection*{summary}
 
@@ -333,7 +312,7 @@ For an analytic function, we can compute the integral by analogy with the real n
 
 For any closed path, the result is just zero, with some special exceptions.
 
-$z^*$ is special because it's not analytic.  $1/z$ is said to be special because it's not defined at $z = 0$, though it is analytic, but this begs the question, what about $1/z^2$?
+$z^*$ is special because it's not analytic.  $1/z$ is said to be special because it's not defined at $z = 0$, but this begs the question, what about $1/z^2$?
 
 I would rather say that $1/z$ is special because it is $z^*$ in disguise since:
 \[ \frac{1}{z} \ \frac{z^*}{z^*} = \frac{1}{r^2} \ z^* \]
@@ -347,7 +326,9 @@ and
 \[ \int \frac{1}{z} \ dz = \int i \ d \theta \]
 The $z$ cancels.
 
-For any other power of $z$ we will have some factor of $e^{ki\theta}$ at the end.  Since this is a combination of sine and cosine, it will give zero when integrated over a closed path since $\theta = 0 \rightarrow 2 \pi$ and the trig functions have a period of $2 \pi$ no matter where you pick for the starting point (no matter what the value of $k$ is).
+For any other power of $z$ we will have some factor of $e^{ki\theta}$ at the end.  
+
+Since this is a combination of sine and cosine, it will give zero when integrated over a closed path since $\theta = 0 \rightarrow 2 \pi$ and the trig functions have a period of $2 \pi$ no matter where you pick for the starting point (no matter what the value of $k$ is).
 
 
 

@@ -11,7 +11,7 @@
 
 \graphicspath{{/Users/telliott/Github/figures/}}
 
-\title{Poles and residues}
+\title{Simple poles}
 \date{}
 
 \begin{document}
@@ -68,7 +68,7 @@ Then
 The residue is the coefficient of $1/(z-1)$.
 
 \subsection*{simple pole}
-If $f(z)$ has a simple pole at $z = z_0$ we find the residue by a trick with Cauchy's integral formula:
+If $f(z)$ has a simple pole at $z = z_0$ we find the residue by a simple consequence of Cauchy's integral formula:
 \[ \int \frac{f(z)}{z - z_0} \ dz = 2 \pi i \cdot f(z_0) \]
 
 in the limit that $z \rightarrow z_0$ it can come out from the integral sign:
@@ -76,6 +76,12 @@ in the limit that $z \rightarrow z_0$ it can come out from the integral sign:
 
 Stated in terms of the residue: 
 \[ R = \lim_{z \rightarrow z_0} (z - z_0) f(z_0) \]
+
+If there is more than one such point
+\[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
+The value of the integral is $2 \pi i$ times the sum of all the residues enclosed by the path.
+
+There is no longer a factor of $1/z-z_0$ in the integral, just $f(z)$.
 
 \subsection*{examples}
 \[ f(z) = \frac{z}{(2z + 1)(5 - z)} \]
@@ -93,39 +99,19 @@ For
 The pole is at $z_0 = 0$ so multiply by $z$:
 \[ R(0) = \cos z \bigg |_0 = 1 \]
 
-
-By definition the \emph{residue} at a simple singularity or pole $z_0$ is defined to be
-\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
-We can get there from Cauchy's integral formula:
-\[  \oint \frac{f(z)}{z - z_0} \ dz = 2 \pi i f(z_0) \]
-
-Just think of it as in the limit that $z \rightarrow z_0$, the denominator $z-z_0$ on the left of the first equation is a constant, so we can multiply both sides by $z - z_0$
-to obtain the result for the residue.
-
-\[ \oint f(z) \ dz = 2 \pi i \ \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
-using the definition
-\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
-we obtain
-\[ \oint f(z) \ dz = 2 \pi i \ b_1  \]
-If there is more than one such point
-\[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
-The value of the integral is $2 \pi i$ times the sum of all the residues enclosed by the path.
-
-There is no longer a factor of $1/z-z_0$ in the integral, just $f(z)$.
-
 \subsection*{residues}
-We repeat the problem from last time, using residues.  
+We repeat a problem, using residues.  
 \[ \oint f(z) \ dz = \oint \frac{1}{z^2 + 1} \ dz \]
 
-Our formula is:
+The formula is:
 \[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
 and
 \[ \oint f(z) \ dz = 2 \pi i \ \sum \text{ Res } \]
 
 Evaluate the formula.  Our path includes $i$ but not $-i$.
-\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
-\[ = \lim_{z \rightarrow i} (z-i) \  \frac{1}{(z+i)(z-i)} \]
+\[ b_1 = \lim_{z \rightarrow i} (z-i) \  \frac{1}{(z+i)(z-i)} \]
 \[ = \lim_{z \rightarrow i}  \  \frac{1}{z+i} = \frac{1}{2i} \]
+
 And by the second equation:
 \[ I = \pi \]
 as before.  Seems a bit easier!
@@ -133,8 +119,9 @@ as before.  Seems a bit easier!
 If the unit circle had been centered at $-i$, rewrite the function as
 \[ f(z) = \frac{1/z-i}{z+i} \]
 The value of the function is
-\[ \frac{1}{z-i}(-i) = -\frac{1}{2i} \]
-and that integral is then $- \pi$.
+
+\[ \frac{1}{z-i} \bigg |_{-i} = -\frac{1}{2i} \]
+and the integral is then $- \pi$.
 
 A contour that includes both singularities integrates to zero.
 
@@ -144,15 +131,15 @@ In this section we get more practice.
 \[ \oint_C \frac{e^z}{z^2 - 2z - 3} \ dz \]
 The denominator can be factored
 \[ z^2 - 2z - 3 = (z + 1)(z - 3) \]
-if our disk contains $|z \le 2|$ then it includes only $z = -1$ and our formula
+
+If the disk is $|z| \le 2$ then it includes only $z_0 = -1$ and the formula is
 \[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
 so
 \[ b_1 = \lim_{z \rightarrow -1} (z+1) \ \frac{e^z}{(z + 1)(z - 3)}  \]
 \[ = \lim_{z \rightarrow -1} \ \frac{e^z}{(z - 3)}  \]
 \[ = \frac{e^{-1}}{-1 - 3} = - \frac{1}{4 e} \]
 and
-\[ I = 2 \pi i \ b_1 \]
-\[ = 2 \pi i \ (- \frac{1}{4 e}) \]
+\[ I = 2 \pi i \ b_1 = 2 \pi i \ (- \frac{1}{4 e}) \]
 \[ = - \frac{\pi i}{2 e} \]
 
 \subsection*{example}
@@ -161,6 +148,7 @@ There are two simple poles at $z_0 = 0$ and $z_0 = 1$ and the residues are
 \[ \text{Res }(0) = \lim_{z \rightarrow 0} (z - 0) \ \frac{5z-2}{z(z-1)} \]
 \[ = \lim_{z \rightarrow 0} \ \frac{5z-2}{(z-1)} \]
 \[ = \frac{5 \cdot 0 - 2}{0 - 1} = 2 \]
+
 \[ \text{Res }(1) = \lim_{z \rightarrow 1} (z - 1) \ \frac{5z-2}{z(z-1)} \]
 \[ = \lim_{z \rightarrow 1} \ \frac{5z-2}{z} \]
 \[ = \frac{5 \cdot 1 - 2}{1} = 3 \]
@@ -169,21 +157,44 @@ Hence the total of all the residues is $5$ and $I = 10 \pi i$.
 \subsection*{example}
 Consider
 \[ \int \frac{1}{z^4 - 1} \ dz \]
+
 We can factor the denominator as
 \[ z^4 - 1 = (z^2 - 1)(z^2 + 1) \]
 \[ = (z+1)(z-1)(z+i)(z-i) \]
-We see that there are four poles, and each will have a residue.
+
+There are four poles, and each will have a residue.
+\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
 \[ \text{Res}(1) =  \lim_{z \rightarrow 1} (z-1) \ \frac{1}{(z+1)(z-1)(z+i)(z-i)} \]
 \[ =  \lim_{z \rightarrow 1} \ \frac{1}{(z+1)(z+i)(z-i)} \]
 \[ = \frac{1}{2(1+1)} = \frac{1}{4} \]
+
 \[ \text{Res}(i) =  \lim_{z \rightarrow i} (z-i) \ \frac{1}{(z+1)(z-1)(z+i)(z-i)} \]
 \[ \text{Res}(i) =  \lim_{z \rightarrow i} \ \frac{1}{(z+1)(z-1)(z+i)} \]
 \[ =  \lim_{z \rightarrow i} \ \frac{1}{(z^2 - 1)(z+i)} \]
 \[ = \frac{1}{(-2)(2i)} = -\frac{1}{4i} = \frac{i}{4}  \]
 
+\subsection*{example}
+\[ \oint_C \frac{e^z}{z^3 - z^2 - 5z - 3} = \oint_C \frac{e^z}{(z+1)^2 (z-3)} \]
+
+Recall the general formula
+\[ f'(a) = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
+
+If the contour includes $z = -1$ but not $z = 3$ then
+\[ f(z) = \frac{e^z}{(z-3)} \]
+so
+\[ f'(z) = \frac{(z-4)e^z}{(z-3)^2} \]
+
+Hence
+\[ \oint_C \frac{e^z}{z^3 - z^2 - 5z - 3} \ dz = \oint_C \frac{e^z}{(z+1)^2 (z-3)} \]
+\[ = \oint_C \frac{f(z)}{(z+1)^2} \ dz \]
+for $f(z) = e^z/(z-3) $ and
+\[ = 2 \pi i f'(-1) = 2 \pi i \ \frac{-5}{e} \ \frac{1}{(-4)^2} \]
+\[ = \frac{-5 \pi i}{8 e}  \]
+
 \subsection*{Removable singularities}
-If the residue turns out to be equal to zero, that is a removable singularity.  
+If the residue turns out to be equal to zero, that is called a removable singularity.  
 \[ I = \int_C \frac{\sin \pi z}{z^2 - 1} \ dz \]
+
 The denominator can be factored into 
 \[ z^2 - 1 = (z + 1)(z - 1) \]
 Suppose $C$ includes only $z = 1$, then
@@ -200,6 +211,6 @@ The only non-zero integral term is
 and the residue there is
 \[ \lim_{z \rightarrow 0} \ (z - 0) (- \frac{1}{3!} \ \frac{1}{z}) \]
 \[ = - \frac{1}{3!} = - \frac{1}{6} \]
-
+which we could have just read off the cofactor in the Laurent series.
 
 \end{document}

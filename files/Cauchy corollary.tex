@@ -21,7 +21,7 @@
 
 %[my-super-duper-separator]
 
-In this section we follow Beck, so I've used their notation.  In particular, $w$ is a fixed point inside the region.
+In this section we follow Beck, so I've used their notation, which is slightly different.  In particular, $w$ is a fixed point inside the region.
 
 The Cauchy Integral formula is:
 \[ f(w) = \frac{1}{2 \pi i} \int_C \frac{f(z)}{(z - w)} \ dz \]
@@ -30,19 +30,14 @@ If $f$ is differentiable for all points in some open disk centered at $w$ then $
 
 \[ f'(w) = \frac{1}{2 \pi i} \int_C \frac{f(z)}{(z - w)^2} \ dz \]
 
-This can be obtained by differentiating the original formula under the integral sign on the right-hand side. 
+One way this can be obtained is by just differentiating the original formula under the integral sign on the right-hand side. 
 
 \subsection*{derivative rule}
 
-We show here that
-\[ f'(a) = \frac{1}{2 \pi i} \ \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
-and there are more formulas for higher derivatives.
-Therefore
-\[ 2 \pi i \ f'(a) =  \oint_C \frac{f(z)}{(z-a)^2} \ dz \]
-
-Again, the Cauchy formula is:
+The Cauchy formula is:
 \[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i f(z_0) \]
-rewrite with $a$ for $z_0$
+
+rewritten with $a$ for $z_0$
 \[ \oint_C \frac{f(z)}{z-a} \ dz = 2 \pi i f(a) \]
 
 We take the partial with respect to $a$ of both sides:
@@ -65,7 +60,7 @@ so
 \[ = \frac{1}{\Delta w} \ [ \ \frac{1}{2 \pi i} \ \int_{\gamma} \frac{f(z)}{z - (w + \Delta w)} \ dz - \frac{1}{2 \pi i} \int_{\gamma} \frac{f(z)}{(z - w)} \ dz \ ] \]
 \[ =  \frac{1}{2 \pi i} \ \int_{\gamma} \frac{f(z)}{(z - w - \Delta w)(z-w)} \ dz  \]
 
-In putting the two fractions over a common denominator we get a factor of $\Delta w$ on top which cancels the other one.
+In putting the two fractions over a common denominator we get a factor of $\Delta w$ on top which cancels the leading one.
 
 It is now possible to show that the value of this integral approaches what we seek as $\Delta w \rightarrow 0$.  We will show that the difference of integrals goes to zero as $\Delta w \rightarrow 0$.
 
@@ -100,10 +95,6 @@ The general rule is:
 \[ f^n(z) = \frac{n!}{2 \pi i} \int_C \frac{f(w)}{(w - z)^{n+1}} \ dw \]
 which can be proved by induction.
 
-We will also see that any analytic function can be shown to have a power series expansion in a region where it is analytic.  So then it's pretty obvious that it is differentiable there.  And infinitely so.
-
-Power series is at once a huge complication and yet the source of the most important results in complex function theory.  There is just no avoiding them.
-
 \subsection*{example}
 
 \[ \int \frac{1}{z^2(z-1)}  \ dz \]
@@ -113,7 +104,9 @@ If the region includes both of the singularities $z = 0$ and $z = 1$ we can spli
 Rewrite the integral as
 \[ \int \frac{1/(z-1)}{z^2} \ dz + \int \frac{1/z^2}{z - 1} \ dz \]
 
-For the first path $\gamma_1$, only the first term is non-zero, by the corollary
+For the first path, $\gamma_1$, only the first term is non-zero.
+
+By the corollary
 \[ 2 \pi i f'(w) =  \int_{\gamma_1} \frac{f(z)}{(z - w)^2} \ dz \]
 $w = 0$ and the integral is:
 \[ = 2 \pi i \ [ \ \frac{d}{dz} \ \frac{1}{z -1} \bigg |_{z=0} = 2 \pi i \ [ \  - \frac{1}{(-1)^2} = -2 \pi i \ ] \]
@@ -125,6 +118,8 @@ with $w = 1$ so
 The total is zero.
 
 \subsection*{partial fractions}
+We look ahead to a technique we will practice a lot.
+
 The previous problem can also be done by partial fractions.  We have
 \[ \frac{1}{z^2(z - 1)} \]
 \[ = \frac{A}{z^2} + \frac{B}{z(z-1)} + \frac{C}{z - 1} \]
@@ -142,9 +137,13 @@ We're not done, but what's left is easy, it is just
 so ultimately:
 \[ f(z) = -\frac{1}{z^2} -\frac{1}{z} + \frac{1}{z - 1} \]
 
-The path includes both $z = 0$ and $z = 1$.
+The path includes both $z = 0$ and $z = 1$.  Break it up into the two parts.
 
-The first integral is zero.  The second one is $-2\pi i$ and for the third, just substitute $w = z - 1$, with $dw = dz$.  The integral is $2 \pi i$ and the total is just zero.
+The first integral is zero, by Cauchy's theorem when the path does not include $z = 0$, and by our results for $(z-z_0)^{-2}$ when it does.
+
+The second one is $-2\pi i$ for the path including $z = 0$.
+
+For the third, substitute $w = z - 1$, with $dw = dz$.  The integral is $2 \pi i$ and the total is zero.
 
 
 

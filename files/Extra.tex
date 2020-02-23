@@ -38,6 +38,8 @@ Length of a product:
 
 \subsection*{Triangle Inequality}
 
+\begin{center} \includegraphics [scale=0.4] {tri_inequality.png} \end{center}
+
 \[ |z + w|^2 = (z + w)(z + w)^* \]\
 $z + w$ is a complex number.  The square of the length of a complex number is equal to the number multiplied by its modulus.
 \[ = (z + w)(z^* + w^*) \]
@@ -61,5 +63,39 @@ from basic multiplication.
 
 The inequality follows from taking the square root of the first and last expressions:
 \[ |z + w| \le |z| + |w| \]
+
+$\square$
+
+\subsection*{reverse triangle equality}
+
+Surprisingly tricky...
+\[ |z_2 - z_1| \ge | \ |z_2| - |z_1| \ | \]
+
+\url{https://math.stackexchange.com/questions/127372/reverse-triangle-inequality-proof}
+
+By the standard triangle inequality:
+\[ |x| + |y-x| \ge |x + y - x| = |y| \]
+By subtraction
+\[ |y-x| \ge |y| - |x| \]
+
+By the same logic or just substituting symbols
+\[ |y| + |x-y| \ge |y + x - y| = |x| \]
+\[ |x-y| \ge |x| - |y| \]
+
+Let 
+\[ t = |y-x|  \]
+But $|a| = |-a|$ so also
+\[ t = |x-y|  \]
+
+Let $u = |y| - |x|$  We have
+\[ t \ge u \]
+\[ t \ge -u \]
+
+Since $|a| = |-a|$:
+\[ |t| \ge |u| \]
+Then
+\[ |y-x| \ge | \ |y| - |x| \ | \]
+
+$\square$
 
 \end{document}

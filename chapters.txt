@@ -2,7 +2,6 @@ Introduction
 Preface
 Arithmetic
 Conjugate
-Definitions
 
 Cauchy Riemann
 Difference quotient
@@ -25,20 +24,28 @@ Circular paths
 Cauchy theorem
 Cauchy formula
 Cauchy corollary
+Partial Fractions
 Summary 2
 
 Series
-Taylor
+Taylor series
 Laurent theory
 Laurent practice
 
 Residue Theory
-Partial Fractions
-Poles and residues
+Simple poles
 Kaplan
+Quotients
 Summary 3
+
+More
+Real Integrals
+Trig Integrals
+Conformal mapping
 
 Addendum
 Extra
+Partial fractions real
+Taylor series
 Cubics
 References

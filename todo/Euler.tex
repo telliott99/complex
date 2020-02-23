@@ -1,0 +1,65 @@
+ \documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+
+\title{Integration}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+Here is a problem from Orloff:
+\[ I = \int e^x \cos 2x \ dx \]
+
+One approach to try is Euler's formula for cosine:
+\[ \cos 2x = \frac{1}{2} ( e^{i2x} + e^{-i2x}) \]
+
+Then the integral is
+\[ I = \frac{1}{2} \int \ [ \ e^{x} e^{i2x} + e^{x} e^{-i2x} \ ] \ dx \]
+\[ = \frac{1}{2} \int \ [ \ e^{x(1 + 2i)}  + e^{x(1 -2i)} \ ] \ dx \]
+\[ = \frac{1}{2} \ [ \  \frac{e^{x(1 + 2i)}}{1 + 2i}  + \frac{e^{x(1 - 2i)}}{1 - 2i} \ ] \]
+
+We can deal with the denominator, let $\phi = \tan^{-1} (2)$ and then:
+\[ 1 + 2i = \sqrt{5} e^{\phi}, \ \ \ \ \ \ 1 - 2i = \sqrt{5} e^{-\phi} \]
+
+so
+\[ I = \frac{1}{2 \sqrt{5}} \ e^x \ [ \ e^{2ix} e^{-\phi} + e^{-2ix} e^{\phi} \ ] \]
+Let $\theta = 2ix - \phi$, then $- \theta = - 2ix + \phi$ and this is
+\[ I = \frac{1}{\sqrt{5}} \ e^x (\cos \theta) \]
+nope
+
+
+\[ e^{i2x - \phi} + e^{i2x - \phi} \]
+
+\[ I = \frac{1}{\sqrt{5}} \ e^x \ e^{\phi} \ [ \frac{e^{i2x} + e^{-i2x}}{2}\ ] \]
+\[ I = \frac{1}{\sqrt{5}} \ e^x \ e^{\phi} \cos 2x \]
+
+\subsection*{complexification}
+
+Rather than use the specific formula above, replace $\cos 2x$ by $e^{i2x}$, since $\cos 2x = Re \{ e^{i2x} \}$.  We will justify this in a bit.  Then
+\[ I_c = \int e^x e^{i2x} \ dx \]
+\[ = \frac{1}{1 + 2i} \ e^{x(1+2i)} \]
+\[ = \frac{1}{5} \cdot (1 - 2i) \ e^{x} \ (\cos 2x + i \sin 2x) \]
+\[ I = Re \{ I_c \} = \frac{1}{5} \ e^x \ (\cos 2x + 2 \sin 2x) \]
+
+\subsection*{justification}
+\[ I_c = I + iJ = \int e^x \cos 2x + i e^x \sin 2x \ dx = \int e^x \ e^{i2x} \ dx \]
+\[ I = Re \{ I_c \} \]
+
+
+\end{document}
