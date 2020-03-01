@@ -1,0 +1,224 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Writing Laurent Series}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+Laurent series are very helpful in certain problems.  However, they can really complicate your life.  Writing a series is not too difficult, with practice.  Look at the cheatsheet, and the short chapter on change of variables.
+
+However, what you \emph{must remember} with Laurent series is where is the center, where are the singularities, and where is the contour?.  
+
+Depending on these things, the series that is required will change.  You must match the series with the region.  The next example is shows that clearly.
+
+\subsection*{example 16 (Boas)}
+
+\label{sec:ex16L}
+
+\[ f(z) = \frac{12}{z(2 - z)(1 + z)} \]
+
+This function has three isolated singularities (at $z = 0, 2, -1$).
+
+Expanded around $z_0 = 0$, there will be three regions in which we have \emph{different} series:  namely $0 < |z| < 1$, $1 < |z| < 2$ and $|z| > 2$.
+
+\begin{center} \includegraphics [scale=0.5] {Boas_14_4_1b.png} \end{center}
+
+For each region, there will usually be two series adding up to the complete Laurent series.
+
+Also, in this problem, we have two integrands, obtained by partial fractions.
+\[ = \frac{4}{z} \cdot (\frac{1}{1 + z} + \frac{1}{2 - z}) \]
+So it's even more complicated!
+
+\subsection*{reference series}
+$A$
+\[ \frac{1}{1-z} = 1 + z + z^2 + z^3 + z^4 \dots \]
+$P$
+\[ \frac{1}{1 - z} = - \frac{1}{z} - \frac{1}{z^2} - \frac{1}{z^3}  - \frac{1}{z^4} \dots \]
+
+\subsection*{first term}
+
+\[ \frac{1}{1 + z} \]
+We need to substitute $-z$ for $z$ everywhere:
+
+$A$
+\[ \frac{1}{1 + z} = 1 - z + z^2 - z^3 + z^4 \dots \]
+$P$ 
+\[ \frac{1}{1 + z} = \frac{1}{z} - \frac{1}{z^2} + \frac{1}{z^3}  - \frac{1}{z^4} \dots \]
+
+\subsection*{second term}
+
+\[ \frac{1}{2 - z} \]
+The sign is correct but we have to factor out $2$ on the bottom and remember it, and then have standard series in terms of $z/2$ and $2/z$:
+
+$A$
+\[ \frac{1}{1-z/2} = 1 + z/2 + (z/2)^2 + (z/2)^3 + (z/2)^4 \dots \]
+with the factor of $1/2$
+\[ = \frac{1}{2} + \frac{z}{4} + \frac{z^2}{8} + \frac{z^3}{16} \dots \]
+
+$P$
+\[ \frac{1}{1 - z/2} = - \frac{2}{z} - \frac{4}{z^2} - \frac{8}{z^3}  - \frac{16}{z^4} \dots \]
+with the factor of $1/2$
+\[ = - \frac{1}{z} - \frac{2}{z^2} - \frac{4}{z^3}  - \frac{8}{z^4} \dots \]
+
+\subsection*{inner disk}
+
+Start with the inner punctured disk.  We want convergence for the region $|z| < 1$.  Since it's less than, we use standard geometric series (analytic) for each of the two terms.
+
+\[  1 - z + z^2 - z^3 + z^4 \dots \]
+\[ \frac{1}{2} + \frac{z}{4} + \frac{z^2}{8} + \frac{z^3}{16} + \frac{z^4}{32} \dots \]
+
+Add together
+\[ = \frac{3}{2} - \frac{3}{4}z + \frac{9}{8}z^2  - \frac{15}{16}z^3 + \frac{33}{32}z^4 \dots \]
+
+and finally, multiply by $4/z$ to obtain:
+\[ = \frac{6}{z} - 3 + \frac{9z}{2} - \frac{15z^2}{4} \dots \]
+
+This is the Laurent series valid in the innermost region.
+
+\subsection*{outer region}
+
+For the outer region, we need the principal part of the Laurent series only.  The first one is good as it is.
+\[ \frac{1}{z} - \frac{1}{z^2} + \frac{1}{z^3}  - \frac{1}{z^4} \dots \]
+
+For the second, we have the rearranged version:
+\[ - \frac{1}{z} - \frac{2}{z^2} - \frac{4}{z^3}  - \frac{8}{z^4} \dots \]
+
+Add together
+\[ -\frac{3}{z^2} - \frac{3}{z^3} - \frac{9}{z^4} \dots \]
+
+Recall the leading factor of $4/z$
+\[ - \frac{12}{z^3} - \frac{12}{z^4} - \frac{36}{z^5} \dots )  \]
+\[ = \frac{12}{z^3} \ (-1 -\frac{1}{z} - \frac{3}{z^2} \dots )\]
+
+\subsection*{middle region}
+
+The third part is the annulus in the middle.  For this we want convergence for $|z| > 1$ and also for $|z| < 2$.  Hence we want the principal part for $1/(1+z)$ and the analytic part for $1/(2-z)$.
+
+\[ \frac{1}{z} - \frac{1}{z^2} + \frac{1}{z^3}  - \frac{1}{z^4} \dots \]
+
+\[ \frac{1}{2} + \frac{z}{4} + \frac{z^2}{8}  + \frac{z^3}{16} + \frac{z^4}{32} \dots \]
+
+We could add them together, but it isn't really necessary since there are no shared powers.
+
+Finally, there is the leading factor of $4/z$, which gives $2$ as the cofactor of $z^{-1}$.  Each comes from term 1 of an analytic series.
+
+\subsection*{summary}
+
+What these results mean is that if we evaluate a contour integral in one of these regions, we should get the answer (within a factor of $2 \pi i$) given by the cofactor of $z^{-1}$ by series convergent for that region.
+
+For example, in the inner disk, I get $6/z$ from the series above.  Looking ahead to residue theory, \emph{in that region} there is only a single pole (at $z = 0$) and the value of the residue is
+\[ 12 \cdot \frac{1}{(1+z)(2-z)} \bigg |_{z=0} = 6 \]
+This matches the cofactor of $z^{-1}$ there, which was $6$ for the series in the inner ring.
+
+In the middle ring, we should get the same $6$ from above \emph{plus}
+\[ 12 \cdot \frac{1}{z(2-z)} \bigg |_{z=-1} = - 4 \]
+that's a total of $6 - 4 = 2$, which matches the series.
+
+In the outer ring, we get for the newly added one:
+\[ 12 \cdot \frac{1}{z(1+z)} \bigg |_{z=2} \]
+\[ 12 \cdot \frac{1}{6} = 2 \]
+That's a grand total of $6 - 4 + 2 = 4$.  Possibly we're missing a $1$ in the series which would give $4/z$ when multiplied by the leading factor, but I can't find the mistake.
+
+\subsection*{example 3}
+
+\label{sec:ex3L}
+
+\[ f(z) = \frac{1}{z(z+2)} \]
+Suppose the region of interest is an annulus centered on $z = 1$ with $1 < |z-1| < 3$.
+\begin{center} \includegraphics [scale=0.5] {writeseries1.png} \end{center}
+
+The first thing to do is make a substitution that translates the region so that it becomes centered on the origin:  $w = z - 1$.  Then the function becomes
+\[  \frac{1}{(w + 1)(w + 3)} \]
+The next thing is to write partial fractions.  For the numerator we get
+\[ A(w+3) + B(w+1) = 1 \]
+\[ A = - B = \frac{1}{2} \]
+
+Hence
+\[ \frac{1}{2} \cdot \ [ \ \frac{1}{w+1} - \frac{1}{w+3} \ ] \]
+The third step is to convert each of these fractions into something like $1/1-x$.
+\[ \frac{1}{w+1} = \frac{1}{1 - (-w)} \]
+\[ \frac{1}{w+3}  = \frac{1}{3} \cdot \frac{1}{1 - (-w/3)} \]
+And then the fourth step is to write the series, recalling that we want different forms depending on whether we are in a circle or an annulus.
+
+\[ \frac{1}{1 - (-w)} \]
+\[ = \sum_{n=0}^{\infty} (-w)^n = \sum_{n=0}^{\infty} (-1)^n (w)^n , \ \ \ |w| < 1 \]
+\[ = -\sum_{n=1}^{\infty} \frac{1}{(-w)^n} =  -\sum_{n=1}^{\infty} \frac{(-1)^n}{w^n}, \ \ \ |w| > 1 \]
+We pick the second form because our region is $1 < |z-1| < 3$
+
+A similar thing can be done for the other term.  We show only the first series since we are inside the circle.
+\[  \frac{1}{3} \cdot \frac{1}{1 - (-w/3)} \]
+\[ = \frac{1}{3} \cdot  \sum_{n=0}^{\infty} (-1)^n (\frac{w}{3})^n , \ \ \ |w| < 3 \]
+\[ = \sum_{n=0}^{\infty} (-1)^n \ \frac{1}{3^{n+1}} \ w^n , \ \ \ |w| < 3 \]
+
+Add the two series together (remembering the minus sign on the second term)
+\[ -\sum_{n=1}^{\infty} \frac{(-1)^n}{w^n} - \sum_{n=0}^{\infty} (-1)^n \ \frac{1}{3^{n+1}} \ w^n \]
+and then picking up the leading factor from 
+\[ \frac{1}{2} \cdot \ [ \ \frac{1}{w+1} - \frac{1}{w+3} \ ] \]
+so
+\[ \frac{1}{2} \ [ \ -\sum_{n=1}^{\infty} \frac{(-1)^n}{w^n} - \sum_{n=0}^{\infty} (-1)^n \ \frac{1}{3^{n+1}} \ w^n \ ] \]
+
+The last step is to reverse the substitution:  $w = z - 1$ and bring the minus sign out front
+\[ f(z) = - \frac{1}{2} \ [ \ \sum_{n=1}^{\infty} \frac{(-1)^n}{(z-1)^n} \sum_{n=0}^{\infty} (-1)^n \ \frac{1}{3^{n+1}} \ (z-1)^n \ ] \]
+
+I don't know if I could ever learn to do this well, but at least the explanations make sense.
+
+Now, if we were to integrate $f(z)$, we would have only one term that gives a non-zero result, namely the first term with $n=1$
+\[ - \frac{1}{2} (-1) \frac{1}{z-1} \]
+The residue is the cofactor of that term:
+\[ \text{Res }(1) = \lim_{z \rightarrow 1} \frac{1}{2} = \frac{1}{2} \]
+Multiply by $2 \pi i$ to obtain $\pi i$.
+
+\subsection*{example 3, partial fractions}
+
+On the other hand, I would just write the partial fraction:
+\[ \int \frac{1}{2} \ [ \ \frac{1}{z} - \frac{1}{z + 2} \ ] dz \]
+
+The curve $C[1,3]$ includes the singularity at $z = 0$, but $z = -2$ is on the boundary, not inside the region.  The curve $C[1,1]$ includes neither point.
+
+So for the second curve the integral is zero and for the first one only the $\int 1/z \ dz$ matters.  It's an old friend, with value $2 \pi i$, the value of the integral is thus $\pi i$.
+
+\subsection*{example 6 (Brown and Churchill)}
+
+\label{sec:ex6L}
+
+\[ \int \frac{1}{z(z-2)^4} \ dz \]
+with singularities at $z = 0$ and $z = 2$.
+
+Use the $1/z$ part to get a geometric series:
+\[ \frac{1}{z(z-2)^4} = \frac{1}{(z-2)^4} \cdot \frac{1}{(2 + z - 2)} \]
+\[ = \frac{1}{(z-2)^4} \cdot \frac{1}{2} \cdot \frac{1}{(1 - (-(z-2))/2 )} \]
+
+The third term gives the geometric series with common ratio $(z-2)/2$.  Those $z-2$ terms will cancel the leading factor.  The only term that matters is the cube, which gives:
+\[  \frac{1}{(z-2)} \cdot \frac{1}{2} \cdot \frac{1}{(-2)^3} \]
+
+We have that $b_1 = -1/16$ so $I = -\pi i/8$.
+
+\subsection*{example 19 (Brown and Churchill)}
+
+\label{sec:ex19L}
+
+The second one is:
+\[ \int e^{1/z^2} \ dz \]
+We use the standard series for $e^z$
+\[ e^z = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \dots \]
+substituting $1/z^2$
+\[ 1 + \frac{1}{z^2} + \frac{1}{2! \ z^4} + \frac{1}{3! \ z^6} + \dots \]
+
+Since there's no $z$ with a power $n=-1$, the value of the integral is just zero.
+
+\end{document}

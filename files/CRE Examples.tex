@@ -11,7 +11,7 @@
 
 \graphicspath{{/Users/telliott/Github/figures/}}
 
-\title{Introduction}
+\title{CRE Examples}
 \date{}
 
 \begin{document}
@@ -37,7 +37,8 @@ which can be written in terms of $x$ and $y$ as
 \[ y = \frac{z - z*}{2i} \]
 Generally, the value of $f$ depends on both $z$ and $z*$, but we will be very interested in functions which depend only on $z$ and not $z*$.  The reason for this is that only such functions have the property that the derivative at a point does not depend on the direction from which we approach that point.
 
-Consider the function:
+\subsection*{example}
+
 \[ f(x,y) = x^2 - y^2 \]
 \[ = \frac{(z+z*)^2}{4} + \frac{(z-z*)^2}{4} \]
 \[ = \frac{1}{4} \ [ \ z^2 + 2zz* + z*^2 + z^2 - 2zz* + z*^2 \ ] \]
@@ -54,7 +55,8 @@ The CRE conditions are:
 \[ u_x = v_y \]
 \[ u_y = -v_x \]
 
-Consider:
+\subsection*{example}
+
 \[ f(x,y) = x^2 - y^2 + i2xy \]
 CRE requires
 \[ u_x = 2x \stackrel{?}{=}  v_y = 2x \]
@@ -62,7 +64,8 @@ CRE requires
 The function is analytic.  As Shankar says, this is expected because:
 \[ x^2 - y^2 + 2ixy = (x + iy)(x + iy) = z^2 \]
 
-Consider:
+\subsection*{example}
+
 \[ f(x,y) = \cos y - i \sin y \]
 CRE requires:
 \[ u_x = 0 \stackrel{?}{=} v_y = - \cos y \]
@@ -70,7 +73,8 @@ CRE requires:
 This is "impossible" since there is no $y$ that satisfies both of the conditions.  And it's not surprising since
 \[ y = \frac{z - z*}{2i} \]
 
-Consider:
+\subsection*{example}
+
 \[ f(x,y) = x^2 + y^2 \]
 CRE requires:
 \[ u_x = 2x \stackrel{?}{=}  v_y = 2y \]
@@ -78,7 +82,8 @@ CRE requires:
 CRE are only satisfied if $x=y$.  Also not surprising since
 \[ x^2 + y^2 = zz* \]
 
-Consider:
+\subsection*{example}
+
 \[ f(x,y) = x^2 - y^2 \]
 CRE requires:
 \[ u_x = 2x \stackrel{?}{=} v_y = -2y \]
@@ -86,7 +91,8 @@ which is true if $x = y$.
 \[ u_y = 0 \stackrel{?}{=} -v_x = 0 \]
 But "no importance is given to functions which obey the CRE only at isolated points or on lines."
 
-Consider:
+\subsection*{example}
+
 \[ f(x,y) = e^x \cos y + i e^x \sin y \]
 CRE requires:
 \[ u_x = e^x \cos y \stackrel{?}{=} v_y = e^x \cos y \]
@@ -103,12 +109,14 @@ and we did this one in the previous section.
 
 For functions of interest, it may often be true that CRE fails at particular points called \emph{singularities}.
 
-Consider:
+\subsection*{example}
+
 \[ f(x,y) = \frac{1}{z} = \frac{z*}{zz*} = \frac{x-iy}{x^2 + y^2} \]
 We need:
 \[ u_x = \frac{d}{dx} \ \frac{x}{x^2 + y^2} = \frac{x^2 + y^2 - 2x^2}{(x^2 + y^2)^2}  = \frac{y^2 - x^2}{(x^2 + y^2)^2} \]
 \[ v_y = \frac{d}{dy} \ (-\frac{y}{x^2 + y^2} ) = - \frac{x^2 - y^2}{(x^2 + y^2)^2} = u_x \]
 \[ u_y =  0 = v_x \]
+
 But the function blows up at the origin.  This described by saying it has a pole at the origin.
 The function
 \[ f(z) = \frac{c}{z} \]

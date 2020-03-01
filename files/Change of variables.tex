@@ -1,0 +1,73 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Change of variables}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+We start with the key result
+\[ \oint \frac{1}{z} \ dz = (2 \pi i) \cdot 1 \]
+
+\subsection*{1/(1-z)}
+The canonical form.  The Laurent series is:
+\[ \frac{1}{1 - z} = - \frac{1}{z} \dots \]
+The cofactor of $z^{-1}$ is $-1$ and 
+\[ I = \oint \frac{1}{1 - z} = (2 \pi i) \cdot (-1) \]
+
+Residue theory says to multiply by $z - z_0$.  But the form of the function isn't right.  We need:
+\[ - \oint \frac{1}{z - 1} \ dz \]
+So $z_0 = 1$ and
+\[ R(1) = 1 \]
+But there's that leading minus sign so $I = (2 \pi i) \cdot (-1)$.
+
+The third way is change of variables.  Let $w = 1 - z$.  $dw = - dz$.  We have
+\[ \oint \frac{1}{w} \ (- dw) \]
+with the same result.
+
+\subsection*{1/(z + 1)}
+From the chapter on Laurent examples:
+\[ \frac{1}{1 + z} = \frac{1}{z}  \dots \]
+The cofactor of $z^{-1}$ is $1$ and 
+\[ I = \oint \frac{1}{1 + z} = (2 \pi i) \cdot (1) \]
+
+Residue theory says, first, what is $z_0$?  It is $-1$, so
+\[ R(-1) = 1 \bigg |_{-1} = 1 \]
+
+Change of variables.  Let $w = 1 + z$, $dw = dz$.  Same result.
+
+\subsection*{summary}
+
+$\circ$ \ If $z$ has a minus sign it can be used as is for series, but everything needs to be multiplied by $(-1)$ for residues and $dw = - dz$ for change of variables.
+
+\subsection*{note}
+Change of variables can make other expressions simpler too.
+
+\[ \oint \frac{z}{z - a} \ dz \]
+where $a$ is some complex constant.  Let $w = z - a$, $dw = dz$ and $z = w + a$.
+
+\[ I = \oint \frac{w + a}{w} \ dw = \oint \ dw + \oint \frac{a}{w} \ dw = a \cdot (2 \pi i) \]
+
+That $z$ in the numerator makes a difference!  We had this result for the principal part of the Laurent series:
+\[ \frac{1}{a - z} = -\frac{1}{z} \ [ \ 1 + \frac{a}{z}  \dots \]
+
+Now, in multiplying the series by $z$, the term that matters is $-a/z^2$, so we get $-a$ as the cofactor of $z^{-1}$.
+
+But...  we have another minus sign due to the fact that the series result is for $1/(a - z)$ but the problem we are solving is $1/(z - a)$.  The final result is $a \cdot (2 \pi i)$.
+
+
+\end{document}

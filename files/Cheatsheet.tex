@@ -1,0 +1,103 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Laurent series cheatsheet}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+\label{sec:series_cheatsheet}
+
+In general, the Laurent series is two parts.  The analytic part is
+\[ \sum a_k (z - z_0)^k \]
+valid in a disk inside $r = 1$.
+
+The principal part is
+\[ \sum b_k (z - z_0)^{-k} \]
+valid in the region outside a disk of radius $r = 1$.  If the variable is $a/z$ then the valid radius is $z > a$.
+
+Dealing with Laurent series problems is a pain.  I always seem to be re-doing the same calculations, hence, this cheatsheet.
+
+\subsection*{before you start}
+
+First 
+
+$\circ$ \ Change of variables to move the contour to the origin.
+
+$\circ$ \ Partial fractions decomposition, if possible.
+
+$\circ$ \ Change of sign overall to fit the forms we develop below.
+
+$\circ$ \ For $1/(1 + z)$ substitute $-z$ for $z$.
+
+\subsection*{basic series}
+
+$A$:
+\[ \frac{1}{1 - z} = 1 + z + z^2 + z^3 \dots \]
+converges for an open disk with $|z| < 1$.
+
+Use the trick for getting a \emph{different} geometric series.  Write
+\[ = -\frac{1}{z} \cdot \frac{1}{1 - 1/z} \]
+
+That's also a geometric series, but in $1/z$.  It converges when $|1/z| < 1$.
+
+But then $|z| > 1$!  That's just what we need to work \emph{outward} from a radius.  $P$ (for principal) is $-1/z$ times the geometric series in $1/z$:
+
+$P$:
+\[ \frac{1}{1 - z} = -\frac{1}{z} \cdot (1 + \frac{1}{z} + \frac{1}{z^2} + \frac{1}{z^3} \dots ) \]
+\[ \frac{1}{1 - z} = - \frac{1}{z} - \frac{1}{z^2} - \frac{1}{z^3}  - \frac{1}{z^4} \dots \]
+
+We can read the value of the integral as the coefficient $b_1 = -1$.
+
+\subsection*{modification}
+
+There are three other simple forms with a constant other than $1$:
+
+\subsection*{$1/a + z$}
+
+\label{sec:a_plus_z}
+
+\[ \frac{1}{a + z} = \frac{1}{a} \cdot \frac{1}{1 + z/a} \]
+Write the $A$ series in $-z/a$:
+\[ \frac{1}{a} \ [ \ 1 -\frac{z}{a} + (\frac{z}{a})^2 - (\frac{z}{a})^3 \dots \ ] \]
+For the $P$ series, factor out $1/z$
+\[ \frac{1}{a + z} = \frac{1}{z} \cdot \frac{1}{1 + a/z} \]
+and write the $P$ series in $-a/z$:
+\[ \frac{1}{z} \cdot \ [ \ 1 - \frac{a}{z} + (\frac{a}{z})^2 - (\frac{a}{z})^3 \dots \ ] \]
+\[ \frac{1}{z} - \frac{a}{z^2} + (\frac{a}{z})^2 - (\frac{a}{z})^3 \dots  \]
+
+\subsection*{$1/a - z$}
+
+\label{sec:a_minus_z}
+
+For the second one we have the analytic series in terms of $z/a$ 
+\[ \frac{1}{a - z} = \frac{1}{a} \cdot \frac{1}{1 - z/a} = \frac{1}{a} \cdot \ [ \ 1 +  \frac{z}{a} + (\frac{z}{a})^2 + \dots \ ] \]
+For the $P$ series we need a different factorization:
+\[ \frac{1}{a - z} = -\frac{1}{z} \cdot \frac{1}{1 - a/z} \]
+\[ = -\frac{1}{z} \ [ 1 +  \frac{a}{z} + (\frac{a}{z})^2 + (\frac{a}{z})^3 \dots \ ]  \]
+\[ = -\frac{1}{z} - \frac{a}{z^2} - \frac{a^2}{z^3} - \frac{a^3}{z^4} \dots  \]
+
+The third is minus the second.
+
+\label{sec:z_minus_a}
+
+And if you have something like
+\[ \frac{z}{1 - z} \]
+
+that's just $z$ times the appropriate series above.
+
+\end{document}

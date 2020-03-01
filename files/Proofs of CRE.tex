@@ -23,7 +23,7 @@
 
 \subsection*{difference quotient}
 
-We gave a first proof in the section on differentiation which is repeated more briefly here.  
+We went through a first proof in the section on differentiation which is repeated more briefly here.  There are a few more proofs in this chapter.
 
 The derivative $f'(z)$ is defined to be the limit of the following difference quotient, if the limit exists.
 \[ f'(z) = \lim_{\Delta z \rightarrow 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} \]
@@ -159,9 +159,23 @@ $\square$
 
 To put this another way, if we have already established the CRE, we can run this proof backwards to show that for $f(z)$, $\partial f/\partial \bar{z} = 0$.
 
-Sources:
+\subsection*{derivative for any path}
+We can use the Cauchy-Riemann equations to show that when they are satisfied, the derivative is the same for \emph{any straight line} through $z_0$.
 
-[1] Alder.  \emph{An Introduction to Complex Analysis for Engineers}.
+Write:
+\[ \frac{df}{dz} = \frac{du + i dv}{dx + i dy} \]
+\[ = \frac{u_x \ dx + u_y \ dy + i \ [ \ v_x \ dx + v_y \ dy \ ]}{dx + i dy} \]
+
+For a straight line, the slope $m = \Delta y/\Delta x$ ($dy/dx$) so dividing through by the differential $dx$ we obtain:
+\[ = \frac{u_x + u_y \ m + i \ [ \ v_x + v_y \ m \ ]}{1 + i m} \]
+
+Using $u_x = v_y$, $u_y = - v_x$:
+\[ = \frac{u_x + -v_x \ m + i \ [ \ v_x + u_x \ m \ ]}{1 + i m} \]
+Since $- z = i \cdot i \cdot z$:
+\[ = \frac{u_x + i v_x \ im + i \ [ \ v_x + u_x \ m \ ]}{1 + i m} \]
+\[ = \frac{u_x + i u_x m + i \ [ \ v_x +  v_x \ im \ ]}{1 + i m} \]
+\[ = \frac{u_x (1 + im) + i v_x (1 + im) \ ]}{1 + i m} \]
+\[ = u_x + i v_x  \]
 
 \url{http://www.eee.metu.edu.tr/~ccandan/EE202_summer2004/solutions/An%20Introduction%20to%20Complex%20Analysis%20for%20Engineers%20-%20Michael%20Alder.pdf}
 

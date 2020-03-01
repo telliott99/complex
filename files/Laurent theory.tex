@@ -20,13 +20,28 @@
 
 %[my-super-duper-separator]
 
-Any function that is analytic inside a disk has a power series (a Taylor series) convergent inside that disk.
+Any function that is analytic inside a disk has a power series (a Taylor series) convergent inside that disk.  
 
-But what about a punctured disk?
+We know that
+\[ e^z = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} \dots \]
+which in fact converges everywhere.  So then consider:
+\[ \frac{e^z}{z} = \frac{1}{z} \ [ \ 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} \dots \ ] \]
+\[ = \frac{1}{z} + 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} \dots \]
+This isn't defined at $z = 0$ but is defined everywhere else.
+
+We can integrate a power series term by term.  We know by Cauchy's integral theorem that the only term with a non-zero contour integral is $1/z$ so
+\[ \oint \frac{e^z}{z} = \oint \frac{1}{z} = 2 \pi i \]
+
+As the power of $z$ in the denominator increases, eventually we'll see factorial terms:
+\[ \oint \frac{e^z}{z^3} = \pi i \]
+
+And it's good that we can do this type of problem with a series, because a parametrization of it rapidly leads to not fun stuff like $e^{e^{i \theta}}$ or ($\int e^t/t$).
+
+So what about a circular region, excluding the center.  That is called a punctured disk.
 \[ 0 < |z-z_0| < R \]
- or a donut 
+Or what about a donut or annulus?
 \[ 0 < r < |z-z_0| < R \]
-The applicable series is then a Laurent series.
+Then the applicable series is a Laurent series.
 
 The HELM guys say: 
 \begin{quote}One of the shortcomings of Taylor series is that the circle of convergence is often only a part of the region in which $f(z)$ is analytic.\end{quote}
@@ -37,7 +52,7 @@ An example is
 \[ f(z) = \frac{1}{1 - z} \]
 This function is analytic everywhere except at the singularity $z = 1$.  The Taylor series expanded around $z = 0$ is
 \[ 1 + z + z^2 + z^3 + \dots \]
-which converges to $f(z)$ only inside $|z|=1$.
+which converges to $f(z)$ only for $|z| < 1$.
 
 \begin{quote}The radius of convergence for a series centered on $z = z_0$ is the distance between $z_0$ and the nearest singularity.\end{quote}
 
@@ -49,7 +64,7 @@ Let $C1$ and $C2$ be two circles with center at $z_0$.  Let $f(z)$ be analytic i
 
 The Taylor part of the series (called the analytic part) usually converges everywhere inside a disk of radius $R$, while the $b$ part, the principal part, usually converges everywhere outside a disk of radius $r$, so the combined series is convergent in the annulus, the area between $r$ and $R$.
 
-Note:  if there are several isolated singularities , then there are several annular rings, each with a different Laurent series.
+Note:  if there are several isolated singularities , then there are several annular rings, each with a different Laurent series.  We will work an example of that in the next chapter.
 
 \subsection*{Laurent's Theorem}
 If $f(z)$ is analytic through a closed annulus $D$ centered at $z = z_0$, then at any point $z$ inside $D$ we can write:
@@ -83,7 +98,7 @@ Choose $r_1$ and $R_1$ just inside (or outside, respectively) the boundaries of 
 Let $\gamma_1$ go along (let $w$ take on the values) $|w - z_0| = R_1$ counter-clockwise, with the interior on the left, and let $\gamma_2$ go along $|w - z_0| = r_1$, in the opposite direction to $\gamma_1$.  
 
 Set up a keyhole contour.  Then $f$ is analytic in the domain which the line integral encloses, which is required to use Cauchy's formula:
-\[ f(z) = \frac{1}{2 \pi i} \int_{\gamma_1} \frac{f(w)}{w-z} \ dw + \frac{1}{2 \pi i} \int_{\gamma_2} \frac{f(w)}{w-z} \ dw \]
+\[ f(z) = \frac{1}{2 \pi i} \ [ \ \int_{\gamma_1} \frac{f(w)}{w-z} \ dw +  \int_{\gamma_2} \frac{f(w)}{w-z} \ dw \ ]  \]
 
 The path that links the two circles cancels because we traverse it in opposite directions.
 
@@ -112,11 +127,10 @@ The series is
 \[ - \sum_0^{\infty} \ \frac{(w - z_0)^j}{(z - z_0)^{j+1}} \]
 
 Rewriting 
-\[ f(z) = \frac{1}{2 \pi i} \int_{\gamma_1} f(w) \ \sum_{k=0}^{\infty} \frac{(z - z_0)^k}{(w - z_0)^{k+1}} \ dw \]
-\[ -  \frac{1}{2 \pi i} \int_{\gamma_2} f(w) \ \sum_{j=0}^{\infty} \frac{(w - z_0)^j}{(z - z_0)^{j+1}} \ dw \]
+\[ f(z) = \frac{1}{2 \pi i} \ [ \ \int_{\gamma_1} f(w) \ \sum_{k=0}^{\infty} \frac{(z - z_0)^k}{(w - z_0)^{k+1}} \ dw - \int_{\gamma_2} f(w) \ \sum_{j=0}^{\infty} \frac{(w - z_0)^j}{(z - z_0)^{j+1}} \ dw \ ] \]
 The sums can come out from under the integral so
-\[ f(z) = \sum_{k=0}^{\infty} (z - z_0)^k \frac{1}{2 \pi i} \int_{\gamma_1} \frac{f(w)}{(w - z_0)^{k+1}} \ dw \]
-\[ + \sum_{j=0}^{\infty} z - z_0)^{-j-1} (- \frac{1}{2 \pi i}) \int_{\gamma_2} f(w) \ (w - z_0)^{j}  \ dw \]
+\[ f(z) = \frac{1}{2 \pi i} \ [ \ \sum_{k=0}^{\infty} (z - z_0)^k \int_{\gamma_1} \frac{f(w)}{(w - z_0)^{k+1}} \ dw  \]
+\[ \ \ \ \ - \sum_{j=0}^{\infty} z - z_0)^{-j-1} \int_{\gamma_2} f(w) \ (w - z_0)^{j}  \ dw \ ]  \]
 
 We can clean up the indices for $f_2$.  Instead of running from $j = 0 \rightarrow \infty$ with power $ - j -1$, let it be $k = - \infty \rightarrow -1$ with power $k$.
 
@@ -137,10 +151,10 @@ It is convergent when both criteria are met.
 The principal part of the Laurent series consists of the terms with negative exponents.  We can also write that part as
 \[ \sum_{n=1}^{\infty} a_{-n} (z - z_0)^{-n} \]
 
-Although it seems like we've made things \emph{really} complicated, we haven't really, because when such a series is integrated, the only non-zero term is the $k = -1$ term.
+Although it seems like we've made things \emph{really} complicated, they aren't, because when such a series is integrated, the only non-zero term is the $k = -1$ term.
 
 Let's sidestep the problem of determining the coefficients using the formulas given above.
 
-Instead, just say that we seek a series expansion using negative powers of $z$, and hope to find that it will be valid in the region $|z| > 1$.
+Instead, just say that we seek a series expansion using negative powers of $z$, and try to make sure that it will be valid in the region $|z| > 1$.
 
 \end{document}

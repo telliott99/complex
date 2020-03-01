@@ -20,20 +20,39 @@
 
 %[my-super-duper-separator]
 
-In general, for a parametrized curve, we have
+For a parametrized curve we have
 \[ \int f[z(t)] \ z'(t) \ dt \]
 
-A particularly important parametrization for complex integrals is the circular path.  Such a path can be described as $C[$origin, radius$]$, as in $C[z_0,r]$, and another frequently used notation is $|z - z_0| = r$.
+Circular paths are an especially important parametrization for complex integrals.  (Actually that's an understatement, nearly all integrals from this point on will be circular paths).
+
+Such a path can be described as
+\[ \text{C}[\text{origin, radius}] \]
+e.g. the unit circle centered at the origin, $C[z_0,r]$.  Another frequently used notation is
+\[ |z - z_0| = r \]
+This is the modulus of a complex number, but it basically amounts to the length of the line connecting $z$ with $z_0$.
 
 Usually we are interested in closed circular paths, where $z$ goes around the whole circle and ends up at the start.  On such a path, $z$ takes on values with constant $r$ and the only change is in $t$ (or $\theta$).
 
 We can describe  this as 
-\[ z = re^{it} \]
-with $t \in [0, 2 \pi]$.
+\[ z = re^{it}, \ \ \ \ \ \ 0 \le t \le 2 \pi \]
+Sometimes written $t \in [0, 2 \pi]$
+
+But 
+\[ e^{it} \bigg |_0^{2 \pi} = \cos t + i \sin t \bigg |_0^{2 \pi} = 0 \]
+It doesn't matter if there is an extra factor of $k$, because the period of the trig functions is $2 \pi$.
+
+So, it is only in very special cases that such an integral will be non-zero.
 
 \subsection*{dz}
 For this parametrization, we have that
 \[ dz = ir e^{it} \ dt = i z \ dt  \]
+
+Alternatively, we can write
+\[ z = x + i y = r \cos t + i \sin t \]
+\[ dz = r (- \sin t + i \cos t ) \ dt \]
+\[ = ir (\cos t + i \sin t) \ dt \]
+\[ = iz \ dt \]
+as before.
 
 \subsection*{function:  $1$}
 \[ \int_C \ dz = \int_C ir e^{it} \ dt = ir \ \frac{e^{it}}{i} = z \]
@@ -46,7 +65,7 @@ For this parametrization, we have that
 
 For any closed path, the starting and ending $z$ are the same, so the value is zero.  
 
-Alternatively, the result can be written $\rho e^{i \phi}$, but that exponential is really two trig functions since $e^{i \phi} = \cos \phi + i \sin \phi$, with a period of $2 \pi$.  Evaluated over any closed path, the result is zero.
+Alternatively, the result can be written $\rho e^{i \phi}$, but that exponential is really two trig functions since $e^{i \phi} = \cos \phi + i \sin \phi$, with a period of $2 \pi$.  As we said, evaluated over any closed path, the result is zero.
 
 For the unit circle, evaluated for the part of the circle between $\theta = 0 \rightarrow \pi/2$ we get
 \[ \frac{1}{2} \ e^{i 2 \theta} \big |_0^{\pi/2} = \frac{1}{2} ( \ e^{i \pi} - 1) \]
@@ -61,7 +80,7 @@ For the unit circle, evaluated for the part of the circle between $\theta = 0 \r
 
 Whether we say that $z$ is the same at the beginning and the end, or that we have something like $e^{it}$ with a period of $2 \pi$, the result for a full circle will always be zero.
 
-However, the inverse is special.  Notice that it is not on the list of exponents.
+Notice that the inverse $z^{-1}$ is not on the list above.  We'll see why in a bit.
 
 \subsection*{example:  $z$ in terms of $(x,y)$}
 
@@ -71,23 +90,22 @@ Substitute from $u = x, v = y$:
 \[ \int x \ dx - y \ dy + i \ [ \ x \ dy + y \ dx \ ] \]
 
 Consider a path around the unit circle.  Then
-\[ x = \cos t \]
-\[ y = \sin t \]
-\[ dx = -\sin t \ dt \]
-\[ dy = \cos t \ dt \]
+\[ x = \cos t, \ \ \ \ \ \ y = \sin t \]
+\[ dx = -\sin t \ dt, \ \ \ \ \ \ dy = \cos t \ dt \]
 
-substitute in the integral
+substitute into the integral
 \[ \int \cos t (- \sin t \ dt) - \sin t \cos t \ dt + i \ [ \ \cos^2 t \ dt - \sin^2 t \ dt \ ] \]
 \[ -2 \int \sin t \cos t \ dt + i \int  \cos^2 t - \sin^2 t \ dt \]
-If this were not a unit circle, each term would have a factor of $r$, one for the $u,v$ part and one for the differential, so there would be a leading factor of $r^2$.
 
-Using $u$-substitution (and reusing the symbol $u$ for the familiar notation), the real part is $\int u \ du = u^2/2$ so
-\[ I_{re} = - \sin^2 t \]
+If this were not a unit circle, each term would have a factor of $r$, one for the $u$ or $v$ part and one for the differential, so there would be a leading factor of $r^2$.
 
-If you can't remember $\int \cos^2$ why don't we just guess:
+Using $u$-substitution (briefly re-defining the symbol $u$ to allow the familiar notation), the real part is $\int u \ du = u^2/2$ so
+\[ I_{Re} = - \sin^2 t \]
+
+If you can't remember $\int \cos^2$ just guess:
 \[ [ \ \sin t \cos t \ ]' = \cos^2 t - \sin^2 t \]
-Looks pretty good!  So
-\[ I_{im} = \sin t \cos t \]
+That looks pretty good!  So
+\[ I_{Im} = \sin t \cos t \]
 Putting it together we get
 \[ \int z \ dz = - \sin^2 t + i \sin t \cos t \]
 
@@ -152,12 +170,14 @@ So now we can then just copy the results into the integrals we set up:
 \[  I_2 = \frac{2}{3} \cos^3 t \]
 The real part is then
 \[  \frac{4}{3} \cos^3 t - \cos t \]
+
 and
 \[ I_3 = -\frac{2}{3} \sin^3 t \]
 \[  I_4  = 2 \sin t - \frac{2}{3} \sin^3 t - \sin t \]
 The imaginary part is then
 \[ i \ [ \ -\frac{4}{3} \sin^3 t + \sin t \ ] \]
-There is symmetry.
+
+There is significant symmetry.
 
 At the upper limit, the cosine is zero and the sine is $1$ so the imaginary part is only non-zero at the upper limit and we get just $-1/3 \ i$.  
 
@@ -173,9 +193,9 @@ If we go all the way around the unit circle the integral is zero.
 \subsection*{example:  $1/z$}
 \[ \int_0^{2\pi} \frac{1}{z} \ dz \]
 
-Now we are getting to the core of this subject.  While many integrals over a closed path are zero, some are not.
+Now we are getting to the core of this subject.  While many integrals over a closed path are zero, the inverse is not.
 
-Examining the inverse function, you might want to first confirm that it is analytic by calculating the partial derivatives.  We did this already so I'll skip it.
+Examining this function, you might want to first confirm that it is analytic by calculating the partial derivatives.  We did this already (\hyperref[sec:CRE_inverse]{\textbf{here}}).
 
 If we are on the unit circle, then 
 \[ z = e^{i\theta} \]
@@ -219,13 +239,13 @@ Again
 \[ dz = iz \ d \theta \]
 So the integral is just
 \[ = r^2 \int \frac{1}{z} \ iz \ d \theta   \]
-\[ = r^2 i \int d \theta = r^2 \pi i \]
-over the half-circle
+\[ = r^2 i \int d \theta \]
+which is $ir^2 \pi$, evaluated over the half-circle.
 
 \subsection*{inverse in terms of $x$ and $y$}
 
 We can also integrate the inverse function in terms of $x$ and $y$:
-\[ \frac{1}{z} = \frac{z*}{zz*} = \frac{x - iy}{x^2 + y^2} \]
+\[ \frac{1}{z} = \frac{z^*}{zz^*} = \frac{x - iy}{x^2 + y^2} \]
 
 So
 \[ u = \frac{x}{x^2 + y^2} \]
@@ -247,12 +267,12 @@ We have for the integral
 \[ \frac{1}{r^2} \int x \ dx + y \ dy + i \ [ \ -y \ dx + x \ dy \ ] \]
 
 Each term $x$, $y$, $dx$ and $dy$ has a factor of $r$.  So factor that out and cancel what's in front.  Then substitute the trig functions:
-\[ \int \cos \theta \ (- \sin \theta \ d \theta) + \sin \theta \ (\cos \theta \ d \theta) + \]
+\[ \int \cos \theta \ (- \sin \theta \ d \theta) + \sin \theta \ (\cos \theta \ d \theta)\  + \]
 \[ i \ [ \ - \sin \theta \ (- \sin \theta \ d \theta) + \cos \theta \ (\cos \theta \ d \theta)\ ] \]
 
-The real part has a big cancelation, leaving:
+The real part cancels leaving:
 \[ \int   i \ [ \ - \sin \theta \ (- \sin \theta \ d \theta) + \cos \theta \ (\cos \theta \ d \theta)\ ]\]
-and so does the imaginary part, so we have just
+and so does the imaginary part, leaving just
 \[ = \int i \ d \theta = 2 \pi i \]
 
 If we integrate the same function around a unit square, we run into problems.  First let's  do $[0,0 \times 1,1]$.  We have
@@ -267,7 +287,7 @@ Logarithms are tricky, no doubt.
 If the complex logarithm $Log$ $z$ is defined and differentiable along the curve (and it is, along the semicircle from $-i$ to $i$), we can do this:
 \[ I = \int_{-i}^i \frac{1}{z} \ dz = \text{ Log } z  \]
 
-To evaluate this, recall that $z = e^{i\theta}$ recognize that at $z = -i$, $\theta = - \pi/2$, while for $z = i$, $\theta = \pi/2$:
+To evaluate this, recall that $z = e^{i\theta}$ and recognize that at $z = -i$, $\theta = - \pi/2$, while for $z = i$, $\theta = \pi/2$:
 \[ = i \theta \ \bigg |_{-\pi/2}^{\pi/2} =  i \ \frac{\pi}{2}  -  i \frac{-\pi}{2}  = 2i \ \frac{\pi}{2} = \pi i \]
 
 If we're on the unit circle, then we need not worry about the real part of Log $z = \ln r + i \theta$, since $\ln 1$ is equal to zero.  Also, if we're centered on the origin, then $r$ is a constant and we get the same number at both bounds, so the difference is zero even if the path is not a full circle.
@@ -306,13 +326,22 @@ and, as we showed above:
 \[ e^{i3\pi/2} = -i \]
 If $r=3$ we get the same answer as before.
 
+\subsection*{application}
+Here's one with an important application, though we can't take time to explore this.  Suppose $m$ and $n$ are integers, then
+\[ \int_0^{2 \pi} e^{imt} \ e^{-int} \ dt = 0 \]
+\emph{except} if $m = n$, for then it is just $\int_0^{2 \pi} dt = 2 \pi$.
+
+If $m \ne n$ then there is some integer power $k$ of $e^{ikt}$ which gives a cofactor $1/ik$ times 
+\[ \cos kt + i \sin kt \]
+evaluated on an interval of length $2 \pi$.  Any such integral is equal to zero.
+
 \subsection*{summary}
 
 For an analytic function, we can compute the integral by analogy with the real numbers:  $\int z \ dz = z^2/2$.
 
-For any closed path, the result is just zero, with some special exceptions.
+For any closed path, the result is zero, with some special exceptions.
 
-$z^*$ is special because it's not analytic.  $1/z$ is said to be special because it's not defined at $z = 0$, but this begs the question, what about $1/z^2$?
+$z^*$ is special because it's not analytic.  $1/z$ is said to be special because it's not defined at $z = 0$, but this begs the question, what about $1/z^2$?  It's also not defined at $0$, but there is no problem with it.
 
 I would rather say that $1/z$ is special because it is $z^*$ in disguise since:
 \[ \frac{1}{z} \ \frac{z^*}{z^*} = \frac{1}{r^2} \ z^* \]

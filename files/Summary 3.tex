@@ -35,5 +35,41 @@ It is also given by
 \[ R = \lim_{z \rightarrow z_0} (z - z_0) \cdot f(z_0) \]
 \[ = \frac{1}{2 \pi i} \oint f(z) \ dz \]
 
+\subsection*{example:  $1/1-z$}
+
+I can get wrapped up in knots thinking about this one.
+
+This is $-1/(z-z_0)$, with $z_0 = 1$.  Residue theorem says to multiply by $z - z_0$ and evaluate the function, i.e. $-1$, at the point $z_0$.  I get $I = -2 \pi i$.
+
+Or:  substitute $w = 1-z$, then $dw = -dz$ so this is $- \int 1/w \ dw = -2 \pi i$.  
+
+Or:  write the Laurent series
+\[ 1 + z + z^2 \dots + (-\frac{1}{z})(1 + \frac{1}{z} + ( \frac{1}{z})^2 \dots \]
+The $1/z$ term has coefficient $b_1 = -1$.  So it's $2 \pi i$ times $b_1$.
+
+The problem is to think about convergence.  Where is my $z_0$ and where is my contour...?  Luckily, we have the other answers.
+
+\subsection*{example:  $1/1+z$}
+
+This is $1/(z - z_0)$ with $z_0 = -1$.  Residue theory says to multiply by $z - z_0$ and obtain $1$, evaluated at the point $z_0$ just gives $1$.  So I  get $2 \pi i$.
+
+\subsection*{example:  $1/z(z+2)$}
+
+\label{sec:ex3R}
+
+At $z_0 = 0$ we have $1/(z+2)$ evaluated at $z_0 = 0$ which is $1/2$.  At $z_0 = -2$ we have $1/z$ evaluated at $z_0 = -2$ which is $-1/2$.  Either one times $2 \pi i$ if included in the contour.
+
+\subsection*{example:  $1/(z^2 - 1)$}
+
+\label{sec:ex4R}
+
+This is just
+\[ \frac{1}{(z + 1)(z - 1)} \]
+
+Residue theory says the first term is $z - z_0$ with $z_0 = -1$ so evaluate $1/(z - 1)$ at $z_0$ and obtain $R(-1) = -1/2$.
+
+For the other one $z_0 = 1$ and that is $z - z_0$ as written, so evaluate $1/z+1$ at $z_0$ and obtain $R(1) = 1/2$.
+
+
 
 \end{document}

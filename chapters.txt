@@ -2,6 +2,7 @@ Introduction
 Preface
 Arithmetic
 Conjugate
+Definitions
 
 Cauchy Riemann
 Difference quotient
@@ -20,32 +21,47 @@ Summary 1
 
 Integration
 Integration
+Parametrization
 Circular paths
+
+Cauchy
 Cauchy theorem
 Cauchy formula
 Cauchy corollary
-Partial Fractions
+Partial fractions
 Summary 2
 
 Series
+Power series
 Taylor series
 Laurent theory
-Laurent practice
+Cheatsheet
+Change of variables
+Laurent examples
 
 Residue Theory
-Simple poles
-Kaplan
+Residue theory
+Higher order poles
 Quotients
+Examples
 Summary 3
 
-More
-Real Integrals
-Trig Integrals
+Applications
+Real integrals
+Trig integrals
 Conformal mapping
+End
+
+Real theorems
+Partial fractions real
+Real Taylor series
+Green's theorem
+
+Lemmas and theorems
+Simple proofs
+Triangle inequality
+Estimation lemma
 
 Addendum
-Extra
-Partial fractions real
-Taylor series
 Cubics
 References

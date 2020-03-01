@@ -1,0 +1,111 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Taylor series}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+\url{https://math.mit.edu/~jorloff/18.04/notes/topic7.pdf}
+
+A standard geometric series with a finite number of terms is
+\[ S_n = a(1 + r + r^2 + r^3 + \dots + r^n) \]
+\[ S_n = a + ar + ar^2 + ar^3 + \dots + ar^n) \]
+where $a$ is the \emph{first term} and $r$ is the \emph{common ratio}.
+
+Because the series is \emph{finite}, we know the sum exists, which allows us to write $S_n$.  The standard trick is
+\[ S_n \ r = ar + ar^2 + ar^3 + \dots + ar^n + ar^{n+1}) \]
+\[ S_n (1 - r) = ar - ar^{n+1} \]
+\[ S_n = \frac{a(1 - r^{n+1})}{1 - r} \]
+
+A series is understood to have an infinite number of terms.
+\[ S = a + ar + ar^2 + ar^3 + \dots = \lim_{n \rightarrow \infty} S_n \]
+Provided that $|r| < 1$, the term $r^{n+1}/(1-r)$ goes to zero in the limit, and then
+\[ S = \frac{a}{1-r} \]
+
+\subsection*{expansions}
+We will often see the expression 
+\[ \frac{1}{w - z} \]
+
+$w$ is a complex variable and $z$ is a complex number.
+
+This looks a lot like the sum of a geometric series and can be converted to one in two different ways.
+\[ \frac{1}{w - z} = \frac{1}{w} \cdot \frac{1}{1 - z/w} \]
+The second term on the right-hand side is a geometric series in $z/w$:
+\[ =  \frac{1}{w} (1 + \frac{z}{w} + (\frac{z}{w})^2 + (\frac{z}{w})^3 + \dots ) \]
+which converges when $|z/w| < 1$, that is, when $|w| > |z|$.
+
+The other way is
+\[ \frac{1}{w - z} = -\frac{1}{z} \cdot \frac{1}{1 - w/z} \]
+The second term on the right-hand side is a geometric series in $w/z$:
+\[ =  -\frac{1}{z} (1 + \frac{w}{z} + (\frac{w}{z})^2 + (\frac{w}{z})^3 + \dots ) \]
+which converges when $|w/z| < 1$, that is, when $|w| < |z|$.
+
+\subsection*{power series in $z$}
+
+Here is a power series in $z$, where $z_0$ is a fixed point:
+\[ f(z) = \sum_{n=0}^{\infty} a_n(z - z_0)^n \]
+
+Theorem (without proof):
+
+There is a number $R \ge 0$ such that
+
+$\circ$ \ if $R > 0$, then the series converges absolutely to an analytic function, for $|z - z_0| < R$.
+
+$\circ$ \ The series diverges for $|z - z_0| > R$. $R$ is called the radius of convergence. The disk $|z - z_0| < R$ is called the disk of convergence.
+
+$\circ$ \ The derivative is given by term-by-term differentiation.  The series for $f'$ has the same radius of convergence.
+
+$\circ$ \ If $\gamma$ is a bounded curve inside the disk of convergence, the integral is given by term-by-term integration:
+\[ \int_{\gamma} f(z) \ dz = \sum_{n=0}^{\infty} \ \int_{\gamma} a_n(z - z_0)^n \ dz \]
+
+If $R = \infty$ the function $f(z)$ is called \emph{entire}.  Often, $R$ may be determined by the ratio test.
+
+\subsection*{ratio test}
+Consider the series $\sum_0^{\infty} c_n$.  If $L = \lim_{n \rightarrow \infty} |c_{n+1}/c_n|$ exists, then:
+
+$\circ$ \ if $L < 1$ the series converges absolutely.
+
+$\circ$ \ if $L > 1$ the series diverges.
+
+$\circ$ \ if $L = 1$ we don't know.
+
+\subsection*{examples}
+
+Consider the geometric series
+\[ 1 + z + z^2 + z^3 + \dots \]
+
+The ratio of the absolute values of consecutive terms is $|z|$ and the limit is:
+\[ L = \lim_{n \rightarrow \infty} \frac{|z+1|}{|z|} = |z| \]
+
+Convergence follows when $L < 1$, that is when $|z| < 1$.
+
+Consider
+\[ f(z) = \sum_{n=0}^{\infty} \ \frac{z^n}{n!} \]
+
+\[ L =  \lim_{n \rightarrow \infty} \frac{|z^{n+1}|}{(n+1) |z^n|} =  \lim_{n \rightarrow \infty} \frac{|z|}{n+1} \]
+
+Convergence follows when $L < 1$, this happens for all values of $z$.
+
+Of course, this is the exponential function $f(z) = e^z$, which is \emph{entire}.  It is analytic for the whole complex plane.
+
+To summarize, 
+
+\begin{quote}we've seen that a power series converges to an analytic function inside its disk of convergence. Taylor’s theorem completes the story by giving the converse: around each point of analyticity an analytic function equals a convergent power series.\end{quote}
+
+
+\end{document}

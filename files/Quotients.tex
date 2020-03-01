@@ -21,18 +21,45 @@
 
 %[my-super-duper-separator]
 
+\subsection*{Boas}
 
-\textbf{RULE III}  If $A(z)$ and $B(z)$ are analytic in a neighborhood of $z_0$, $A(z_0) \ne 0$, and $B(z)$ has a zero at $z_0$ of order 1, then
+If $g$ is analytic, not equal to $0$ at $z_0$, and $h(z_0) = 0$, then
+\[ R(z_0) = \frac{g(z_0)}{h'(z_0)} \]
+
+\subsection*{example}
+
+\label{sec:ex31R}
+
+Find $R(i)$ for 
+\[ f(z) = \frac{\sin z}{1 - z^4} \]
+Using the rule:
+\[ g(i) = \sin i = \frac{1}{2} (e^{i \cdot i} - e^{-i \cdot i}) \]
+\[ = \frac{1}{2} (e^{-1} - e^{1}) = -i \sinh 1 \]
+
+\[ h'(z) = 4z^3 \bigg |_i = 4(- i) \]
+Dividing 
+\[ R(i) = \frac{1}{4} \sinh 1 \]
+
+\subsection*{Kaplan}
+
+If $A(z)$ and $B(z)$ are analytic in a neighborhood of $z_0$, $A(z_0) \ne 0$, and $B(z)$ has a zero at $z_0$ of order 1, then
 \[ f(z) = \frac{A(z)}{B(z)} \]
 has a pole of first order at $z_0$ and
 \[ \text{Res } [f(z),z_0] = \frac{A(z_0)}{B'(z_0)} \]
+
 \subsection*{example}
+
+\label{sec:ex10R}
+
 \[ f(z) = \frac{1}{z^2 + 1} = \frac{1}{(z - i)(z + i)} \]
 \[ B = z^2 + 1, \ \ \ B' = 2z \]
 \[ \text{Res } [f(z),z=i] = \frac{1}{2i} \]
 \[ \text{Res } [f(z),z=-i] = -\frac{1}{2i} \]
 
 \subsection*{example}
+
+\label{sec:ex27R}
+
 \[ f(z) = \frac{z e^z}{z^2 - 1} \]
 Both top and bottom are analytic.  The poles of $B(z)$ are at $\pm \ 1$.  $A(z) \ne 0$ at those points.  We have 
 \[ \frac{A(z)}{B'(z)} = \frac{z e^z}{2z} \]
@@ -43,11 +70,15 @@ Both top and bottom are analytic.  The poles of $B(z)$ are at $\pm \ 1$.  $A(z) 
 \[ \text{Res } [f(z),z_0] = \frac{6A' B'' - 2AB'''}{3B''^2} \]
 
 \subsection*{example}
+
+\label{sec:ex30R}
+
 \[ f(z) = \frac{e^z}{z(z-1)^2} \]
 \[ B = z(z^2 - 2z + 1) = z^3 - 2z^2 + z \]
 \[ B' = 3z^2 - 4z + 1 \]
 \[ B'' = 6z - 4 \]
 \[ B''' = 6 \]
+
 So
 \[ \frac{6A' B'' - 2AB'''}{3B''^2} = \frac{6(e^z)(6z-4) - 2e^z(6)}{3(6z-4)^2} \ \]
 Evaluate at $z=1$:

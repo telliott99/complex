@@ -20,13 +20,46 @@
 
 %[my-super-duper-separator]
 
+In the last chapter we finished with a problem using Cauchy's corollary.  That problem can also be done by partial fractions.
+
+\label{sec:ex8PF}
+
+\[ \frac{1}{z^2(z - 1)} \]
+\[ = \frac{A}{z^2} + \frac{B}{z(z-1)} + \frac{C}{z - 1} \]
+so
+\[ A(z-1) + Bz + Cz^2 = 1 \]
+\[ C = 0 \]
+\[ Az + Bz = 0, \ \ \ \ A = -B \]
+\[ A = -1 \]
+and then
+\[ -\frac{1}{z^2} + \frac{1}{z(z - 1)} \]
+which checks.
+
+We're not done, but what's left is easy, it is just
+\[ \frac{1}{z(z - 1)} = -\frac{1}{z} + \frac{1}{z - 1} \]
+so ultimately:
+\[ f(z) = -\frac{1}{z^2} -\frac{1}{z} + \frac{1}{z - 1} \]
+
+The path includes both $z = 0$ and $z = 1$.  Break it up into the two parts.
+
+The first integral is zero, by Cauchy's theorem when the path does not include $z = 0$, and by our results for $(z-z_0)^{-2}$ when it does.
+
+The second one is $-2\pi i$ for the path including $z = 0$.
+
+For the third, substitute $w = z - 1$, with $dw = dz$.  The integral is $2 \pi i$ and the total is zero.
+
+
+
 In the previous section, we derived Cauchy's formula:
 \[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i f(z_0) \]
 One example is
 \[ \oint_C \frac{1}{z-z_0} \ dz = 2 \pi i \]
 which is easy to show even without using the new formula.
 
-\subsection*{Example 1}
+\subsection*{example 10}
+
+\label{sec:ex10PF}
+
 This problem is Beck 4.26.  Consider 
 \[ \oint f(z) \ dz = \oint \frac{1}{z^2 + 1} \ dz \]
 We see that the denominator is zero when
@@ -62,7 +95,10 @@ and when evaluated at $i$, with result $1/2i$, we obtain
 
 Above we have a constant of $1/2i$ which can either be factored out of the integral, or be part of $f(z_0)$.  Either way, it's the same result.
 
-\subsection*{partial fractions}
+\subsection*{example 10, partial fractions}
+
+\label{sec:ex10PF}
+
 We can also do the curve containing both singularities by using the formal apparatus of partial fractions.  Write
 \[ \frac{1}{z^2 + 1} = \frac{1}{(z+i)(z-i)} \]
 \[ = \frac{A}{z+i} + \frac{B}{z-i} \]
@@ -95,7 +131,10 @@ and the result would be $- \pi$.
 
 A curve enclosing both poles would have for the value of the integral the sum of the two, which is equal to zero.
 
-\subsection*{example}
+\subsection*{example 14}
+
+\label{sec:ex14PF}
+
 Consider
 \[ \int_{\gamma} \frac{z^2}{4-z^2} \ dz \]
 where $\gamma$ is $ | z + 1 | = 2$.
@@ -124,7 +163,10 @@ where
 \[ f(z_0) = \frac{z^2}{4}  \ \bigg |_{z_0 = -2} = 1 \]
 so the integral is just $2 \pi i$.
 
-\subsection*{one from wikipedia}
+\subsection*{example 15 (wikipedia)}
+
+\label{sec:ex15PF}
+
 Consider
 \[ g(z) = \frac{z^2}{z^2 + 2z + 2} \]
 We want to evaluate the integral:

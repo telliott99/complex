@@ -1,0 +1,153 @@
+ \documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+
+\title{Parametrization}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+The basic theorem about Contour Integrals (integrals along a path) is that:
+
+\subsection*{theorem}
+
+If $f(z)$ is continuous on a directed smooth curve $\gamma$, and if $z = z(t), a \le t \le b$ is a parametrization of $\gamma$, then
+\[ \int_{\gamma} f(z) \ dz = \int_a^b f(z(t)) \cdot z'(t) \ dt \]
+
+We can parametrize a line between two points $z_1$ and $z_2$ as
+\[ z(t) = z_1 + t \cdot (z_2 - z_1), \ \ \ \ 0 \le t \le 1 \]
+In terms of vectors, we have simply started at the starting point, and aimed at the ending point along the vector connecting the two, then move from one point to another as $t$ goes from $0 \rightarrow 1$.
+
+\subsection*{note}
+
+Some good things are that 
+
+$\circ$ \ $\int f(z) + g(z) \ dz = \int f(z) \ dz + \int g(z) \ dz$
+
+$\circ$ \ if $\gamma = \gamma_1 + \gamma_2$, then $\int_{\gamma} = \int_{\gamma_1} + \int_{\gamma_2}$.
+
+Good functions (the ones we will call analytic or holomorphic) have an antiderivative at least most of the time.  So another theorem is
+
+\subsection*{example}
+
+Suppose
+\[ z_1 = -i, \ \ \ \ \ \ z_2 = 2 + i \]
+The path is
+\[ z(t) = -i + t \cdot [ \ (2 + i) - (-i) \ ] \]
+\[ = -i + t (2 + 2i) \]
+and
+\[ z'(t) = 2 + 2i \]
+
+Let $f(z) = z$.  Then
+\[ \int_{\gamma} z \ dz = \int_0^1 \ [ \ -i + t (2 + 2i) \ ] \ \cdot (2 + 2i) \ dt \]
+
+The integrand is
+\[ -2i + 2 + t(4 - 4 + 8i) = - 2i + 2 + t(8i) \]
+The integral is
+\[ (-2i + 2) t + t^2(4i) \bigg |_0^1 \]
+\[ = 2 + 2i \]
+
+\subsection*{theorem}
+
+If $f(z)$ is continuous on a contour $\gamma$ from $z_1$ to $z_2$, and $f(z)$ has an anti-derivative $F(z)$ such that $F'(z) = f(z)$ on $\gamma$, then
+
+\[ \int_\gamma f(z) \ dz = F(z_2) - F(z_1) \]
+
+Looking back at the previous example the antiderivative of $z$ is
+\[ \frac{z^2}{2} \bigg |_{z = -i}^{z = 2 + i} = \frac{1}{2} \ [ \ (2 + i)^2 - (-i)^2 \ ]\]
+\[ = \frac{1}{2} \ [ \ 4 - 1 + 4i + 1 \ ] = 2 + 2i \]
+which matches the previous result.
+
+We'll introduce circular paths more carefully in the next section.  Briefly, we can take a portion of a circular path on a circle of radius $2$ centered at $i$, denoted as $C[i,2]$.
+
+The parametrization is
+\[ z(t) = z_0 + re^{it}, \ \ \ \ \ \theta_1 \le t \le \theta_2 \]
+$z_0 = i$ and $r = 2$, and the angle will go from straight down $- \pi/2$ around to $0$ so
+\[ z(t) = i + 2e^{it}, \ \ \ \ \ - \pi/2 \le t \le 0 \]
+
+The derivative is
+\[ z'(t) = 2ie^{it} \]
+
+So
+\[ \int (i + 2e^{it})(2i e^{it}) \ dt \]
+\[ = \int -2 e^{it} + 4i e^{2it} \ dt \]
+\[ = - \frac{2}{i} e^{it} + 2 e^{i2t} \]
+\[ = 2 ie^{it} + 2 e^{i2t} \]
+
+At the upper limit, $t = 0$ so we have 
+\[  2 ie^{it} + 2 e^{i2t} \bigg |_0 = 2 + 2i \]
+
+At the lower limit, $t = - \pi/2$ so write the trig version :
+\[ = 2i(\cos t + i \sin t) + 2(\cos 2t + i \sin 2t)   \]
+\[ = 2i(0 + i(-1)) + 2((-1) + i(0)) = 2 - 2 = 0 \]
+So finally,
+\[ I = 2i + 2 \]
+
+Alternatively
+\[  2 ie^{it} + 2 e^{i2t} \bigg |_{-\pi/2} \]
+The exponentials are $e^{i(-\pi/2)} = -i$ and $e^{i(-\pi)} = -1$, so this is just $2 - 2 = 0$, as we said.
+
+The third way to do this is to just say
+\[ \int z \ dz = \frac{1}{2} z^2 \bigg |_{z = -i}^{z = 2 + i} \]
+\[ = \frac{(2 + i)^2}{2} - \frac{(-i)^2}{2} \ \]
+\[ = \frac{4 + 4i}{2} = 2 + 2i \]
+
+\subsection*{example (Beck 4.1)}
+
+This one has some tougher algebra in it.  We have one function: $f(z) = (z^*)^2$, and three paths going from $0 \rightarrow 1 + i$, all parametrized with $0 \le t \le 1$.
+
+The \emph{first path} is the straight line from the origin to $1 + i$.  We parametrize that as:
+\[ \gamma(t) = 0 + t(1 + i - 0) = t + it \]
+Then
+\[ \gamma'(t) = 1 + i \]
+The integral is
+\[ \int f(\gamma(t)) \ \gamma'(t) \ dt \]
+\[ = \int (t - it)^2 \ (1 + i) \ dt \]
+The minus sign is from the conjugate operation.  So then
+\[ (t - it)^2 = t^2 - t^2 - 2i t^2 = -2it^2 \]
+multiply that result by $1 + i$:
+\[ -2it^2 (1 + i) = 2t^2 -2it^2 \]
+and then
+\[ I = \int_0^1 2t^2 - 2it^2 \ dt = \frac{2}{3} (1 - i) \]
+
+The \emph{second path} is the parabola with vertex at the origin that passes through $1 + i$.  That is $v(x,y) = x^2$ so
+\[ \gamma(t) = t + it^2\]
+\[ \gamma'(t) = 1 + i2t \]
+So
+\[ f(z) = (t - it^2)^2 = t^2 - t^4 - i2t^3) \]
+The integral is
+\[ \int f(\gamma(t)) \ \gamma'(t) \ dt \]
+\[ = \int (t^2 - t^4 - i2t^3)(1 + i2t) \ dt \]
+\[ = \int t^2 - t^4 - i2t^3 + i2t^3 - i2t^5 + 4t^4 \ dt \]
+\[ = \int t^2 + 3t^4 - i 2t^5 \ dt \]
+\[ = \frac{t^3}{3} + 3 \frac{t^5}{5} - i 2 \frac{t^6}{6} \bigg |_0^1 \]
+\[ = \frac{1}{3} + \frac{3}{5} - i \frac{1}{3} = \frac{14}{15} - i \frac{1}{3} \]
+
+The \emph{third path} goes first from $0$ to $1$ and then straight up to $1 + i$.
+\[ \gamma_1 = t \]
+\[ \gamma_2 = 1 + t(1 + i - 1) = 1 + it \]
+\[ \gamma_2' = i \]
+\[ I = \int t^2 \cdot 1 \ dt + \int (1 - it)^2 \cdot i \ dt \]
+\[ = \int t^2 + (2t + i(1 - t^2) \ dt \]
+\[ = \frac{t^3}{3} + t^2 + i (t - \frac{t^3}{3}) \bigg |_0^1 \]
+\[ = \frac{4}{3} + i \frac{2}{3} \]
+
+Since the function involves $z^*$, we are not surprised to find that the integral along the path \emph{depends on which path we take}.  The conjugate function is not analytic.
+
+\end{document}

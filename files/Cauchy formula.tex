@@ -21,13 +21,23 @@
 
 %[my-super-duper-separator]
 
-If we can write an integral in this form:
+For an integral in this form:
 \[ \oint_{C} \frac{f(z)}{z-z_0} \ dz \]
 
-where $f(z)$ is analytic and defined everywhere in the domain we care about, with this composite function of course not defined at $z = z_0$, the value of the integral is 
+where $f(z)$ is analytic and defined everywhere in the domain we care about, with this composite function of course not defined at $z = z_0$,
+
+\begin{center} \includegraphics [scale=0.4] {cauchy1.png} \end{center}
+If the contour of integration includes $z_0$, then the value of the integral is 
 \[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i \ f(z_0) \]
 
-This is called the Cauchy Integral formula.
+This is called the Cauchy Integral formula.  We will prove it in this chapter.  Of course, if there were no singularity, the integral would just be zero.
+
+It's a really amazing result.  Rewrite:
+\[ f(z_0) = \frac{1}{2 \pi i} \oint_C \frac{f(z)}{z-z_0} \ dz \]
+
+What this says is that the value of the function $f$ at $z = z_0$ is equal to that integral.  It's likely non-zero, except in special cases.
+
+The value of the function at an interior point \emph{is determined by the values} of this other function $f/(z - z_0)$ \emph{along a curve around it}.  And that's true for \emph{any} curve around $z_0$.  
 
 \subsection*{setup}
 Suppose $f(z)$ is analytic and defined everywhere within some region \emph{except} at a singularity, $z_0$.  For example, suppose we have
@@ -35,10 +45,9 @@ Suppose $f(z)$ is analytic and defined everywhere within some region \emph{excep
 
 We integrate this function around a special closed path in the region of analyticity:
 \[ \oint \frac{f(z)}{z-z_0} \ dz \]
+\begin{center} \includegraphics [scale=0.4] {keyhole2.png} \end{center}
 
-\begin{center} \includegraphics [scale=0.5] {keyhole.png} \end{center}
-
-It's not labeled (I didn't draw the figure) but the singularity $z_0$ is at the center of the two concentric circles.  The "keyhole" excludes $z_0$ so $f$ is analytic everywhere in the region enclosed by the path.
+The singularity $z_0$ is at the center of the two concentric circles.  The "keyhole" excludes $z_0$ so $f$ is analytic everywhere in the region enclosed by the path, which always lies on the left as we traverse.
 
 Cauchy's integral theorem tells us that the total integral is zero.
 
@@ -52,46 +61,52 @@ But reversing the direction of integration on the inner ring (so both paths go i
 and
 \[ \oint_{C \ \text{outer}} \frac{f(z)}{z-z_0} \ dz = \oint_{C \ \text{inner}} \frac{f(z)}{z-z_0} \ dz \]
 
-We haven't said anything so far about the radius of these rings.  
+\subsection*{main point}
 
 What that means is that the value of the integral around a ring enclosing a singularity is not zero, but its value is \emph{independent of the radius}.
 
-\subsection*{derivation}
+\subsection*{derivation of Cauchy's Integral formula}
 
 We can parametrize this path.  Each point on one of these curves is given by
-\[ z = z_0 + r e^{i\theta} \]
-with $0 \le \theta \le 2 \pi$ and then
-\[ z - z_0 = r e^{i\theta} \]
+\[ z = z_0 + r e^{it} \]
+with $0 \le t \le 2 \pi$ and then
+\[ z - z_0 = r e^{it} \]
 This is a circle with the center displaced to $z_0$.
 
 Since $z_0$ is a constant
-\[ dz = i r e^{i \theta} d \theta \]
+\[ dz = i r e^{it} \ dt = i (z - z_0) \ dt \]
 
-so, substituting for $r e^{i\theta}$ above we obtain
-\[ dz = i(z - z_0) \ d \theta \]
+We will obtain a cancellation exactly like what we saw for the inverse function $1/z$ previously.  We can keep everything in terms of $e^{it}$
+
+\[ \int_{\gamma} \frac{f(z)}{z - z_0} \ dz = \int_{\gamma} \frac{f(z)}{re^{it}} \ ire^{it} \ dt = i \int_{\gamma} f(z) \ dt \]
+
+or use the other form for $dz$ from above
+\[ dz = i (z - z_0) \ dt \]
 and
-\[ \oint \frac{f(z)}{z - z_0} \ dz = \oint f(z) \ i \ d \theta \]
-\[ = i \int_0^{2\pi}  f(z) \ d \theta \]
+\[ \int_{\gamma} \frac{f(z)}{z - z_0} \ dz = \int_{\gamma} \frac{f(z)}{z - z_0} \ i(z - z_0) \ dt = i \int_{\gamma} f(z) \ i \ dt \]
 
-This holds for every circular path enclosing $z_0$.  We may choose $r$ as small as we like, and so we choose it very small ($r \rightarrow 0$) so
+The big idea is that this holds for \emph{every} circular path enclosing $z_0$, by Cauchy's Integral theorem.  
+
+In that case, we may choose $r$ as small as we like, and so we choose it very small ($r \rightarrow 0$) so
 \[ f(z) \rightarrow f(z_0) = \text{constant} \]
 
 and in that limit, since it's constant we can bring it out from under the integral sign!
-\[ i \int_0^{2\pi}  f(z) \ d \theta \]
-\[ = i f(z_0) \int_0^{2\pi} d \theta = 2 \pi i \ f(z_0) \]
+\[ i \int_0^{2\pi}  f(z) \ d \theta = i f(z_0) \int_0^{2\pi} d \theta = 2 \pi i \ f(z_0) \]
 
-An alternative (really, equivalent) approach is to say that for a small enough circle
-\[ \oint \frac{f(z)}{z - z_0} \ dz \]
-
-the value of $f(z)$ approaches $f(z_0)$, a constant, so this becomes
-\[ = f(z_0) \int \frac{1}{z - z_0} \ dz \]
-We know that integral, it is $2 \pi i$.
-
-Summarizing:
-\[ \oint \frac{f(z)}{z - z_0} \ dz = 2 \pi i \ f(z_0) \]
 What this means is that we can evaluate the integral in question by simply plugging in the value of the function at $z_0$ and multiplying that by $2 \pi i$.
 
+\[ \int_{\gamma} \frac{f(z)}{z - z_0} \ dz = 2 \pi i \ f(z_0) \]
+
+This is Cauchy's Integral \emph{formula}.
+
+In the next chapter, we will see that it is a special case of a more general formula, namely:
+
+\[ \int_{\gamma} \frac{f(z)}{(z - z_0)^{n+1}} \ dz = \frac{2 \pi i}{n!} \ f^{n} (z_0) \]
+
 \subsection*{average}
+
+\emph{The value of an analytic function at the center of a circle equals the average (arithmetic mean) of the values on the circumference.}
+
 Since
 \[ f(z_0) = \frac{1}{2 \pi i} \oint \frac{f(z)}{z - z_0} \ dz \]
 
@@ -101,6 +116,5 @@ and $z$ can be parametrized as $z - z_0 = re^{i \theta}$ so that $dz = i r e^{i 
 \[ = \frac{1}{2 \pi} \oint f(z_0 + re^{i \theta}) \ d \theta \]
 \[ = \frac{1}{2 \pi} \oint f(z) \ d \theta \]
 
-\emph{The value of an analytic function at the center of a circle equals the average (arithmetic mean) of the values on the circumference.}
 
 \end{document}

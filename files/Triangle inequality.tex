@@ -20,23 +20,9 @@
 
 %[my-super-duper-separator]
 
-In what follows $z = re^{is}$ or $z = x + iy$, as convenient.
-
-We also use $w = \rho e^{it}$ or $w = u + iv$.
-
-Properties of the conjugate:
-P1
-\[ (z + w)^* = x - iy + u - iv = z^* + w^* \]
-P2
-\[ (zw^*)^* = (re^{is}  \rho e^{-it})^* = (r \rho e^{i(s - t)})^* = r \rho e^{i(t - s)} = z^*w \]
-P3
-\[ z + z* = x + iy + x - iy = 2x = 2 Re \ z \]
-P4
-\[ |z| = |z^*| \]
-Length of a product:
-\[ |z| |w| = |re^{is}| \  |\rho e^{-it}| = r \ \rho= |zw| \]
-
 \subsection*{Triangle Inequality}
+
+\label{sec:tri_inequality}
 
 \begin{center} \includegraphics [scale=0.4] {tri_inequality.png} \end{center}
 
@@ -68,6 +54,8 @@ $\square$
 
 \subsection*{reverse triangle equality}
 
+\label{sec:rev_tri_inequality}
+
 Surprisingly tricky...
 \[ |z_2 - z_1| \ge | \ |z_2| - |z_1| \ | \]
 
@@ -97,5 +85,24 @@ Then
 \[ |y-x| \ge | \ |y| - |x| \ | \]
 
 $\square$
+
+Even quicker (Orloff).  We have the triangle inequality.
+\[ |z_1 + z_2| \le |z_1| + |z_2| \]
+
+We wish to show that
+
+\[ |z_2 - z_1| \ge | \ |z_2| - |z_1| \ | \]
+or equivalently
+\[ |z_1 - z_2| \ge | \ |z_1| - |z_2| \ | \]
+
+But by the theorem
+\[ |z_1| = |(z_1 - z_2) + z_2| \le |z_1 - z_2| + |z_2| \]
+so
+\[ |z_1| -  |z_2| \le |z_1 - z_2| \]
+
+\subsection*{summary}
+\[ |z_1 + z_2| \le |z_1| + |z_2| \]
+\[ |z_1 - z_2| \ge |z_1| -  |z_2| \]
+
 
 \end{document}

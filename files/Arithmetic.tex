@@ -20,6 +20,55 @@
 
 %[my-super-duper-separator]
 
+\subsection*{definition}
+
+The \emph{complex} numbers $\mathbb{C}$ can be defined as \emph{ordered pairs} of real numbers with the operations of addition:
+
+\[ (x,y) + (a,b) = (x + a, y + b) \]
+and multiplication:
+\[ (x,y) \cdot (a,b) = (xa - yb, xb + ya) \]
+(note the sign of $-yb$).
+
+Then, $\mathbb{C}, +, \cdot$ is a \emph{field}.
+
+We can think of the \emph{real} numbers as ordered pairs whose second coordinate is zero.
+\[ (x,0) + (a,0) = (x + a, 0) \]
+\[ (a,0) \cdot (x,y) = (ax,ay) \]
+The real numbers are a subset of the complex numbers.
+
+\[ \mathbb{R} \subset \mathbb{C} \]
+or, as is written, that $\mathbb{R}$ is a subset of $\mathbb{C}$.
+
+Later, we'll look at complex numbers as points in a plane, and the real numbers as those values lying along the $x$-axis.
+
+By the definition of multiplication from above:
+\[ (0,1) \cdot (0,1) = (-1,0) \]
+
+This implies that we can write:
+\[ (x,y) = (x,0) + (0,y) = (x,0) \cdot (1,0) + (y,0) \cdot (0,1) \]
+
+Think of $(x,y)$ as a \emph{linear combination} of numbers of two kinds.  The first are just real numbers, such as $x \cdot (1,0)$.  The second are exemplified by the real number $y$ times the special number $(0,1)$.  
+
+Give that number a name, $i$, and write
+\[ x + iy \]
+
+$x$ is the real part, and $y$ the imaginary part of the complex number $z$.
+\[ x = Re \{z\} \]
+\[ y = Im \{z\} \]
+$y$ is a \emph{real} number, it does not include the $i$.
+
+We can rewrite the addition and multiplication rules and find that
+\[ (x + iy)(a + ib) = xa - yb + i(xb + ya) \]
+and then our example from above becomes
+\[ (0,1) \cdot (0,1) = (-1,0) \]
+i.e. $i \cdot i = i^2 = -1$.
+
+Two useful identities come from factoring $i^2 = -1$:
+\[ i = -\frac{1}{i}  \]
+\[ -i = \frac{1}{i} \]
+
+\subsection*{square root of $-1$}
+
 Consider the functions
 \[ x^2 + 1 = 0 \]
 and
@@ -29,7 +78,9 @@ For the first equation, it is easy to see that there is no solution among the re
 
 Visualizing the same function geometrically, this is just the simple parabola $y=x^2$ shifted up by one unit, moving its vertex from $(0,0)$ to $(0,1)$.  Plotting shows that the graphs of both the above functions never cross the $x$-axis---there are no values that lie on the curve and also on the line $y=0$.
 
-It is often said that complex numbers arose in the context of finding solutions to such polynomials, however, as Nahin writes in his book \emph{An imaginary tale}, this is not really true.  We'll explore some of this history in the next chapter.
+It is often said that complex numbers arose in the context of finding solutions to such polynomials, however, as Nahin writes in his book \emph{An imaginary tale}, this is not really true.
+
+What really happened is that people didn't take negative square roots seriously until they arose in the context of solving cubic equations.  You remember that every cubic, containing a power of $x^3$, crosses the $y$-axis at least once.  Yet negative square roots arise naturally in the solution of problems with real solutions.  This motivated further work.
 
 The ingenious solution to this problem was to invent a new kind of number
 \[ i = \sqrt{-1} \]
@@ -79,18 +130,6 @@ which explains why this "proof" is erroneous.
 Expressions that involve the square root of a negative real number, like $\sqrt{-1} = i$ and $\sqrt{-3} = \sqrt{3}\ i$, are called imaginary (or \emph{purely} imaginary).  
 
 Numbers that contain both a real and an imaginary part, like $1 + i$, are termed complex numbers, and imaginary numbers are considered to be complex numbers with the real part equal to $0$.
-
-The set of complex numbers $\mathbb{C}$ includes the real numbers:
-\[ \mathbb{R} \subset \mathbb{C} \]
-or, as is written, that $\mathbb{R}$ is a subset of $\mathbb{C}$.
-
-We write complex numbers $z$ as combinations like
-\[ z = a + ib \]
- where $a$ and $b$ are both real numbers.  $a$ is the real part, and $b$ the imaginary part of the complex number $z$.
-
-Two useful identities come from factoring $i^2 = -1$:
-\[ i = -\frac{1}{i}  \]
-\[ -i = \frac{1}{i} \]
 
 It turns out that for much of what is done with complex numbers the fact that $i$ equals $\sqrt{-1}$ is not even relevant.
 

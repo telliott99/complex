@@ -1,0 +1,110 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+
+\title{Simple proofs}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+\subsection*{No ordering of imaginary or complex numbers}
+Suppose $z$ and $w$ are complex numbers.
+
+In general, it makes no sense to ask if $z > w$ or $w > z$.  Equality is OK, that requires both the real and imaginary parts to be equal.
+
+Obviously, we can say that $|z| > |w|$, the length of $z$ or its modulus is greater than the corresponding value for $w$.  But those are real numbers.
+
+And we will often say $|z - z_0| < r$, the distance between $z$ and $z_0$ is less than $r$, where $r$ is a real number.
+
+One can also say that $Re \{ z \} > Re \{ w \}$, although this is not very useful.
+
+Consider $i$.
+
+If $i > 0$ then $i^2 > 0$ but that means $-1 > 0$.
+
+If $i < 0$ then $-i > 0$ and so $(-i)^2 > 0$, but that also means $-1 > 0$.
+
+Either way,  $-1 > 0$ is not a property we want to have.
+
+\subsection*{Properties of the conjugate}
+
+\label{sec:conjugate_properties}
+
+In what follows $z = re^{is}$ or $z = x + iy$, as convenient.  We also use $w = \rho e^{it}$ or $w = u + iv$.
+
+We will use these in the proof of the \hyperref[sec:tri_inequality]{\textbf{triangle inequality}}.
+
+P1
+\[ (z + w)^* = x - iy + u - iv = z^* + w^* \]
+P2
+\[ (zw^*)^* = (re^{is}  \rho e^{-it})^* = (r \rho e^{i(s - t)})^* = r \rho e^{i(t - s)} = z^*w \]
+P3
+\[ z + z* = x + iy + x - iy = 2x = 2 Re \ z \]
+P4
+\[ |z| = |z^*| \]
+
+\subsection*{Lemma:  Product of Moduli (Karkhar)}
+
+\label{sec:product_of_moduli}
+
+The modulus of a complex product is the product of moduli:
+\[ z = x + iy, \ \ \ \ \ \ w = s + it  \ \ \rightarrow \ \  |zw| = |z||w| \]
+
+Here is one way:
+
+Length of a product:
+\[ |z| |w| = |re^{is}| \  |\rho e^{-it}| = r \ \rho= |zw| \]
+
+\emph{Proof}.
+
+\[ zw = (x + iy)(s + it) \]
+\[ = xs - yt + i \ [ xt + ys \ ] \]
+\[ |zw| = \sqrt{ (xs - yt)^2 + (xt + ys)^2 } \]
+
+work without the square root for a moment:
+\[ (xs - yt)^2 + (xt + ys)^2 \]
+\[ = (xs)^2 - 2xsyt + (yt)^2 + (xt)^2 + 2xtys + (ys)^2 \]
+\[ = (xs)^2 + (yt)^2 + (xt)^2 + (ys)^2 \]
+\[ = x^2 (s^2 + t^2) + y^2 (s^2 + t^2) \]
+\[ = (x^2 + y^2)(s^2 + t^2) \]
+so
+\[ |zw| = \sqrt{(x^2 + y^2)(s^2 + t^2)} \]
+
+But
+\[ = |z| |w| \]
+\[ = \sqrt{|z|^2} \cdot \sqrt{|w|^2} \]
+\[ = \sqrt{(x^2 + y^2)} \cdot \sqrt{(s^2 + t^2)} \]
+\[ = |zw| \]
+
+\subsection*{Lemma:  length of a curve}
+
+\label{sec:length_of_curve}
+
+If we have a curve parametrized by $\gamma(t)$ where
+\[ \gamma(t) = x(t) + i y(t) \]
+\[ \gamma'(t) = x'(t) + i y'(t) \]
+
+Then we will be interested in
+\[ L = \int_a^b |\gamma'(t)| \ dt \]
+
+where $|\gamma'(t)| = \sqrt{x'(t)^2 + y'(t)^2}$ so
+\[ L = \int_a^b \sqrt{x'(t)^2 + y'(t)^2} \ dt \]
+which should look familiar from multivariable calculus.
+\[ = \int_a^b \sqrt{(dx)^2 + (dy)^2 } \]
+\[ = \int_a^b \ ds  \]
+We see that $L$ is the length of the curve.
+
+\end{document}

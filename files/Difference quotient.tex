@@ -21,12 +21,46 @@
 
 %[my-super-duper-separator]
 
-This section contains a general discussion of differentiation of complex functions.  A complex function takes as input a complex number, and emits as output another complex number.  Often $w$ is used for the output:
-\[ w = f(z) \]
+\subsection*{definition}
 
-More concretely, a complex number is simply an ordered pair of real numbers, and a complex function is a pair of functions defined on the real numbers:
+We define the derivative $f'(z)$ of a complex function $f(z)$ similarly to the derivative of a real function:
 
-\[ f(z) = f(x + iy) = u(x,y) + i \cdot v(x,y) \]
+\[ f'(z) = \lim_{\Delta z \rightarrow 0} \ \frac{f(z + \Delta z) - f(z)}{\Delta z} \]
+alternatively
+\[ f'(w) = \lim_{z \rightarrow w} \ \frac{f(z) - f(w)}{z - w} \]
+provided that limit exists.
+
+As in the calculus of real numbers what we mean by the limit is that as $z \rightarrow z_0$, 
+\[ f(z) = L \]
+when the difference $|f(z) - L|$ can be made as small as we please ($< \epsilon$, say), by choosing $|z - z_0| < \delta$.  Given any $\epsilon$, we must be able to find $\delta$ so that the relationship is true.
+
+A crucial difference from real functions is that there are only two directions from which to approach a given real number $x$, while there is an infinite number of ways of approaching $z$ in the Argand plane.  The limit is over \emph{all} possible ways of approaching $z$.  
+
+\begin{center} \includegraphics [scale=0.3] {Boas_14_2_2.png} \end{center}
+
+If the limit exists, the function $f$ is called differentiable and $f'(z)$ is the derivative.
+
+\subsection*{example:  $z^2$ (Boas)}
+
+\[ = \lim_{\Delta z \rightarrow 0} \ \frac{(z^2 + 2 z \Delta z + \Delta z^2 - (z)^2}{\Delta z} \]
+\[ = \lim_{\Delta z \rightarrow 0} \ \frac{2 z \Delta z + \Delta z^2}{\Delta z} \]
+\[ = \lim_{\Delta z \rightarrow 0} 2z + \Delta z \]
+\[ = 2 z \]
+
+This does not depend on the direction of approach to any fixed point $z_0$.
+
+\subsection*{example:  $|z|^2$ (Boas)}
+
+\[ = \lim_{\Delta z \rightarrow 0} \ \frac{(|z + \Delta z|^2 - |z|^2}{\Delta z} \]
+The numerator of this fraction is always real.  The denominator, $\Delta z = \Delta x + i \Delta y$, depends on the direction of approach.  
+
+In particular, as we approach horizontally $\Delta y = 0$, it is entirely real, while in the vertical direction ($\Delta x = 0$, the denominator is just $i \Delta y$, entirely imaginary.  There is no way that these can be equal, so no way for the complex absolute value function to have a derivative.
+
+\subsection*{in terms of u and v}
+
+A complex number is simply an ordered pair of real numbers, and a complex function is a pair of functions defined on the real numbers:
+
+\[ f(z) = f(x + iy) = u(x,y) + i \ v(x,y) \]
 
 The functions $u$ and $v$ each take a pair of real numbers and emit one real number.  They are connected in $f$ through the fact that $u$ and $v$ have the same input.
 
@@ -73,17 +107,11 @@ Using the formula, it can be shown easily that the derivative is the same as the
 Hence
 \[f'(z) = u_x + iv_x = z \]
 
-\subsection*{definition}
-We define the derivative $f'(z)$ of a complex function $f(z)$ similarly to the derivative of a real function:
-\[ f'(z) = \lim_{w \rightarrow z} \ \frac{f(w) - f(z)}{w-z} \]
-if the limit exists.
+\subsection*{derivation of Cauchy-Riemann equations}
 
-Alternatively, with $\Delta$ notation, we might write:
+The difference quotient is
 \[ f'(z) = \lim_{\Delta z \rightarrow 0} \ \frac{f(z + \Delta z) - f(z)}{\Delta z} \]
 
-A crucial difference from real functions is that there are only two directions from which to approach a given real number $x$, while there is an infinite number of ways of approaching $z$ in the Argand plane.  The limit is over \emph{all} possible ways of approaching $z$.  
-
-If the limit exists, the function $f$ is called differentiable and $f'(z)$ is the derivative.
 Consider
 \[ f(z) = u(x,y) + i v(x,y) \]
 Then
@@ -136,6 +164,14 @@ and since
 
 We conclude that 
 \[ \frac{df}{dz} = \frac{\partial f}{\partial x} = -i \frac{\partial f}{\partial y} \]
+
+Side note:  if a function $f$ has a derivative at $z_0$, then its partial derivatives obey the Cauchy-Riemann equations.  However, the converse is not necessarily true because the partials must all be continuous at $z_0$.
+
+Apparently it is possible to obey the CRE even if the partials are \emph{not} continuous.
+
+[ example needed ]
+
+Alternatively, we could run this backward and use the requirement that two different lines give the same derivative to find the CRE.
 
 \subsection*{looking ahead}
 When we get to integration in a later section we will find that the integral of a complex function is computed as a line integral along a specified curve (often a circle centered either on the origin or on a point $z_0$).
@@ -215,5 +251,27 @@ Restoring the original naughts, we have just
 As promised.
 
 $\square$
+
+\subsection*{Mean value theorems do not hold}
+Much of the calculus of complex functions is like calculus of real numbers applied to pairs of functions matching the ordered pairs of the components of a complex number.
+
+Some venerable truths are not carried over.
+
+Suppose $w(t)$ is continuous on $a \le t \le b$ ($u$ and $v$ are continuous),.  Even if $w'(t)$ exists, it is not necessarily true that
+\[ w'(c) = \frac{w(b) - w(a)}{b - a} \]
+for some $c \in a \le t \le b$.
+
+Counterexample (Brown and Churchhill):  $w = e^{it}$ on $0 \le t \le 2 \pi$.  The derivative $w'$ is $ie^{it}$ with $|w'| = 1$, so $w'$ is never $0$, yet $w(2 \pi) - w(0) = 0$.
+
+There is also a mean value theorem for integrals in real calculus but this is not true:
+\[ \int_a^b w(t) \ dt = w(c) (a - b) \]
+Integrate the same function
+\[ \int_0^{2 \pi} e^{it} \ dt = \frac{1}{i} e^{it} \bigg |_0^{2 \pi} \]
+\[ = \frac{1}{i} (\cos t + i \sin t) \bigg |_0^{2 \pi} = 0 \]
+but $|w(c)|$ is positive for every $c \in [0,2 \pi]$ so $w(c) (a - b) = 2 \pi w(c)$ is not zero.
+
+
+
+
 
 \end{document}

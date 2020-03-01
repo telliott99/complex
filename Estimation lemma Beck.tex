@@ -1,0 +1,64 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage{geometry}
+\geometry{letterpaper} 
+\usepackage{graphicx}
+	
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{color}
+\usepackage{hyperref}
+
+\graphicspath{{/Users/telliott/Github/figures/}}
+% \begin{center} \includegraphics [scale=0.4] {gauss3.png} \end{center}
+
+\title{Estimation lemma}
+\date{}
+
+\begin{document}
+\maketitle
+\Large
+
+%[my-super-duper-separator]
+
+There is a basic theorem that is used for several different proofs in the theory of complex functions, but it's not that sexy, so it's usually called a Lemma.
+
+\subsection*{the estimation lemma}
+
+We have seen the (\hyperref[sec:tri_inequality]{\textbf{Triangle inequality}}), which says that for two complex numbers $z$ and $w$:
+\[  |z + w| \le |z| + |w| \]
+
+We can write a similar inequality for integrals
+\[ | \int_a^b g(t) \ dt | \le \int_a^b | g(t) | \ dt \]
+
+\emph{Proof.}
+
+Since we approximate the integral as a Riemann sum.
+
+\[ |\int_a^b g(t) \ dt| \approx | \sum g(t_k) \ \Delta t | \le \sum | g(t_k) | \ dt \approx \int_a^b |g(t)| \ dt \]
+
+Using that result, we can apply it to the integral along a curve or contour:
+\[ | \int_\gamma f(z) \ dz |  \le \int_{\gamma} | f(z) | \ dz \]
+
+\emph{Proof.}
+
+\[ | \int_{\gamma} f(z) \ dz | = | \int_a^b f(\gamma(t)) \gamma'(t) \ dt | \]
+\[ \le \int_a^b | f(\gamma(t)) | | \gamma'(t) | \ dt \]
+\[ = \int_{\gamma} | f(z) | \ dz \]
+
+So what that means is that if $|f(z)| < M$ along $C$, then
+\[ | \int_C f(z) \ dz | \le M \cdot L \]
+where $L$ is the length of $C$.
+
+\emph{Proof.}
+
+let $\gamma(t), a \le t \le b$ be a paramtrization of $C$.  Using the triangle inequality:
+
+\[ | \int_C f(z) \ dz | \le \int_C |f(z)| | dz | = \int_a^b |f(\gamma(t))| |\gamma'(t)| dt \]
+\[ \le \int_a^b M |\gamma'(t)| \ dt = M \cdot \text{length of C} \]
+
+where we have used the fact that
+\[ |\gamma'(t) | \ dt = ds \]
+the arc length element.
+
+\end{document}
