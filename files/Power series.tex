@@ -11,7 +11,7 @@
 
 \graphicspath{{/Users/telliott/Github/figures/}}
 
-\title{Taylor series}
+\title{Power series}
 \date{}
 
 \begin{document}
@@ -20,16 +20,16 @@
 
 %[my-super-duper-separator]
 
-\url{https://math.mit.edu/~jorloff/18.04/notes/topic7.pdf}
-
-A standard geometric series with a finite number of terms is
+A standard geometric series is a \emph{sum} containing a finite number of terms
 \[ S_n = a(1 + r + r^2 + r^3 + \dots + r^n) \]
-\[ S_n = a + ar + ar^2 + ar^3 + \dots + ar^n) \]
+\[ = a + ar + ar^2 + ar^3 + \dots + ar^n) \]
+
 where $a$ is the \emph{first term} and $r$ is the \emph{common ratio}.
 
-Because the series is \emph{finite}, we know the sum exists, which allows us to write $S_n$.  The standard trick is
+Because the series is \emph{finite}, we know it exists, which allows us to write $S_n$.  The standard trick is to multiply by $r$
 \[ S_n \ r = ar + ar^2 + ar^3 + \dots + ar^n + ar^{n+1}) \]
 \[ S_n (1 - r) = ar - ar^{n+1} \]
+\[ S_n (1 - r) = a(1 - r^{n+1}) \]
 \[ S_n = \frac{a(1 - r^{n+1})}{1 - r} \]
 
 A series is understood to have an infinite number of terms.
@@ -41,7 +41,7 @@ Provided that $|r| < 1$, the term $r^{n+1}/(1-r)$ goes to zero in the limit, and
 We will often see the expression 
 \[ \frac{1}{w - z} \]
 
-$w$ is a complex variable and $z$ is a complex number.
+$w$ is a complex variable and $z$ is a complex number (or vice-versa)
 
 This looks a lot like the sum of a geometric series and can be converted to one in two different ways.
 \[ \frac{1}{w - z} = \frac{1}{w} \cdot \frac{1}{1 - z/w} \]
@@ -62,6 +62,8 @@ Here is a power series in $z$, where $z_0$ is a fixed point:
 
 Theorem (without proof):
 
+\url{https://math.mit.edu/~jorloff/18.04/notes/topic7.pdf}
+
 There is a number $R \ge 0$ such that
 
 $\circ$ \ if $R > 0$, then the series converges absolutely to an analytic function, for $|z - z_0| < R$.
@@ -76,7 +78,7 @@ $\circ$ \ If $\gamma$ is a bounded curve inside the disk of convergence, the int
 If $R = \infty$ the function $f(z)$ is called \emph{entire}.  Often, $R$ may be determined by the ratio test.
 
 \subsection*{ratio test}
-Consider the series $\sum_0^{\infty} c_n$.  If $L = \lim_{n \rightarrow \infty} |c_{n+1}/c_n|$ exists, then:
+For the series $\sum_0^{\infty} c_n$, if $L = \lim_{n \rightarrow \infty} |c_{n+1}/c_n|$ exists, then:
 
 $\circ$ \ if $L < 1$ the series converges absolutely.
 

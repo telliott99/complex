@@ -221,4 +221,39 @@ substituting $1/z^2$
 
 Since there's no $z$ with a power $n=-1$, the value of the integral is just zero.
 
+\subsection*{example 17 (Orloff 7.2.1)}
+
+\label{sec:ex17L}
+
+\[ \int \frac{z}{z^2 + 1} \ dz \]
+
+Factoring the denominator we have that $z^2 + 1 = (z + i)(z - i)$.  So there are singularities at $z = \pm i$.  We are asked to expand the series around $z =i$.  There are actually two different regions with two different solutions.  We will compute the inner punctured disk with $|z - i| < 2$.  This extends as far as the singularity at $z = i$.
+
+Using partial fractions write:
+\[ z \frac{1}{(z + i)(z - i)} = \frac{z}{2i} \ [ \frac{1}{z - i} - \frac{1}{z + i}  \  ] \]
+Keep that $z/2i$ in your back pocket for now.
+
+We need the $A$ series around the first term and the $P$ series around the second.  These are:
+\[ \frac{1}{z - i} = - \frac{1}{i} \cdot \frac{1}{1 - z/i} = - \frac{1}{i} \cdot \ [ \ 1 + (\frac{z}{i}) + (\frac{z}{i})^2 + (\frac{z}{i})^3 \dots \ ] \]
+
+The other one is
+\[ - \frac{1}{z} \cdot \frac{1}{1 + i/z} = - \frac{1}{z} \cdot \ [ \ 1 + (-\frac{i}{z}) + (-\frac{i}{z})^2 + (-\frac{i}{z})^3 \dots \]
+
+Since we have $z$ (in our pocket), the only term that matters is
+\[ -\frac{1}{z} \cdot (- \frac{i}{z}) = \frac{i}{z^2} \]
+from the second one.  That becomes, digging into our pockets:
+\[ \frac{i}{z^2} \cdot \frac{z}{2i} = \frac{1}{2z} \]
+
+So a contour integral around the point $z = i$ and inside the radius $|z - i| < 2$ will have a value of $\pi i$.  We can check that (looking ahead to residues):
+\[ \frac{1}{2i}  \oint \frac{z}{z - i} \ dz = (2 \pi i) \ \frac{z}{2 i} \bigg |_{z = i} = \pi i \]
+
+Also, we can check this by change of variables.  The singularity in the region of the contour integral is the first term:
+\[ \oint \frac{1}{2i} \cdot \frac{z}{z - i} \ dz \]
+Let $w = z - i$, $dw = dz$, then
+\[ = \frac{1}{2i} \oint \frac{w + i}{w} \ dw \]
+
+The integral of the first part is $\int dw$ which is zero.  The second part is
+\[ \frac{1}{2i} \oint \frac{i}{w} \ dw = \frac{1}{2} \cdot (2 \pi i) = \pi i \]
+
+
 \end{document}

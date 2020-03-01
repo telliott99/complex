@@ -1,13 +1,14 @@
-\documentclass[12pt, oneside]{report}
+\documentclass[12pt]{report}
 
-\usepackage{geometry}
+\usepackage[margin=0.85in,footskip=0.25in]{geometry}
 \geometry{letterpaper}
+
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{parskip}
 \usepackage{color}
-%\usepackage{hyperref}
+
 \usepackage{tocloft}
 \setlength{\cftchapnumwidth}{2.5em}
 

@@ -65,6 +65,8 @@ If we have the Laurent series, then $b_1$ is the coefficient of the $\frac{1}{z 
 
 \subsection*{example 23}
 
+Laurent series.
+
 \label{sec:ex23L}
 
 \[ I = \oint \frac{e^z}{z - 1} \ dz \]
@@ -84,7 +86,7 @@ For $z - n$ in the denominator, in a similar way:
 \[ = \frac{e^n}{z - n} \ ( 1 + (z - n) + \frac{(z - n)^2}{2!} + \dots ) \]
 The residue is $e^n$.
 
-There's another simple trick, and that is change of variables.  Let
+There's another simple dodge, and that is change of variables.  Let
 \[ w = z - 1\]
 \[ dw = dz \]
 \[ e^z = e^{w + 1} = e^w \cdot e \]
@@ -95,6 +97,11 @@ so the series is
 The cofactor of $w^{-1}$ is $e$ and the result is the same as before.
 
 Of course, for $z - n$ we get a power of $e^n$ multiplying the series.
+
+Also, you might wonder about 
+\[ \int \frac{e^z}{1 - z} dz \]
+With the substitution, $dw = - dz$, so that's where we pick up the minus sign that we need.  Or just manipulate before the substitution:
+\[ \frac{1}{1 - z} = - \frac{1}{z - 1} \]
 
 \subsection*{simple pole}
 

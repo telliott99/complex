@@ -135,4 +135,64 @@ $\square$
 Comparison of the last two expressions gives what we had for the formula for the coefficients where 
 \[ a_n = \frac{f^n(z_0)}{n!} = \frac{1}{2 \pi i} \int_{\gamma} \frac{f(w)}{(w - z_0)^{n+1}} \ dw \]
 
+\subsection*{Constructing Taylor series}
+
+We have
+\[ f(z) = \sum_{n=0}^{\infty} \ a_n(z - z_0)^n \]
+\[ a_n = \frac{1}{2 \pi i} \int_{\gamma} \frac{f(z)}{(z - z_0)^{n+1}} \ dz = \frac{f^n (z_0)}{n!} \]
+
+For simplicity, just take $z_0 = 0$.
+\[ f(z) = \sum_{n=0}^{\infty} \ a_n(z)^n \]
+\[ a_n = \frac{1}{2 \pi i} \int_{\gamma} \frac{f(z)}{z^{n+1}} \ dz = \frac{f^n (0)}{n!} \]
+
+To find the coefficients we need derivatives $f^n$.
+
+The classic examples are, of course, the exponential and the sine and cosine.  The derivatives for complex functions are exactly analogous to those for real functions, so the Taylor formulas are too.
+
+If $f(z) = e^z$ then all the derivatives $f^n$ are also $e^z$, and evaluated at $0$ give $1$.  So the series is
+\[ e^z = \sum_{n=0}^{\infty} \ \frac{z^n}{n!} = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!}  \dots \]
+
+If $f(z) = \sin z$ then the function and the even derivatives are zero at $z = 0$, while the odd ones are $\pm \cos z$, and evaluated at $0$ give $\pm 1$.  So the series is
+\[ \sin z =  z - \frac{z^3}{3!} + \frac{z^5}{5!}  \dots \]
+
+We can also use the definition of the complex sine to get this:
+\[ \sin z = \frac{1}{2i} \ (e^{iz} - e^{-iz}) \]
+Remember the factor of $1/2i$ and write
+\[ = [1 + (iz) + \frac{(iz)}{2!}^2 + \frac{(iz)}{3!}^3 \dots \ ] \  - \ [ \ 1 + (-iz) + \frac{(-iz)}{2!}^2 + \frac{(-iz)}{3!}^3 \dots \ ]  \]
+\[ = [1 + iz - \frac{z}{2!}^2 - i \frac{z^3}{3!} \dots \ ] \  - \ [ \ 1 - iz - \frac{z^2}{2!} + i \frac{z^3}{3!} \dots \ ]  \]
+\[ = 2iz -  2i \frac{z^3}{3!} \dots  \]
+We will get $2$ times $i$ times the odd powers of $z$ (over the factorial), and then an additional factor of $i^2$ causes a sign change for each term.  Multiply through by $1/2i$ to obtain
+\[ 1 - \frac{z^3}{3!} + \frac{z^5}{5!} \dots \]
+
+\subsection*{example (Orloff 7.12)}
+
+Find the Taylor series for 
+\[ f(z) = \frac{1}{1 - z} \]
+around $z = 5$.  There is a bit of manipulation required to get the standard form:
+\[ \frac{1}{1 - z} = \frac{1}{-4(1 + (z-5)/4)} \]
+
+This is a geometric series with a leader factor of $-1/4$, and the power is of $-(z - 5)/4$.  That minus sign will give a minus sign to the odd powers in the expansion:
+\[ -\frac{1}{4} \ [ \ 1 - (\frac{z-5}{4}) + (\frac{z-5}{4})^2 - (\frac{z-5}{4})^3 \dots \]
+
+The series is constructed around $z = 5$, but the original function has a singularity at $z = 1$.  So the radius of convergence is the distance between these two.  Which matches
+\[ |\frac{z-5}{4}| < 1 \]
+\[ |z-5| < 4 \]
+
+\subsection*{example (Orloff 7.13)}
+
+Find the Taylor series for 
+\[ f(z) = \log(1 + z) \]
+
+The function $\log w$ is undefined for the real number line from $- \infty \rightarrow 0$.  Because of that one, the region where it's not defined extends up to $z = -1$.  We are asked to construct a Taylor series around $z=0$.  The radius of convergence will be $R = 1$.
+
+The way to do this is to take the derivative of the function, construct its series, and then integrate term by term:
+\[ f'(z) = \frac{1}{1 + z} = 1 - z + z^2 - z^3 \dots \]
+The integral is
+\[ f(z) = a_0 + z - \frac{z^2}{2} + \frac{z^3}{3} \dots \]
+
+Find $a_0$ by evaluating at $z = 0$.  then
+\[ f(z) = \log 1 = 0 = a_0 + 0 + 0 \dots \]
+So $a_0$ equals zero.
+
+
 \end{document}
