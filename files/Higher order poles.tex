@@ -57,39 +57,9 @@ Remember the factor of $(n-1)!$, the same as the degree of the derivative.
 
 These are residues, don't forget the factor of $2 \pi i$ for the integral.
 
-\subsection*{example 20}
-
-\label{sec:ex20R}
-
-Here is one we can do many different ways:
-\[ f(z) = \frac{e^z}{z^2} \]
-
-There is obviously a double pole at $z = 0$.  (1) Multiply by $z^2$.  (2) Take the derivative, obtaining $e^z$.  Evaluate at $z = 0$, obtaining $1$ for the residue.
-
-\label{sec:ex20L}
-
-Another way is to write a Laurent series:
-\[ = \frac{1}{z^2} (1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} \dots ) \]
-The only term with a non-zero integral is\
-\[ \frac{1}{z} \]
-so the cofactor $b_1$ is just $1$, which is also the residue, and the value of the integral is $2 \pi i$.
-
 \subsection*{example 5}
 
-This can be done is many ways.
-
-\label{sec:ex5R}
-
-\[ f(z) = \frac{1}{z(z-2)^2} \]
-We have a pole of first order at $z_0=0$ and one of second order at $z_0=2$.  
-
-At the first, multiply by $(z - 0)$ and evaluate the limit of what's left:
-\[ \text{Res }(0) = \lim_{z \rightarrow 0} \frac{1}{(z-2)^2} = \frac{1}{4} \]
-
-For the other, multiply by $(z-2)^2$ and compute the $N-1$ (first) derivative of what's left
-\[ [ \frac{1}{z} ]' \ =  - \frac{1}{z^2} \]
-\[ \text{Res } (2) = \lim_{z \rightarrow 2} -\frac{1}{z^2} = -\frac{1}{4} \]
-Don't forget to divide by $(N-1)!$, which is just $1$ in this case.  The total is just zero.
+This can be done in many ways.
 
 \subsection*{example 5, partial fractions}
 
@@ -121,56 +91,6 @@ For the rest, we have two simple poles at $z=0$ and $z=2$.  The residues are
 \[ \text{Res } (2) = \lim_{z \rightarrow 2} \ \ (z-2) \cdot \frac{-1/4}{z-2} = - \frac{1}{4} \]
 which add up to zero.
 
-\subsection*{example 5, change of variables to allow series}
-
-Change of variables can also help here.
-\[ \frac{1}{z(z-2)^2} \]
-Let $w = z - 2$, $dw = dz$, $z = w + 2$
-\[ \oint \frac{1}{w^2(w+2)} dw \]
-
-This allows the possibility of a series solution, but we must ask where is the contour?
-
-Suppose the contour includes both of the original poles.  Because of that factor of $1/w^2$, we need the $A$ series for $1/(w+2)$, which is \hyperref[sec:a_plus_z]{\textbf{here}}.
-
-\[ \frac{1}{2} \cdot \ [ \ 1 - \frac{w}{2} + \frac{w^2}{4} \dots \ ]    \]
-With the factor, the relevant term is $b = -1/4$, which matches what we had above.
-
-We would have a different series and a different answer for a smaller contour only enclosing one pole.
-
-\subsection*{example 26}
-
-\label{sec:ex26R}
-
-\[ \oint_C \frac{e^z}{z^3 - z^2 - 5z - 3} \ dz \]
-
-The factorization was given in the original problem, but suppose we don't have it.  Guess:
-\[ (z ...)(z^2 ... ) \]
-The next term is $-z^2$ so maybe 
-\[ (z -3)(z^2 + 2z ... ) \]
-Then we'll need $-3$ at the end:
-\[ (z - 3)(z^2 + 2z + 1) \]
-and we get $-5z$, so that works!
-
-Nicely, the quadratic also factors:
-\[ \oint_C \frac{e^z}{(z+1)^2 (z-3)} \]
-
-A double pole at $z = -1$ and a single one at $z = 3$.
-
-Recall the general approach for a double pole, construct
-\[ g(z) = (z - z_0)^2 \ f(z) \]
-Here
-\[ = \frac{e^z}{(z-3)} \]
-
-Then compute the first derivative:
-\[ \frac{e^z \cdot (z-3) - (e^z \cdot 1)}{(z - 3)^2} \]
-\[ = \frac{(z-4)e^z}{(z-3)^2} \]
-
-Evaluate the limit of that as $z \rightarrow z_0$.
-\[ \lim_{z \rightarrow -1} \ \frac{(z-4)e^z}{(z-3)^2} = -\frac{5}{16} \ \frac{1}{e} \]
-
-Remember the extra factor of $1/(n-1)!$ to get the residue, and $2 \pi i$ to get the value of the integral.
-\[ I = -\frac{5 \pi i}{8 e} \]
-
 \subsection*{example  11}
 
 \label{sec:ex11R}
@@ -194,98 +114,5 @@ The total of the residues is
 
 As Mathews and Howell say:
 \begin{quote}The value 0 for the integral is not an obvious answer, and all of the preceding calculations are required to find it.\end{quote}
-
-\subsection*{example 21}
-
-\label{sec:ex21R}
-
-\[ f(z) = \frac{1 + e^z}{z^2} + \frac{2}{z} \]
-We can break this up into its two component parts.  For the first term, the pole is of order $m = 2$ at $z_0 = 0$.  We remove the $z^2$ term and take the derivative
-\[ (1 + e^z)' = e^z \]
-
-The factorial term is just $1$, leaving $e^z$ which is evaluated at the pole giving a residue
-\[ \text{Res }(0) = e^0 = 1 \]
-
-The other term is just $2$ times the standard
-\[ \oint \frac{1}{z} \ dz = 2 \pi i \]
-Here $I = 4 \pi i$ and the residue is $2$.  Alternatively just use
-\[ I = 2 \pi i f(z_0) = 4 \pi i \]
-where $f = 2$.
-
-The total of the residues is $3$ and the value of the integral is $6 \pi i$.
-
-\subsection*{example 28}
-
-\label{sec:ex28R}
-
-\[ f(z) = \frac{e^z}{z(z-1)^2} \]
-The denominator is one we saw above, but now there is an extra factor of $e^z$.
-
-We have a pole of first order at $z=0$ and one of second order at $z=1$.  At the first
-\[ \text{Res } [f(z),z=0] = \lim_{z \rightarrow 0} \frac{e^z}{(z-1)^2} = 1 \]
-
-For the other one, remove the factor of $1/(z-1)^2$ and compute the $N-1$ (first) derivative of what's left
-\[ \text{Res } [f(z),z=1] = \lim_{z \rightarrow 1} \ [ \ \frac{e^z}{z} \ ]' \ \]
-\[ = \frac{e^z z - e^z}{z^2} = \frac{e^z(z - 1)}{z^2} \ \bigg |_1 =  0 \]
-Hence
-\[ \oint f(z) \ dz = 2 \pi i \ [ \ \sum  \text{Res } \ ] \ = 2 \pi i \]
-
-\subsection*{example 6}
-
-\label{sec:ex6R}
-
-\[ f(z) = \frac{1}{z(z-2)^4} \]
-We have a pole of first order at $z=0$ and one of fourth order at $z=2$.  
-
-At the first
-\[ \text{Res } [f(z),z=0] = \lim_{z \rightarrow 0}   \frac{1}{(z-2)^4} \]
-\[ =  \lim_{z \rightarrow 0} \ \frac{1}{(z-2)^4}  = \frac{1}{(-2)^4} =  \frac{1}{16} \]
-
-For the other pole recall that
-\[ \frac{2 \pi i}{n!} f^n(a) = \oint_C \frac{f(z)}{(z-a)^{n+1}} \ dz \]
-
-We remove the factor of $1/(z-2)^4$ leaving $f(z) = 1/z$ and then compute the $N-1$ (third) derivative of what's left
-
-\[ \text{Res } [f(z),z=2] = \frac{1}{n!} \ \lim_{z \rightarrow 2} \ [ \ \frac{1}{z} \ ]''' \ \]
-\[ f(z) = z^{-1} \]
-\[ f'(z) = - z^{-2} \]
-\[ f''(z) = 2 z^{-3} \]
-\[ f'''(z) = -6 z^{-4} \]
-\[  \lim_{z \rightarrow 2} \ [ \ \frac{1}{z} \ ]''' = - \frac{6}{16} \]
-Don't forget to divide by $(N-1)!$, which is $3! = 6$ in this case.  That leaves
-\[ \text{Res } [f(z),z=2] = - \frac{1}{16} \]
-
-The total of the residues is just zero.  
-
-This problem is from Brown and Churchill, which they work by doing Laurent series.  They get a different answer, namely $-\pi i/8$.  
-
-The reason is that they integrate over the contour $0 < | z - 2 | < 2$, that is, $C[2,2]$, which includes the second pole but not the first.  
-
-Multiplying by $2 \pi i$ gives their result.
-
-Going back to example 6
-\[ f(z) = \frac{1}{z(z-2)^4} \]
-
-To expand this, write:
-\[ -\frac{1}{16z} \cdot \frac{1}{(1 - z/2)^4} \]
-which gives a geometric series in $z/2$.  
-\[ = -\frac{1}{16z} (1 + \frac{z}{2} + (\frac{z}{2})^2 \dots)^4 \]
-
-We want the term with $1/z$, which is just the first one of the power series to the fourth power:  $1$.  Thus that term is
-\[   -\frac{1}{16z}  \]
-The residue is $-1/16$.
-
-We do need to think about the disk of convergence.  We are on $C[2,2]$.  The series has $r = z/2$ which converges if $|z - z_0/2| < 1$, so $|z - z_0| < 2$, which is fine.
-
-The way they do it is to write:
-\[ \frac{1}{z(z - 2)^4} = \frac{1}{(z-2)^4} \cdot \frac{1}{2 + (z - 2)} \]
-\[ =  \frac{1}{2(z-2)^4} \cdot \frac{1}{1 - (-(z - 2)/2)} \]
-which is a geometric series in $-(z-2)/2$.
-
-The term we want preserves a factor with $z^{-1}$ power, that is:
-\[ \ [ \ -(z-2)/2 \ ]^3 \]
-We have one factor of $1/2$ in the lead, and then a cube of $-1/2$, giving $-1/16$, which agrees with the other methods.
-
-Note:  the example is number 3 in the section on Residues from the 8th edition, which I found online, but it is not available in my paper copy (6th ed.).
 
 \end{document}

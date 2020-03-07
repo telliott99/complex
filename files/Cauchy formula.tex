@@ -61,11 +61,9 @@ But reversing the direction of integration on the inner ring (so both paths go i
 and
 \[ \oint_{C \ \text{outer}} \frac{f(z)}{z-z_0} \ dz = \oint_{C \ \text{inner}} \frac{f(z)}{z-z_0} \ dz \]
 
-\subsection*{main point}
-
 What that means is that the value of the integral around a ring enclosing a singularity is not zero, but its value is \emph{independent of the radius}.
 
-\subsection*{derivation of Cauchy's Integral formula}
+\subsection*{derivation}
 
 We can parametrize this path.  Each point on one of these curves is given by
 \[ z = z_0 + r e^{it} \]
@@ -76,7 +74,7 @@ This is a circle with the center displaced to $z_0$.
 Since $z_0$ is a constant
 \[ dz = i r e^{it} \ dt = i (z - z_0) \ dt \]
 
-We will obtain a cancellation exactly like what we saw for the inverse function $1/z$ previously.  We can keep everything in terms of $e^{it}$
+We will obtain a cancelation exactly like what we saw for the inverse function $1/z$ previously.  We can keep everything in terms of $e^{it}$
 
 \[ \int_{\gamma} \frac{f(z)}{z - z_0} \ dz = \int_{\gamma} \frac{f(z)}{re^{it}} \ ire^{it} \ dt = i \int_{\gamma} f(z) \ dt \]
 

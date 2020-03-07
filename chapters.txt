@@ -53,7 +53,6 @@ Conformal mapping
 End
 
 Real theorems
-Partial fractions real
 Real Taylor series
 Green's theorem
 

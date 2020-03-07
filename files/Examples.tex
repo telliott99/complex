@@ -1,4 +1,4 @@
-w\documentclass[11pt, oneside]{article} 
+\documentclass[11pt, oneside]{article} 
 \usepackage{geometry}
 \geometry{letterpaper} 
 \usepackage{graphicx}
@@ -16,100 +16,481 @@ w\documentclass[11pt, oneside]{article}
 
 \begin{document}
 \maketitle
-\large
+\Large
 
 %[my-super-duper-separator]
 
-ex 1:  \hyperref[sec:series_cheatsheet]{\textbf{Laurent}}
-\[ \int \frac{1}{1 - z} \ dz \]
+\subsection*{example 1}
+\[ I = \oint \frac{1}{1 - z} \ dz \]
 
-ex 2:  \hyperref[sec:series_cheatsheet]{\textbf{Laurent}}
-\[ \int \frac{1}{1 + z} \ dz \]
+\hyperref[sec:series_cheatsheet]{\textbf{Laurent}}
 
-ex 3:    \hyperref[sec:ex3L]{\textbf{Laurent}} or \hyperref[sec:ex3R]{\textbf{Residues}}
-\[ \int \frac{1}{z(z + 2)} \ dz \]
+Change of variables.  Let $w = 1 - z$, $dw = - dz$
+\[ I = \oint \frac{1}{w} \ (- dw) = - (2 \pi i) \]
 
-ex 4:  \hyperref[sec:ex4R]{\textbf{Residues}} 
-\[ \int \frac{1}{z^2 - 1} \ dz \]
+\subsection*{example 2}
+\[ I = \oint \frac{1}{1 + z} \ dz \]
 
-ex 5:  \hyperref[sec:ex5L]{\textbf{Laurent}} or \hyperref[sec:ex5PF]{\textbf{Partial fractions}} or \hyperref[sec:ex5R]{\textbf{Residues}}.
-\[ \int \frac{1}{z(z - 2)^2} \ dz \]
+\hyperref[sec:series_cheatsheet]{\textbf{Laurent}}.
 
-ex 6:  \hyperref[sec:ex6L]{\textbf{Laurent series}} or \hyperref[sec:ex6R]{\textbf{Residues}}.
-\[ \int \frac{1}{z(z - 2)^4} \ dz \]
+Change of variables.  As above, except there's no minus sign.  $I =  2 \pi i$.
 
-ex 7: \hyperref[sec:ex7R]{\textbf{Residues}} 
-\[ \int \frac{1}{z^4 - 1} \ dz \]
+\subsection*{example}
+\[ I = \oint \frac{1}{a + z} \ dz \]
 
-ex 8:  \hyperref[sec:ex8C]{\textbf{Cauchy}} or \hyperref[sec:ex8PF]{\textbf{Partial fractions}}.
-\[ \int \frac{1}{z^2(z - 1)} \ dz \]
+\hyperref[sec:a_plus_z]{\textbf{Laurent}}.
 
-ex 9:  
+Factor and change of variables 
+\[ I = \frac{1}{a} \oint \frac{1}{1 + z/a} \ dz \]
+Let $w = z/a$, $a dw = dz$.
+\[ = \frac{1}{a} \oint \frac{1}{1 + w} \ a dw \]
 
-ex 10:  \hyperref[sec:ex10PF]{\textbf{Partial fractions}} or \hyperref[sec:ex10R]{\textbf{Residues}}.
-\[ \int \frac{1}{z^2 + 1} \ dz \]
+$ I = 2 \pi i$ (example 2).
 
-ex 11:  \hyperref[sec:ex11R]{\textbf{Residues}} 
-\[ \frac{1}{z^4 + z^3 - 2z^2} \ dz \]
+\subsection*{example 3}
+\[ \oint \frac{1}{z(z + 2)} \ dz \]
 
-ex 12:  \hyperref[sec:ex12R]{\textbf{Residues}} 
-\[ \int \frac{5z - 2}{z(z - 1)} \ dz \]
+\hyperref[sec:ex3L]{\textbf{Laurent}}.
 
-ex 13:   \hyperref[sec:ex13R]{\textbf{Residues}} 
-\[ \int \frac{z}{(2z + 1)(5 - z)} \]
+Partial fractions.
+\[ \oint \frac{1}{2} \ [ \ \frac{1}{z} - \frac{1}{z + 2} \ ] dz \]
 
-ex 14:  \hyperref[sec:ex14PF]{\textbf{Partial fractions}} 
-\[ \int \frac{z^2}{4 - z^2} \ dz \]
+The curve $C[1,3]$ includes the singularity at $z = 0$, but $z = -2$ is on the boundary, not inside the region.  The curve $C[1,1]$ includes neither point.
 
-ex 15:  \hyperref[sec:ex15PF]{\textbf{Partial fractions}} 
-\[ \int \frac{z^2}{z^2 + 2z + 2} \ dz \]
+So for the second curve the integral is zero and for the first one only the $\int 1/z \ dz$ matters.  It's an old friend, with value $2 \pi i$, the value of the integral is thus $\pi i$.
 
-ex 16:  \hyperref[sec:ex16L]{\textbf{Laurent}}
-\[ \int \frac{12}{z(2 - z)(1 + z)} \ dz \]
+Residues.
 
-ex 17:  \hyperref[sec:ex17L]{\textbf{Laurent}}
-\[ \int \frac{z}{(z^2 + 1)} \ dz \]
+At $z_0 = 0$ we have $1/(z+2)$ evaluated at $z_0 = 0$ which is $1/2$.  At $z_0 = -2$ we have $1/z$ evaluated at $z_0 = -2$ which is $-1/2$.  Either one contributes its value times $2 \pi i$ if included in the contour.
+
+\subsection*{example 4}
+\[ \oint \frac{1}{z^2 - 1} \ dz \]
+
+Residues.  Factor as
+\[ \frac{1}{(z + 1)(z - 1)} \]
+
+We have poles at $z = \pm 1$.  The first term is $z_0 = -1$ so evaluate $1/(z - 1)$ at $z_0$ and obtain $R(-1) = -1/2$.
+
+For the other one $z_0 = 1$ and that is $z - z_0$ as written, so evaluate $1/z+1$ at $z_0$ and obtain $R(1) = 1/2$.
+
+\subsection*{example 5}
+\[ \oint \frac{1}{z(z - 2)^2} \ dz \]
+
+\hyperref[sec:ex5L]{\textbf{Laurent}}, \hyperref[sec:ex5PF]{\textbf{Partial fractions}}.
+
+Residues.  There is a pole of first order at $z_0=0$ and one of second order at $z_0=2$.  
+
+At the first, multiply by $(z - 0)$ and evaluate the limit of what's left:
+\[ \text{Res }(0) = \frac{1}{(z-2)^2} \bigg |_{z_0 = 0} = \frac{1}{4} \]
+
+For the other, multiply by $(z-2)^2$ and compute the $N-1$ (first) derivative of what's left
+\[ [ \ \frac{1}{z} \ ]' \ =  - \frac{1}{z^2} \]
+\[ \text{Res } (2) = \lim_{z \rightarrow 2} -\frac{1}{z^2} = -\frac{1}{4} \]
+Don't forget to divide by $(N-1)!$, which is just $1$ in this case.  The total is zero.
+
+Change of variables to allow series.
+\[ \frac{1}{z(z-2)^2} \]
+Let $w = z - 2$, $dw = dz$, $z = w + 2$
+\[ \oint \frac{1}{w^2(w+2)} dw \]
+
+This allows the possibility of a series solution, but we must ask where is the contour?
+
+Suppose the contour includes both of the original poles.  Because of that factor of $1/w^2$, we need the analytic $A$ series for $1/(w+2)$, from \hyperref[sec:a_plus_z]{\textbf{here}}.
+
+\[ \frac{1}{2} \cdot \ [ \ 1 - \frac{w}{2} + \frac{w^2}{4} \dots \ ]    \]
+With the factor, the relevant term is $b = -1/4$, which matches what we had above.
+
+We would have a different series and a different answer for a smaller contour only enclosing one pole.
+
+\subsection*{example 6}
+\[ \oint \frac{1}{z(z - 2)^4} \ dz \]
+
+Laurent series.  There are singularities at $z = 0$ and $z = 2$.
+
+Use the $1/z$ part to get a geometric series:
+\[ \frac{1}{z(z-2)^4} = \frac{1}{(z-2)^4} \cdot \frac{1}{(2 + z - 2)} \]
+\[ = \frac{1}{(z-2)^4} \cdot \frac{1}{2} \cdot \frac{1}{(1 - (-(z-2))/2 )} \]
+
+The third term gives the geometric series with common ratio $(z-2)/2$.  Those $z-2$ terms will cancel the leading factor.  The only term that matters is the cube, which gives:
+\[  \frac{1}{(z-2)} \cdot \frac{1}{2} \cdot \frac{1}{(-2)^3} \]
+
+We have that $b_1 = -1/16$ so $I = -\pi i/8$.
+
+Residues.  We have a pole of first order at $z=0$ and one of fourth order at $z=2$.  At the first
+\[ \text{Res } [f(z),z=0] = \lim_{z \rightarrow 0}   \frac{1}{(z-2)^4} \]
+\[ =  \lim_{z \rightarrow 0} \ \frac{1}{(z-2)^4}  = \frac{1}{(-2)^4} =  \frac{1}{16} \]
+
+For the other pole recall that
+\[ \frac{2 \pi i}{n!} f^n(a) = \oint_C \frac{f(z)}{(z-a)^{n+1}} \ dz \]
+
+Remove the factor of $1/(z-2)^4$ leaving $f(z) = 1/z$ and then compute the $N-1$ (third) derivative of what's left
+
+\[ \text{Res } [f(z),z=2] = \frac{1}{n!} \ \lim_{z \rightarrow 2} \ [ \ \frac{1}{z} \ ]''' \ \]
+\[ f(z) = z^{-1} \]
+\[ f'(z) = - z^{-2} \]
+\[ f''(z) = 2 z^{-3} \]
+\[ f'''(z) = -6 z^{-4} \]
+\[  \lim_{z \rightarrow 2} \ [ \ \frac{1}{z} \ ]''' = - \frac{6}{16} \]
+
+Don't forget to divide by $(N-1)!$, which is $3! = 6$ in this case.  That leaves
+\[ \text{Res } [f(z),z=2] = - \frac{1}{16} \]
+
+The total of the residues is just zero.  
+
+This problem is from Brown and Churchill, which they work by doing Laurent series.  They get a different answer, namely $-\pi i/8$.  
+
+The reason is that they integrate over the contour $0 < | z - 2 | < 2$, that is, $C[2,2]$, which includes the second pole but not the first.  
+
+Multiplying by $2 \pi i$ gives their result.
+
+Going back to example 6, what I did was
+\[ f(z) = \frac{1}{z(z-2)^4} \]
+
+To expand this, write:
+\[ -\frac{1}{16z} \cdot \frac{1}{(1 - z/2)^4} \]
+which gives a geometric series in $z/2$.  
+\[ = -\frac{1}{16z} (1 + \frac{z}{2} + (\frac{z}{2})^2 \dots)^4 \]
+
+We want the term with $1/z$, which is just the first one of the power series to the fourth power:  $1$.  Thus that term is
+\[   -\frac{1}{16z}  \]
+The residue is $-1/16$.
+
+We do need to think about the disk of convergence.  We are on $C[2,2]$.  The series has $r = z/2$ which converges if $|z - z_0/2| < 1$, so $|z - z_0| < 2$, which is fine.
+
+Note:  the example is number 3 in the section on Residues from the 8th edition, which I found online, but it is not available in my paper copy (6th ed.).
+
+Change of variables.
+
+\[ \oint \frac{1}{z(z - 2)^2} \ dz \]
+Let $w = z - 2$, $dw = dz$, $z = w + 2$.
+\[ \oint \frac{1}{w^4(w + 2)} \ dz \]
+
+Expand
+\[ \frac{1}{2 + w} = \frac{1}{2} \ \frac{1}{(1 + w/2)} \]
+Because of the factor of $1/w^4$ we need the third term of the analytic $A$ series:
+\[ \frac{1}{2} \ (\dots + (-\frac{w}{2})^3 + \dots \]
+The cofactor is $b_1 = -1/16$.
+
+\subsection*{example 7}
+\[ \oint \frac{1}{z^4 - 1} \ dz \]
+
+Residues.  We can factor the denominator as
+\[ z^4 - 1 = (z^2 - 1)(z^2 + 1) \]
+\[ = (z+1)(z-1)(z+i)(z-i) \]
+
+There are four poles, and each will have a residue.
+\[ \text{Res}(1) =  \frac{1}{(z+1)(z+i)(z-i)} \bigg |_{z_0 = 1} \]
+\[ = \frac{1}{2(1+1)} = \frac{1}{4} \]
+
+\[ \text{Res}(i) = \frac{1}{(z+1)(z-1)(z+i)} \bigg |_{z_0 = i}\]
+\[ = \frac{1}{(-2)(2i)} = -\frac{1}{4i} = \frac{i}{4}  \]
+
+\subsection*{example 8}
+\[ \oint \frac{1}{z^2(z - 1)} \ dz \]
+
+\hyperref[sec:ex8C]{\textbf{Cauchy}} or \hyperref[sec:ex8PF]{\textbf{Partial fractions}}.
+
+\subsection*{example 9}
+
+\subsection*{example 10}
+\[ \oint \frac{1}{z^2 + 1} \ dz \]
+
+\hyperref[sec:ex10PF]{\textbf{Partial fractions}}.
+
+Residues. This can be factored
+\[ f(z) = \frac{1}{(z + i)(z - i)} \]
+So there are two simple poles, at $z = \pm \ i$.
+
+The formula is:
+\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
+
+Evaluate the formula.  Our path includes $i$ but not $-i$.  We have for $z_0 = i$:
+\[ b_1 = \lim_{z \rightarrow i} (z-i) \  \frac{1}{(z+i)(z-i)} \]
+\[ = \lim_{z \rightarrow i}  \  \frac{1}{z+i} = \frac{1}{2i} \]
+
+Multiplied by $2 \pi i$:
+\[ I = \pi \]
+
+If the unit circle had been centered at $-i$, rewrite the function as
+\[ f(z) = \frac{1/z-i}{z+i} \]
+The value of the function is
+
+\[ \frac{1}{z-i} \bigg |_{-i} = -\frac{1}{2i} \]
+and the integral is then $- \pi$.
+
+A contour that includes both singularities integrates to zero.
+
+\subsection*{example 12}
+\[ \oint \frac{5z - 2}{z(z - 1)} \ dz \]
+
+There are two simple poles at $z_0 = 0$ and $z_0 = 1$ and the residues are
+\[ \text{Res }(0) = \lim_{z \rightarrow 0} (z - 0) \ \frac{5z-2}{z(z-1)} \]
+\[ = \lim_{z \rightarrow 0} \ \frac{5z-2}{(z-1)} \]
+\[ = \frac{5 \cdot 0 - 2}{0 - 1} = 2 \]
+
+\[ \text{Res }(1) = \lim_{z \rightarrow 1} (z - 1) \ \frac{5z-2}{z(z-1)} \]
+\[ = \lim_{z \rightarrow 1} \ \frac{5z-2}{z} \]
+\[ = \frac{5 \cdot 1 - 2}{1} = 3 \]
+Hence the total of all the residues is $5$ and $I = 10 \pi i$.
+
+\subsection*{example 13}
+\[ \oint \frac{z}{(2z + 1)(5 - z)} \]
+
+\[ f(z) = \frac{z}{(2z + 1)(5 - z)} \]
+
+The poles are at $z_0 = -1/2$ and $z_0 = 5$.
+
+First multiply the function by $z - z_0$  That gives
+\[  R(-1/2) = \frac{z}{2 (5 - z)} \bigg |_{z = -1/2}  = \frac{-1/2}{2(11/2)} = -\frac{1}{22} \]
+
+And
+\[ R(5) = -\frac{z}{2z + 1} \bigg |_5 = - \frac{5}{11} \]
+
+For
+\[ f(z) = \frac{\cos z}{z} \]
+The pole is at $z_0 = 0$ so multiply by $z$:
+\[ R(0) = \cos z \bigg |_0 = 1 \]
+
+\subsection*{example 14}
+\[ \oint \frac{z^2}{4 - z^2} \ dz \]
+
+\hyperref[sec:ex14PF]{\textbf{Partial fractions}}.
+
+\subsection*{example 15}
+\[ \oint \frac{z^2}{z^2 + 2z + 2} \ dz \]
+
+\hyperref[sec:ex15PF]{\textbf{Partial fractions}}.
+
+Residues.  Use the quadratic equation to factor.  The zeroes are at $z_0 = -1 \pm i$.  
+\[ \frac{1}{z^2 + 2z + 2} = \frac{1}{(z - (-1 + i))(z - (-1 - i) )}  \]
+
+At the first
+\[ R(-1 + i) = \frac{z^2}{z - (-1 - i)} \bigg |_{z_0 = -1 + i} = \frac{-2i}{2i} = - 1 \]
+
+\subsection*{example 16}
+\[ \oint \frac{12}{z(2 - z)(1 + z)} \ dz \]
+
+\hyperref[sec:ex16L]{\textbf{Laurent}}.
+
+\subsection*{example 17 (Orloff 7.2.1)}
+\[ \int \frac{z}{z^2 + 1} \ dz \]
+
+Factoring the denominator we have that $z^2 + 1 = (z + i)(z - i)$.  So there are singularities at $z = \pm i$.  We are asked to expand the series around $z =i$.  There are actually two different regions with two different solutions.  We will compute the inner punctured disk with $|z - i| < 2$.  This extends as far as the singularity at $z = i$.
+
+Using partial fractions write:
+\[ z \frac{1}{(z + i)(z - i)} = \frac{z}{2i} \ [ \frac{1}{z - i} - \frac{1}{z + i}  \  ] \]
+Keep that $z/2i$ in your back pocket for now.
+
+We need the $A$ series around the first term and the $P$ series around the second.  These are:
+\[ \frac{1}{z - i} = - \frac{1}{i} \cdot \frac{1}{1 - z/i} = - \frac{1}{i} \cdot \ [ \ 1 + (\frac{z}{i}) + (\frac{z}{i})^2 + (\frac{z}{i})^3 \dots \ ] \]
+
+The other one is
+\[ - \frac{1}{z} \cdot \frac{1}{1 + i/z} = - \frac{1}{z} \cdot \ [ \ 1 + (-\frac{i}{z}) + (-\frac{i}{z})^2 + (-\frac{i}{z})^3 \dots \]
+
+Since we have $z$ (in our pocket), the only term that matters is
+\[ -\frac{1}{z} \cdot (- \frac{i}{z}) = \frac{i}{z^2} \]
+from the second one.  That becomes, digging into our pockets:
+\[ \frac{i}{z^2} \cdot \frac{z}{2i} = \frac{1}{2z} \]
+
+So a contour integral around the point $z = i$ and inside the radius $|z - i| < 2$ will have a value of $\pi i$.  We can check that:
+\[ \frac{1}{2i}  \oint \frac{z}{z - i} \ dz = (2 \pi i) \ \frac{z}{2 i} \bigg |_{z = i} = \pi i \]
+
+Also, we can check this by change of variables.  The singularity in the region of the contour integral is the first term:
+\[ \oint \frac{1}{2i} \cdot \frac{z}{z - i} \ dz \]
+Let $w = z - i$, $dw = dz$, then
+\[ = \frac{1}{2i} \oint \frac{w + i}{w} \ dw \]
+
+The integral of the first part is $\int dw$ which is zero.  The second part is
+\[ \frac{1}{2i} \oint \frac{i}{w} \ dw = \frac{1}{2} \cdot (2 \pi i) = \pi i \]
 
 ex 18:  \hyperref[sec:ex18L]{\textbf{Laurent}}
-\[ \int \frac{z}{(z - 1)(z - 3)} \ dz \]
+\[ \oint \frac{z}{(z - 1)(z - 3)} \ dz \]
 
-ex 19:  \hyperref[sec:ex19L]{\textbf{Laurent}}
-\[ \int e^{1/z^2} \ dz \]
+\subsection*{example 19 (Brown and Churchill)}
+\[ \oint e^{1/z^2} \ dz \]
 
-ex 20:  \hyperref[sec:ex20L]{\textbf{Laurent}},  \hyperref[sec:ex20R]{\textbf{Residues}}
-\[ \int \frac{e^z}{z^2} \ dz \]
+Laurent series.
 
-ex 21:  \hyperref[sec:ex21R]{\textbf{Residues}}
-\[ \int \frac{1 + e^z}{z^2} + \frac{2}{z} \ dz \]
+We use the standard series for $e^z$
+\[ e^z = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \dots \]
+substituting $1/z^2$
+\[ 1 + \frac{1}{z^2} + \frac{1}{2! \ z^4} + \frac{1}{3! \ z^6} + \dots \]
 
-ex 22:  
-\[ \int \frac{e^z}{z^3} \ dz \]
+Since there's no $z$ with a power $n=-1$, the value of the integral is zero.
 
-ex 23:  \hyperref[sec:ex23L]{\textbf{Laurent}} ,  \hyperref[sec:ex23R]{\textbf{Residues}}
-\[ \int \frac{e^z}{z - 1} \ dz \]
+\subsection*{example 20}
+\[ f(z) = \frac{e^z}{z^2} \]
 
-ex 24:   \hyperref[sec:ex24R]{\textbf{Residues}} 
+There is obviously a double pole at $z = 0$.  (1) Multiply by $z^2$.  (2) Take the derivative, obtaining $e^z$.  Evaluate at $z = 0$, obtaining $1$ for the residue.
+
+Another way is to write a Laurent series:
+\[ = \frac{1}{z^2} (1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} \dots ) \]
+The only term with a non-zero integral is\
+\[ \frac{1}{z} \]
+so the cofactor $b_1$ is just $1$, which is also the residue, and the value of the integral is $2 \pi i$.
+
+\subsection*{example 21}
+
+\[ f(z) = \frac{1 + e^z}{z^2} + \frac{2}{z} \]
+We can break this up into its two component parts.  For the first term, the pole is of order $m = 2$ at $z_0 = 0$.  We remove the $z^2$ term and take the derivative
+\[ (1 + e^z)' = e^z \]
+
+The factorial term is just $1$, leaving $e^z$ which is evaluated at the pole giving a residue
+\[ \text{Res }(0) = e^0 = 1 \]
+
+The other term is just $2$ times the standard
+\[ \oint \frac{1}{z} \ dz = 2 \pi i \]
+Here $I = 4 \pi i$ and the residue is $2$.  Alternatively just use
+\[ I = 2 \pi i f(z_0) = 4 \pi i \]
+where $f = 2$.
+
+The total of the residues is $3$ and the value of the integral is $6 \pi i$.
+
+Still another approach
+\[ \frac{1 + e^z}{z^2} \]
+has a pole at $z_0 = 0$, so we \emph{can} use the series for $e^z$ at $0$:
+\[ = \frac{1}{z^2} \cdot 1 + 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} \dots \]
+
+The relevant term is 
+\[ = \frac{1}{z^2} \cdot  z = \frac{1}{z} \]
+So the residue is $1$.
+
+\subsection*{example 22}  
+\[ \oint \frac{e^z}{z^3} \ dz \]
+
+Series.  The relevant term is 
+\[ = \frac{1}{z^3} \cdot  \frac{z^2}{2!} = \frac{1}{2z} \]
+So the residue is $1/2$.
+
+\subsection*{example 23}
+\[ \oint \frac{e^z}{z - 1} \ dz \]
+
+Laurent series.
+
+\[ I = \oint \frac{e^z}{z - 1} \ dz \]
+
+There's a trick to writing the Laurent series:
+\[ \frac{e^z}{z - 1} = \frac{e}{z - 1} \cdot e^{z - 1} \]
+So now the expansion of $e^{z -1}$ gives:
+\[ = \frac{e}{z - 1} \ [ \ 1 + (z - 1) + \frac{(z-1)^2}{2!} + \dots \ ]  \]
+\[ = e \ [ \ \frac{1}{z - 1} + 1 + \frac{(z-1)}{2!} + \dots \ ]  \]
+The coefficient of $1/(z-1)$ is $e$, so the value of the integral is
+\[ I = 2 \pi i \cdot e \]
+
+Extension:
+
+For $z - n$ in the denominator, in a similar way:
+\[ \frac{e^z}{z - n} = \frac{e^n e^{z -n}}{z - n} \]
+\[ = \frac{e^n}{z - n} \ ( 1 + (z - n) + \frac{(z - n)^2}{2!} + \dots ) \]
+The residue is $e^n$.
+
+There's another simple dodge, and that is change of variables.  Let
+\[ w = z - 1\]
+\[ dw = dz \]
+\[ e^z = e^{w + 1} = e^w \cdot e \]
+Then f is
+\[ e \cdot \frac{e^w}{w} \]
+so the series is 
+\[ \frac{1}{w} \ (1 + w + w^2 \dots ) \]
+The cofactor of $w^{-1}$ is $e$ and the result is the same as before.
+
+Of course, for $z - n$ we get a power of $e^n$ multiplying the series.
+
+Also, you might wonder about 
+\[ \oint \frac{e^z}{1 - z} dz \]
+With the substitution, $dw = - dz$, so that's where we pick up the minus sign that we need.  Or just manipulate before the substitution:
+\[ \frac{1}{1 - z} = - \frac{1}{z - 1} \]
+
+Residues.
+
+The pole is at $z = 1$.  At that point we have
+\[ e^z \bigg |_1 = e \]
+
+\subsection*{example 24}
 \[ \int \frac{e^z}{z(z - 1)^2} \ dz \]
 
-ex 25:    \hyperref[sec:ex25R]{\textbf{Residues}}
-\[ \int \frac{e^z}{z^2 - 2z - 3} \ dz \]
+\hyperref[sec:ex24R]{\textbf{Residues}}.
 
-ex 26:   \hyperref[sec:ex26R]{\textbf{Residues}}
-\[ \int \frac{e^z}{z^3 - z^2 - 5z - 3} \ dz \]
+\subsection*{example 25}
 
-ex 27:   \hyperref[sec:ex27R]{\textbf{Residues}} 
-\[ \int \frac{z e^z}{z^2 - 1} \ dz \]
+Residues.  The denominator can be factored
+\[ z^2 - 2z - 3 = (z + 1)(z - 3) \]
 
-ex 28:  \hyperref[sec:ex28R]{\textbf{Residues}}
-\[ \int \frac{e^z}{z(z - 1)^2} \ dz \]
+If the disk is $|z| \le 2$ then it includes only $z_0 = -1$ and the formula is
+\[ b_1 = \lim_{z \rightarrow z_0} (z-z_0) \ f(z)  \]
+so
+\[ b_1 = \lim_{z \rightarrow -1} (z+1) \ \frac{e^z}{(z + 1)(z - 3)}  \]
+\[ = \lim_{z \rightarrow -1} \ \frac{e^z}{(z - 3)}  \]
+\[ = \frac{e^{-1}}{-1 - 3} = - \frac{1}{4 e} \]
+and
+\[ I = 2 \pi i \ b_1 = 2 \pi i \ (- \frac{1}{4 e}) \]
+\[ = - \frac{\pi i}{2 e} \]
 
-ex 29:  \hyperref[sec:ex29R]{\textbf{Residues}}
-\[ \int \cot z \ dz \]
+\subsection*{example 26}
+\[ \oint_C \frac{e^z}{z^3 - z^2 - 5z - 3} \ dz \]
 
-ex 30:  \hyperref[sec:ex30R]{\textbf{Residues}}  
-\[ \int \frac{\sin \pi z}{z^2 - 1} \ dz \]
+The factorization was given in the original problem, but suppose we don't have it.  Guess:
+\[ (z ...)(z^2 ... ) \]
+The next term is $-z^2$ so maybe 
+\[ (z -3)(z^2 + 2z ... ) \]
+Then we'll need $-3$ at the end:
+\[ (z - 3)(z^2 + 2z + 1) \]
+and we get $-5z$, so that works!
 
-ex 31:    \hyperref[sec:ex31R]{\textbf{Residues}}  
-\[ \int \frac{\sin z}{1 - z^4} \ dz \]
+Nicely, the quadratic also factors:
+\[ \oint_C \frac{e^z}{(z+1)^2 (z-3)} \]
+
+A double pole at $z = -1$ and a single one at $z = 3$.
+
+Recall the general approach for a double pole, construct
+\[ g(z) = (z - z_0)^2 \ f(z) \]
+Here
+\[ = \frac{e^z}{(z-3)} \]
+
+Then compute the first derivative:
+\[ \frac{e^z \cdot (z-3) - (e^z \cdot 1)}{(z - 3)^2} \]
+\[ = \frac{(z-4)e^z}{(z-3)^2} \]
+
+Evaluate the limit of that as $z \rightarrow z_0$.
+\[ \lim_{z \rightarrow -1} \ \frac{(z-4)e^z}{(z-3)^2} = -\frac{5}{16} \ \frac{1}{e} \]
+
+Remember the extra factor of $1/(n-1)!$ to get the residue, and $2 \pi i$ to get the value of the integral.
+\[ I = -\frac{5 \pi i}{8 e} \]
+
+\subsection*{example 27}
+\[ \oint \frac{z e^z}{z^2 - 1} \ dz \]
+
+\hyperref[sec:ex27R]{\textbf{Residues}}.
+
+\subsection*{example 28}
+
+\[ f(z) = \frac{e^z}{z(z-1)^2} \]
+The denominator is one we saw above, but now there is an extra factor of $e^z$.
+
+We have a pole of first order at $z=0$ and one of second order at $z=1$.  At the first
+\[ \text{Res } [f(z),z=0] = \lim_{z \rightarrow 0} \frac{e^z}{(z-1)^2} = 1 \]
+
+For the other one, remove the factor of $1/(z-1)^2$ and compute the $N-1$ (first) derivative of what's left
+\[ \text{Res } [f(z),z=1] = \lim_{z \rightarrow 1} \ [ \ \frac{e^z}{z} \ ]' \ \]
+\[ = \frac{e^z z - e^z}{z^2} = \frac{e^z(z - 1)}{z^2} \ \bigg |_1 =  0 \]
+Hence
+\[ \oint f(z) \ dz = 2 \pi i \ [ \ \sum  \text{Res } \ ] \ = 2 \pi i \]
+
+\subsection*{example 29 (Boas)}
+\[ \oint \cot z \ dz \]
+
+Find $R(0)$ for $f(z) = \cot z$.
+\[ R = \lim_{z \rightarrow z_0} (z - z_0) \frac{\cos z}{\sin z} \]
+\[ = \lim_{z \rightarrow 0} \frac{z}{\sin z} \ \cos z = \cos 0 = 1 \]
+
+\subsection*{example 30}
+\[ \oint \frac{\sin \pi z}{z^2 - 1} \ dz \]
+
+\hyperref[sec:ex30R]{\textbf{Residues}}  
+
+\subsection*{example 31}
+\[ \oint \frac{\sin z}{1 - z^4} \ dz \]
+
+\hyperref[sec:ex31R]{\textbf{Residues}}.
 
 \end{document}

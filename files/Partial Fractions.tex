@@ -20,7 +20,7 @@
 
 %[my-super-duper-separator]
 
-In the last chapter we finished with a problem using Cauchy's corollary.  That problem can also be done by partial fractions.
+In the last chapter we finished with a problem using Cauchy's corollary.  That problem can also be done in other ways, including by partial fractions.
 
 \label{sec:ex8PF}
 
@@ -47,14 +47,6 @@ The first integral is zero, by Cauchy's theorem when the path does not include $
 The second one is $-2\pi i$ for the path including $z = 0$.
 
 For the third, substitute $w = z - 1$, with $dw = dz$.  The integral is $2 \pi i$ and the total is zero.
-
-
-
-In the previous section, we derived Cauchy's formula:
-\[ \oint_C \frac{f(z)}{z-z_0} \ dz = 2 \pi i f(z_0) \]
-One example is
-\[ \oint_C \frac{1}{z-z_0} \ dz = 2 \pi i \]
-which is easy to show even without using the new formula.
 
 \subsection*{example 10}
 
@@ -94,42 +86,6 @@ and when evaluated at $i$, with result $1/2i$, we obtain
 \[ = 2 \pi i \ \frac{1}{2i} = \pi \]
 
 Above we have a constant of $1/2i$ which can either be factored out of the integral, or be part of $f(z_0)$.  Either way, it's the same result.
-
-\subsection*{example 10, partial fractions}
-
-\label{sec:ex10PF}
-
-We can also do the curve containing both singularities by using the formal apparatus of partial fractions.  Write
-\[ \frac{1}{z^2 + 1} = \frac{1}{(z+i)(z-i)} \]
-\[ = \frac{A}{z+i} + \frac{B}{z-i} \]
-
-We need to determine $A$ and $B$.  When we multiply to put everything over the common denominator ($z^2 + 1)$ then for the numerators we will have:
-\[ A(z-i) + B(z+i) = 1 \]
-All the powers of $z$ must match across the equal sign.  Since there is no power of $z$ on the right-hand side,  this gives
-\[ Az + Bz = 0 \]
-and
-\[ -Ai + Bi = 1 \]
-
-From the first we get that $A = -B$.  And so from the second
-\[ -Ai - Ai = -2Ai = 1 \]
-\[ A = -\frac{1}{2i} \]
-Hence the integrand is
-\[ \frac{1}{z^2 + 1} = = \frac{A}{z+i} + \frac{B}{z-i} \]
-\[ = -\frac{1}{2i(z+i)} + \frac{1}{2i(z-i)} \]
-which matches what we had above:
-\[ = \frac{1}{2i} \ [ \ \frac{1}{z - i} - \frac{1}{z+i} \ ] \]
-
-For the curve including $z = i$ but not $z = -i$ we have that the right-hand integral is 0 by Cauchy's Theorem, and for the left hand side the function is
-\[ f(z = z_0) = \frac{1}{2i} \]
-So the value of the integral is
-\[ 2 \pi i f(z_0) = 2 \pi i \ \frac{1}{2i} = \pi \]
-as before.  
-
-The other pole would have
-\[ f(z = z_0) = -\frac{1}{2i} \]
-and the result would be $- \pi$.  
-
-A curve enclosing both poles would have for the value of the integral the sum of the two, which is equal to zero.
 
 \subsection*{example 14}
 
